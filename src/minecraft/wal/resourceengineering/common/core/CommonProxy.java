@@ -54,6 +54,9 @@ public class CommonProxy implements IGuiHandler
 		//Metal Nuggets
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.nugget,1,0),"Iron Nugget");
 		
+		//Gems
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.gem,1,0),"Turquoise");
+		
 	}
 	public void addRecipes()
 	{
