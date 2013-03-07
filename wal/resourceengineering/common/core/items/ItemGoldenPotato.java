@@ -52,7 +52,7 @@ public class ItemGoldenPotato extends ItemFood
 
 	protected void func_77849_c(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.regeneration.id, 600, 3));
+		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.regeneration.id, 600, 1));
 		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.resistance.id, 6000, 0));
 		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 6000, 0));
 
