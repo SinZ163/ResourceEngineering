@@ -22,6 +22,14 @@ import resourceengineering.client.core.ClientProxy;
 import resourceengineering.common.core.CommonProxy;
 import resourceengineering.client.core.handlers.ClientPacketHandler;
 import resourceengineering.common.core.handlers.ServerPacketHandler;
+
+import resourceengineering.common.tabs.ResourceEngineeringTab;
+
+//Item Imports
+import resourceengineering.common.core.items.ItemFlake;
+import resourceengineering.common.core.items.ItemNugget;
+import resourceengineering.common.core.items.ItemGoldenPotato;
+
 @NetworkMod(clientSideRequired=true,serverSideRequired=false,
 clientPacketHandlerSpec=@SidedPacketHandler(channels={"WAL_RE"},packetHandler=ClientPacketHandler.class),
 serverPacketHandlerSpec=@SidedPacketHandler(channels = {}, packetHandler = ServerPacketHandler.class))
@@ -33,11 +41,19 @@ public class ResourceEngineeringMain
 	
 	@SidedProxy(clientSide = "resourceengineering.client.core.ClientProxy",serverSide = "resourceengineering.common.core.CommonProxy")
 	public static CommonProxy proxy;
+	
+	//Items
+	public static Item flake;
+	public static Item nugget;
+	public static Item goldenPotato;
 
+	public static CreativeTabs reTab = new ResourceEngineeringTab(CreativeTabs.getNextID(),"wal_ResouceEngineeringTab");
 	@PreInit()
 	public void PreInitialization(FMLPreInitializationEvent e)
 	{
-		
+		flake = new ItemFlake(17000);
+		nugget = new ItemNugget(17001);
+		goldenPotato = new ItemGoldenPotato(17002,5,6,false);
 	}
 	@Init
 	public void Initialization(FMLInitializationEvent event)
