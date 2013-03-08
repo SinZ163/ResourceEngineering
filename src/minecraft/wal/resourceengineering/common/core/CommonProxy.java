@@ -11,6 +11,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import resourceengineering.common.ResourceEngineeringMain;
+import resourceengineering.common.core.items.ItemBlockOre;
 
 public class CommonProxy implements IGuiHandler
 {
@@ -40,7 +41,7 @@ public class CommonProxy implements IGuiHandler
 	}
 	public void registerBlocks()
 	{
-
+		GameRegistry.registerBlock(ResourceEngineeringMain.oreBlock,ItemBlockOre.class,"wal_Ore");
 	}
 	public void addNames()
 	{
@@ -56,6 +57,11 @@ public class CommonProxy implements IGuiHandler
 		
 		//Gems
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.gem,1,0),"Turquoise");
+		
+		//Ores
+		//TODO: Add the rest of the ores here
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,0),"Turquoise Ore");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,1),"Onyx Ore");
 		
 	}
 	public void addRecipes()

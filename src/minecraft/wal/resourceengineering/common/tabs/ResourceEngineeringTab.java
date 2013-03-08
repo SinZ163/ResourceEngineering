@@ -3,7 +3,6 @@ package resourceengineering.common.tabs;
 import net.minecraft.creativetab.CreativeTabs;
 import cpw.mods.fml.relauncher.*;
 import resourceengineering.common.ResourceEngineeringMain;
-import tutorial.Tutorial;
 
 public class ResourceEngineeringTab extends CreativeTabs
 {

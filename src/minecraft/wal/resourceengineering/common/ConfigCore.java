@@ -15,6 +15,7 @@ public class ConfigCore
 	//Tools
 	
 	//Blocks
+	public static int oreBlockID;
 	
 	//Armor
 	
@@ -28,6 +29,8 @@ public class ConfigCore
 		itemGoldenPotatoID = config.getItem("Golden Potato", 21001).getInt();
 		itemNuggetID = config.getItem("Metal Nugget", 21002).getInt();
 		itemGemID = config.getItem("Gem",21003).getInt();
+		
+		oreBlockID = config.getBlock("Ore",250).getInt();
 		
 		config.save();
 	}

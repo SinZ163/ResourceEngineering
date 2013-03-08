@@ -32,6 +32,9 @@ import resourceengineering.common.core.items.ItemNugget;
 import resourceengineering.common.core.items.ItemGoldenPotato;
 import resourceengineering.common.core.items.ItemGem;
 
+//Block Imports
+import resourceengineering.common.blocks.BlockOre;
+
 @NetworkMod(clientSideRequired=true,serverSideRequired=false,
 clientPacketHandlerSpec=@SidedPacketHandler(channels={"WAL_RE"},packetHandler=ClientPacketHandler.class),
 serverPacketHandlerSpec=@SidedPacketHandler(channels = {}, packetHandler = ServerPacketHandler.class))
@@ -49,6 +52,9 @@ public class ResourceEngineeringMain
 	public static Item nugget;
 	public static Item goldenPotato;
 	public static Item gem;
+	
+	//Blocks
+	public static Block oreBlock;
 
 	public static CreativeTabs reTab = new ResourceEngineeringTab(CreativeTabs.getNextID(),"wal_ResouceEngineeringTab");
 	@PreInit()
@@ -61,6 +67,8 @@ public class ResourceEngineeringMain
 		nugget = new ItemNugget(cc.itemNuggetID);
 		goldenPotato = new ItemGoldenPotato(cc.itemGoldenPotatoID,5,6,false);
 		gem = new ItemGem(cc.itemGemID);
+		
+		oreBlock = new BlockOre(cc.oreBlockID);
 	}
 	@Init
 	public void Initialization(FMLInitializationEvent event)

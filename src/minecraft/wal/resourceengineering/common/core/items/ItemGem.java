@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.*;
 
 import resourceengineering.common.ResourceEngineeringMain;
-import tutorial.Tutorial;
 
 public class ItemGem extends Item
 {
