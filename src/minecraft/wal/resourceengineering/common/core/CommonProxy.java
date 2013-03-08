@@ -116,5 +116,8 @@ public class CommonProxy implements IGuiHandler
 		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,4),new ItemStack(ResourceEngineeringMain.gemBlock,1,4));
 		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,5),new ItemStack(ResourceEngineeringMain.gemBlock,1,5));
 		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,6),new ItemStack(ResourceEngineeringMain.gemBlock,1,6));
+		
+		//Smelting gem ore
+		FurnaceRecipes.smelting().addSmelting(ResourceEngineeringMain.oreBlock.blockID,0,new ItemStack(ResourceEngineeringMain.gem,5,0),5);
 	}
 }

@@ -66,4 +66,8 @@ public class BlockOre extends Block
 		}
 		return list;
 	}
+	public boolean canSilkHarvest()
+	{
+		return true;
+	}
 }
