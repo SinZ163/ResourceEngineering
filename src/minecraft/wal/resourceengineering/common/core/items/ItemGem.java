@@ -25,24 +25,26 @@ public class ItemGem extends Item
 	public int getIconFromDamage(int i)
 	{
 		switch(i)
-		{
+		{//TODO: Add the rest of the gems here
 		case 0: return 3;
+		case 1: return 4;
 		}
 		return 0;
 	}
 	public String getItemNameIS(ItemStack is)
 	{
 		switch(is.getItemDamage())
-		{
+		{//TODO: Add the rest of the gems here
 		case 0: return "wal_ItemTurqoise";
+		case 1: return "wal_ItemOnyx";
 		}
 		return "itemUnknown";
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int itemID, CreativeTabs tab, List itemList)
-	{
-		for(int i=0;i<1;i++)
+	{//TODO: Add the rest of the gems here
+		for(int i=0;i<2;i++)
 		{
 			itemList.add(new ItemStack(itemID,1,i));
 		}

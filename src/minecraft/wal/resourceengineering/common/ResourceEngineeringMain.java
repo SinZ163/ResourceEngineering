@@ -35,6 +35,7 @@ import resourceengineering.common.core.items.ItemGem;
 
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
+import resourceengineering.common.blocks.BlockGem;
 
 @NetworkMod(clientSideRequired=true,serverSideRequired=false,
 clientPacketHandlerSpec=@SidedPacketHandler(channels={"WAL_RE"},packetHandler=ClientPacketHandler.class),
@@ -56,6 +57,7 @@ public class ResourceEngineeringMain
 	
 	//Blocks
 	public static Block oreBlock;
+	public static Block gemBlock;
 
 	public static CreativeTabs reTab = new ResourceEngineeringTab(CreativeTabs.getNextID(),"wal_ResouceEngineeringTab");
 	@PreInit()
@@ -70,6 +72,7 @@ public class ResourceEngineeringMain
 		gem = new ItemGem(cc.itemGemID);
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
+		gemBlock = new BlockGem(cc.gemBlockID);
 	}
 	@Init
 	public void Initialization(FMLInitializationEvent event)

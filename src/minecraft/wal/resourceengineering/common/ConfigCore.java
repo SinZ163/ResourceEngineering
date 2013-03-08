@@ -16,6 +16,7 @@ public class ConfigCore
 	
 	//Blocks
 	public static int oreBlockID;
+	public static int gemBlockID;
 	
 	//Armor
 	
@@ -31,6 +32,7 @@ public class ConfigCore
 		itemGemID = config.getItem("Gem",21003).getInt();
 		
 		oreBlockID = config.getBlock("Ore",250).getInt();
+		gemBlockID = config.getBlock("GemBlock",251).getInt();
 		
 		config.save();
 	}
