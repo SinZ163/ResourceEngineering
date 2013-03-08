@@ -30,11 +30,11 @@ public class BlockOre extends Block
 		{//TODO: Add the rest of the ores here
 		case 0: return 0;//Turqoise Ore
 		case 1: return 1;//Onyx Ore
-		case 2: return 3;//Amethyst Ore
-		case 3: return 4;//Citrine Ore
-		case 4: return 5;//Emerald Ore
-		case 5: return 6;//Ruby Ore
-		case 6: return 7;//Sapphire Ore
+		case 2: return 2;//Amethyst Ore
+		case 3: return 3;//Citrine Ore
+		case 4: return 4;//Emerald Ore
+		case 5: return 5;//Ruby Ore
+		case 6: return 6;//Sapphire Ore
 		default: return 0;
 		}
 	}
