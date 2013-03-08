@@ -39,8 +39,12 @@ public class CommonProxy implements IGuiHandler
 	public void registerOre()
 	{
 		OreDictionary.registerOre("nuggetIron",new ItemStack(ResourceEngineeringMain.nugget,1,0));
-		OreDictionary.registerOre("gemRuby",new ItemStack(ResourceEngineeringMain.gem,1,5));
+		OreDictionary.registerOre("gemTurquoise",new ItemStack(ResourceEngineeringMain.gem,1,0));
+		OreDictionary.registerOre("gemOnyx",new ItemStack(ResourceEngineeringMain.gem,1,1));
+		OreDictionary.registerOre("gemAmethyst", new ItemStack(ResourceEngineeringMain.gem,1,2));
+		OreDictionary.registerOre("gemCitrine",new ItemStack(ResourceEngineeringMain.gem,1,3));
 		OreDictionary.registerOre("gemEmerald",new ItemStack(ResourceEngineeringMain.gem,1,4));
+		OreDictionary.registerOre("gemRuby",new ItemStack(ResourceEngineeringMain.gem,1,5));
 		OreDictionary.registerOre("gemSapphire", new ItemStack(ResourceEngineeringMain.gem,1,6));
 	}
 	public void registerBlocks()
@@ -61,7 +65,6 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.nugget,1,0),"Iron Nugget");
 		
 		//Gems
-		//TODO: Add the rest of the gems here
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.gem,1,0),"Turquoise");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.gem,1,1),"Onyx");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.gem,1,2),"Amethyst");
@@ -71,7 +74,6 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.gem,1,6),"Sapphire");
 		
 		//Ores
-		//TODO: Add the rest of the ores here
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,0),"Turquoise Ore");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,1),"Onyx Ore");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,2),"Amethyst Ore");
@@ -100,9 +102,19 @@ public class CommonProxy implements IGuiHandler
 		//Gem Block Recipes
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,0),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,0));//Turquoise block from Turquoise Gems
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,1),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,1));//Onyx block from Onyx Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,2),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,2));//Amethyst block from Amethyst Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,3),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,3));//Citrine block from Citrine Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,4),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,4));//Emerald block from Emerald Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,5),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,5));//Ruby block from Ruby Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,6),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,6));//Sapphire block from Sapphire Gems
 		
 		//Gem from Block Recipes
 		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,0),new ItemStack(ResourceEngineeringMain.gemBlock,1,0));
 		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,1),new ItemStack(ResourceEngineeringMain.gemBlock,1,1));
+		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,2),new ItemStack(ResourceEngineeringMain.gemBlock,1,2));
+		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,3),new ItemStack(ResourceEngineeringMain.gemBlock,1,3));
+		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,4),new ItemStack(ResourceEngineeringMain.gemBlock,1,4));
+		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,5),new ItemStack(ResourceEngineeringMain.gemBlock,1,5));
+		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,6),new ItemStack(ResourceEngineeringMain.gemBlock,1,6));
 	}
 }
