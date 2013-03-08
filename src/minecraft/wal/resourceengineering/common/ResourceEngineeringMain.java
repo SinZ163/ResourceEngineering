@@ -22,6 +22,7 @@ import resourceengineering.client.core.ClientProxy;
 import resourceengineering.common.core.CommonProxy;
 import resourceengineering.client.core.handlers.ClientPacketHandler;
 import resourceengineering.common.core.handlers.ServerPacketHandler;
+import resourceengineering.common.core.handlers.WorldGenHandler;
 
 import resourceengineering.common.tabs.ResourceEngineeringTab;
 import resourceengineering.common.ConfigCore;
@@ -74,6 +75,7 @@ public class ResourceEngineeringMain
 	public void Initialization(FMLInitializationEvent event)
 	{
 		NetworkRegistry.instance().registerGuiHandler(this,proxy);
+		GameRegistry.registerWorldGenerator(new WorldGenHandler());
 		proxy.registerOre();
 		proxy.registerBlocks();
 		proxy.registerRenderInformation();
