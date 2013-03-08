@@ -13,6 +13,7 @@ public class ConfigCore
 	public static int itemGemID;
 	
 	//Tools
+	public static int itemToolSwordTurquoiseID;
 	
 	//Blocks
 	public static int oreBlockID;
@@ -30,6 +31,7 @@ public class ConfigCore
 		itemGoldenPotatoID = config.getItem("Golden Potato", 21001).getInt();
 		itemNuggetID = config.getItem("Metal Nugget", 21002).getInt();
 		itemGemID = config.getItem("Gem",21003).getInt();
+		itemToolSwordTurquoiseID = config.getItem("Turquoise Sword", 21004).getInt();
 		
 		oreBlockID = config.getBlock("Ore",250).getInt();
 		gemBlockID = config.getBlock("GemBlock",251).getInt();

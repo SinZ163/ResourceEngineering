@@ -33,6 +33,9 @@ import resourceengineering.common.core.items.ItemNugget;
 import resourceengineering.common.core.items.ItemGoldenPotato;
 import resourceengineering.common.core.items.ItemGem;
 
+//Tool Imports
+import resourceengineering.common.core.items.tools.ItemToolSwordTurquoise;
+
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
 import resourceengineering.common.blocks.BlockGem;
@@ -40,7 +43,7 @@ import resourceengineering.common.blocks.BlockGem;
 @NetworkMod(clientSideRequired=true,serverSideRequired=false,
 clientPacketHandlerSpec=@SidedPacketHandler(channels={"WAL_RE"},packetHandler=ClientPacketHandler.class),
 serverPacketHandlerSpec=@SidedPacketHandler(channels = {}, packetHandler = ServerPacketHandler.class))
-@Mod(modid="walResourceEngineering",name="Resource Engineering",version="0.0.1")
+@Mod(modid="walResourceEngineering",name="Resource Engineering",version="0.0.21")
 public class ResourceEngineeringMain
 {
 	@Instance("Wal_ResourceEngineering")
@@ -55,11 +58,19 @@ public class ResourceEngineeringMain
 	public static Item goldenPotato;
 	public static Item gem;
 	
+	//Tools
+	public static Item turquoiseSword;
+	
 	//Blocks
 	public static Block oreBlock;
 	public static Block gemBlock;
 
 	public static CreativeTabs reTab = new ResourceEngineeringTab(CreativeTabs.getNextID(),"wal_ResouceEngineeringTab");
+	
+	//Gem Materials
+	public static EnumToolMaterial turquoiseMaterial = EnumHelper.addToolMaterial("Turquoise",1,64,50.0F,3,30);
+	
+	
 	@PreInit()
 	public void PreInitialization(FMLPreInitializationEvent e)
 	{
@@ -70,6 +81,7 @@ public class ResourceEngineeringMain
 		nugget = new ItemNugget(cc.itemNuggetID);
 		goldenPotato = new ItemGoldenPotato(cc.itemGoldenPotatoID,5,6,false);
 		gem = new ItemGem(cc.itemGemID);
+		turquoiseSword = new ItemToolSwordTurquoise(cc.itemToolSwordTurquoiseID,turquoiseMaterial,83,"wal_itemToolSwordTurquoise");
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);
