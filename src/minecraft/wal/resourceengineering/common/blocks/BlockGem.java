@@ -24,7 +24,7 @@ public class BlockGem extends Block
 		setBlockName("wal_BlockGem");
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setLightValue(10.0F);
+		//setLightValue(10.0F);
 		setCreativeTab(ResourceEngineeringMain.reTab);
 	}
 	
