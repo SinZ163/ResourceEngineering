@@ -22,7 +22,7 @@ public class WorldGenHandler implements IWorldGenerator
 	{
 		int countPerChunk=20;
 		int oreMaxY=40;
-		int oreCount=2;
+		int oreCount=7;
 		int maxVeinSize = 16;
 		for(int i=0;i<oreCount;i++)
 		{
