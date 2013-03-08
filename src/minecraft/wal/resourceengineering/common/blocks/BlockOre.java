@@ -30,6 +30,11 @@ public class BlockOre extends Block
 		{//TODO: Add the rest of the ores here
 		case 0: return 0;//Turqoise Ore
 		case 1: return 1;//Onyx Ore
+		case 2: return 3;//Amethyst Ore
+		case 3: return 4;//Citrine Ore
+		case 4: return 5;//Emerald Ore
+		case 5: return 6;//Ruby Ore
+		case 6: return 7;//Sapphire Ore
 		default: return 0;
 		}
 	}
@@ -42,11 +47,16 @@ public class BlockOre extends Block
 	{//TODO: Add the rest of the ores here
 		l.add(new ItemStack(i,1,0));
 		l.add(new ItemStack(i,1,1));
+		l.add(new ItemStack(i,1,2));
+		l.add(new ItemStack(i,1,3));
+		l.add(new ItemStack(i,1,4));
+		l.add(new ItemStack(i,1,5));
+		l.add(new ItemStack(i,1,6));
 	}
 	public ArrayList<ItemStack> getBlockDropped(World w,int x, int y, int z, int meta, int fortune)
 	{
 		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(ResourceEngineeringMain.gem,1,meta));
+		list.add(new ItemStack(ResourceEngineeringMain.gem,2,meta));
 		for(int i=0;i<2+fortune;i++)
 		{
 			if(w.rand.nextInt(101)>49)

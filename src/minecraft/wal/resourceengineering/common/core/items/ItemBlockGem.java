@@ -29,7 +29,7 @@ public class ItemBlockGem extends ItemBlock
 	public String getItemNameIS(ItemStack is)
 	{
 		//TODO: Add gem blocks here
-		String[] types = {"Turquoise","Onyx"};
+		String[] types = {"Turquoise","Onyx","Amethyst","Citrine","Emerald","Ruby","Sapphire"};
 		return "wal_Block"+types[is.getItemDamage()];
 	}
 }

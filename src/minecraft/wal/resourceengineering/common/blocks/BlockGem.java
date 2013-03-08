@@ -34,6 +34,11 @@ public class BlockGem extends Block
 		{
 		case 0: return 16;//Turquoise Gem Block
 		case 1: return 17;//Onyx Gem Block
+		case 2: return 18;//Amethyst Gem Block
+		case 3: return 19;//Citrine Gem Block
+		case 4: return 20;//Emerald Gem Block
+		case 5: return 21;//Ruby Gem Block
+		case 6: return 22;//Sapphire Gem Block
 		default: return 0;
 		}
 	}
@@ -45,7 +50,7 @@ public class BlockGem extends Block
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
 	{
-		for(int i=0;i<2;i++)
+		for(int i=0;i<7;i++)
 		{
 			par3List.add(new ItemStack(par1, 1, i));
 		}
