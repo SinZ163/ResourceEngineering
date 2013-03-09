@@ -35,6 +35,7 @@ import resourceengineering.common.core.items.ItemGem;
 
 //Tool Imports
 import resourceengineering.common.core.items.tools.ItemToolSwordTurquoise;
+import resourceengineering.common.core.items.tools.ItemToolSwordOnyx;
 
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
@@ -60,6 +61,7 @@ public class ResourceEngineeringMain
 	
 	//Tools
 	public static Item turquoiseSword;
+	public static Item onyxSword;
 	
 	//Blocks
 	public static Block oreBlock;
@@ -68,7 +70,13 @@ public class ResourceEngineeringMain
 	public static CreativeTabs reTab = new ResourceEngineeringTab(CreativeTabs.getNextID(),"wal_ResouceEngineeringTab");
 	
 	//Gem Materials
-	public static EnumToolMaterial turquoiseMaterial = EnumHelper.addToolMaterial("Turquoise",1,64,50.0F,3,30);
+	public static EnumToolMaterial turquoiseMaterial = EnumHelper.addToolMaterial("Turquoise",1,64,50.0F,1,30);
+	public static EnumToolMaterial onyxMaterial = EnumHelper.addToolMaterial("Onyx",1,128,75.0F,2,22);
+	public static EnumToolMaterial amethystMaterial = EnumHelper.addToolMaterial("Amethyst",2,256,100.0F,3,15);
+	public static EnumToolMaterial citrineMaterial = EnumHelper.addToolMaterial("Citrine", 2, 512, 125.0F, 4, 12);
+	public static EnumToolMaterial emeraldMaterial = EnumHelper.addToolMaterial("Emerald", 3, 1024, 150.0F, 5, 8);
+	public static EnumToolMaterial rubyMaterial = EnumHelper.addToolMaterial("Ruby", 3, 2048, 200.0F, 6, 5);
+	public static EnumToolMaterial sapphireMaterial = EnumHelper.addToolMaterial("Sapphire", 3, 4096, 250.0F, 7, 1);
 	
 	
 	@PreInit()
@@ -82,6 +90,7 @@ public class ResourceEngineeringMain
 		goldenPotato = new ItemGoldenPotato(cc.itemGoldenPotatoID,5,6,false);
 		gem = new ItemGem(cc.itemGemID);
 		turquoiseSword = new ItemToolSwordTurquoise(cc.itemToolSwordTurquoiseID,turquoiseMaterial,83,"wal_itemToolSwordTurquoise");
+		onyxSword = new ItemToolSwordOnyx(cc.itemToolSwordOnyxID,onyxMaterial,84,"wal_itemToolSwordOnyx");
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);

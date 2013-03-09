@@ -14,6 +14,12 @@ public class ConfigCore
 	
 	//Tools
 	public static int itemToolSwordTurquoiseID;
+	public static int itemToolSwordOnyxID;
+	public static int itemToolSwordAmethystID;
+	public static int itemToolSwordCitrineID;
+	public static int itemToolSwordEmeraldID;
+	public static int itemToolSwordRubyID;
+	public static int itemToolSwordSapphireID;
 	
 	//Blocks
 	public static int oreBlockID;
@@ -27,11 +33,17 @@ public class ConfigCore
 	{
 		Configuration config = new Configuration(e.getSuggestedConfigurationFile());
 		config.load();
-		itemFlakeID = config.getItem("Metal Flake", 21000).getInt();
-		itemGoldenPotatoID = config.getItem("Golden Potato", 21001).getInt();
-		itemNuggetID = config.getItem("Metal Nugget", 21002).getInt();
+		itemFlakeID = config.getItem("MetalFlake", 21000).getInt();
+		itemGoldenPotatoID = config.getItem("GoldenPotato", 21001).getInt();
+		itemNuggetID = config.getItem("MetalNugget", 21002).getInt();
 		itemGemID = config.getItem("Gem",21003).getInt();
-		itemToolSwordTurquoiseID = config.getItem("Turquoise Sword", 21004).getInt();
+		itemToolSwordTurquoiseID = config.getItem("TurquoiseSword", 21004).getInt();
+		itemToolSwordOnyxID = config.getItem("OnyxSword",21005).getInt();
+		itemToolSwordAmethystID = config.getItem("AmethystSword",21006).getInt();
+		itemToolSwordCitrineID = config.getItem("CitrineSword",21007).getInt();
+		itemToolSwordEmeraldID = config.getItem("EmeraldSword", 21008).getInt();
+		itemToolSwordRubyID = config.getItem("RubySword",21009).getInt();
+		itemToolSwordSapphireID = config.getItem("SapphireSword",21010).getInt();
 		
 		oreBlockID = config.getBlock("Ore",250).getInt();
 		gemBlockID = config.getBlock("GemBlock",251).getInt();
