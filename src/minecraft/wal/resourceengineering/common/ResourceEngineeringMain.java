@@ -36,6 +36,8 @@ import resourceengineering.common.core.items.ItemGem;
 //Tool Imports
 import resourceengineering.common.core.items.tools.ItemToolSwordTurquoise;
 import resourceengineering.common.core.items.tools.ItemToolSwordOnyx;
+import resourceengineering.common.core.items.tools.ItemToolSwordAmethyst;
+import resourceengineering.common.core.items.tools.ItemToolSwordCitrine;
 
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
@@ -62,6 +64,8 @@ public class ResourceEngineeringMain
 	//Tools
 	public static Item turquoiseSword;
 	public static Item onyxSword;
+	public static Item amethystSword;
+	public static Item citrineSword;
 	
 	//Blocks
 	public static Block oreBlock;
@@ -91,6 +95,8 @@ public class ResourceEngineeringMain
 		gem = new ItemGem(cc.itemGemID);
 		turquoiseSword = new ItemToolSwordTurquoise(cc.itemToolSwordTurquoiseID,turquoiseMaterial,83,"wal_itemToolSwordTurquoise");
 		onyxSword = new ItemToolSwordOnyx(cc.itemToolSwordOnyxID,onyxMaterial,84,"wal_itemToolSwordOnyx");
+		amethystSword = new ItemToolSwordAmethyst(cc.itemToolSwordAmethystID,amethystMaterial,85,"wal_itemToolSwordAmethyst");
+		citrineSword = new ItemToolSwordCitrine(cc.itemToolSwordCitrineID,citrineMaterial,86,"wal_itemToolSwordCitrine");
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);

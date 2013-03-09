@@ -94,6 +94,8 @@ public class CommonProxy implements IGuiHandler
 		//Swords
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoiseSword,1,0),"Turquoise Sword");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.onyxSword,1,0),"Onyx Sword");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.amethystSword,1,0),"Amethyst Sword");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.citrineSword,1,0),"Citrine Sword");
 	}
 	public void addRecipes()
 	{
@@ -138,5 +140,7 @@ public class CommonProxy implements IGuiHandler
 		//Sword Recipes
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.turquoiseSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,0),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.onyxSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,1),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.amethystSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,2),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.citrineSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,3),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
 	}
 }
