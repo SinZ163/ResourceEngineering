@@ -1,6 +1,7 @@
 package resourceengineering.common.core;
 
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -141,12 +142,26 @@ public class CommonProxy implements IGuiHandler
 		FurnaceRecipes.smelting().addSmelting(ResourceEngineeringMain.oreBlock.blockID,6,new ItemStack(ResourceEngineeringMain.gem,5,6),xpPerSmelt);
 		
 		//Sword Recipes
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.turquoiseSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,0),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.onyxSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,1),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.amethystSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,2),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.citrineSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,3),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.emeraldSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,4),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.rubySword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,5),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.sapphireSword,1,0),"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,6),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		ItemStack turquoiseSword = new ItemStack(ResourceEngineeringMain.turquoiseSword,1,0);
+		turquoiseSword.addEnchantment(Enchantment.smite, 1);
+		ItemStack onyxSword = new ItemStack(ResourceEngineeringMain.onyxSword,1,0);
+		onyxSword.addEnchantment(Enchantment.smite,2);
+		ItemStack amethystSword = new ItemStack(ResourceEngineeringMain.amethystSword,1,0);
+		amethystSword.addEnchantment(Enchantment.smite,3);
+		ItemStack citrineSword = new ItemStack(ResourceEngineeringMain.citrineSword,1,0);
+		citrineSword.addEnchantment(Enchantment.smite, 4);
+		ItemStack emeraldSword = new ItemStack(ResourceEngineeringMain.emeraldSword,1,0);
+		emeraldSword.addEnchantment(Enchantment.smite,5);
+		ItemStack rubySword = new ItemStack(ResourceEngineeringMain.rubySword,1,0);
+		rubySword.addEnchantment(Enchantment.smite, 6);
+		ItemStack sapphireSword = new ItemStack(ResourceEngineeringMain.sapphireSword,1,0);
+		sapphireSword.addEnchantment(Enchantment.smite, 7);
+		GameRegistry.addRecipe(turquoiseSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,0),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(onyxSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,1),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(amethystSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,2),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(citrineSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,3),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(emeraldSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,4),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(rubySword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,5),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(sapphireSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,6),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
 	}
 }
