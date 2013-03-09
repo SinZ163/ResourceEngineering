@@ -100,9 +100,29 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldSword,1,0),"Emerald Sword");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubySword,1,0),"Ruby Sword");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphireSword,1,0),"Sapphire Sword");
+		
+		//Pickaxes
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoisePickaxe,1,0),"Turquoise Pickaxe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.onyxPickaxe,1,0),"Onyx Pickaxe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.amethystPickaxe,1,0),"Amethyst Pickaxe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.citrinePickaxe,1,0),"Citrine Pickaxe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldPickaxe,1,0),"Emerald Pickaxe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyPickaxe,1,0),"Ruby Pickaxe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphirePickaxe,1,0),"Sapphire Pickaxe");
 	}
 	public void addRecipes()
 	{
+		//Gem Item Stack Variables
+		ItemStack turquoiseGem = new ItemStack(ResourceEngineeringMain.gem,1,0);
+		ItemStack onyxGem = new ItemStack(ResourceEngineeringMain.gem,1,1);
+		ItemStack amethystGem = new ItemStack(ResourceEngineeringMain.gem,1,2);
+		ItemStack citrineGem = new ItemStack(ResourceEngineeringMain.gem,1,3);
+		ItemStack emeraldGem = new ItemStack(ResourceEngineeringMain.gem,1,4);
+		ItemStack rubyGem = new ItemStack(ResourceEngineeringMain.gem,1,5);
+		ItemStack sapphireGem = new ItemStack(ResourceEngineeringMain.gem,1,6);
+		
+		
+		
 		//Temp crafting recipes for nuggets from flakes, will eventually be smelting
 		GameRegistry.addRecipe(new ItemStack(Item.goldNugget,1),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.flake,1,1));//gold nugget from 9 gold flakes
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.nugget,1,0),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.flake,1,0));//iron nugget from 9 iron flakes
@@ -114,13 +134,13 @@ public class CommonProxy implements IGuiHandler
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.goldenPotato,1,0),"XXX","XAX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.flake,1,1),Character.valueOf('A'),Item.poisonousPotato);
 		
 		//Gem Block Recipes
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,0),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,0));//Turquoise block from Turquoise Gems
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,1),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,1));//Onyx block from Onyx Gems
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,2),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,2));//Amethyst block from Amethyst Gems
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,3),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,3));//Citrine block from Citrine Gems
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,4),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,4));//Emerald block from Emerald Gems
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,5),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,5));//Ruby block from Ruby Gems
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,6),"XXX","XXX","XXX",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,6));//Sapphire block from Sapphire Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,0),"XXX","XXX","XXX",Character.valueOf('X'),turquoiseGem);//Turquoise block from Turquoise Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,1),"XXX","XXX","XXX",Character.valueOf('X'),onyxGem);//Onyx block from Onyx Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,2),"XXX","XXX","XXX",Character.valueOf('X'),amethystGem);//Amethyst block from Amethyst Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,3),"XXX","XXX","XXX",Character.valueOf('X'),citrineGem);//Citrine block from Citrine Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,4),"XXX","XXX","XXX",Character.valueOf('X'),emeraldGem);//Emerald block from Emerald Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,5),"XXX","XXX","XXX",Character.valueOf('X'),rubyGem);//Ruby block from Ruby Gems
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.gemBlock,1,6),"XXX","XXX","XXX",Character.valueOf('X'),sapphireGem);//Sapphire block from Sapphire Gems
 		
 		//Gem from Block Recipes
 		GameRegistry.addShapelessRecipe(new ItemStack(ResourceEngineeringMain.gem,9,0),new ItemStack(ResourceEngineeringMain.gemBlock,1,0));
@@ -156,12 +176,30 @@ public class CommonProxy implements IGuiHandler
 		rubySword.addEnchantment(Enchantment.smite, 6);
 		ItemStack sapphireSword = new ItemStack(ResourceEngineeringMain.sapphireSword,1,0);
 		sapphireSword.addEnchantment(Enchantment.smite, 7);
-		GameRegistry.addRecipe(turquoiseSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,0),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(onyxSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,1),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(amethystSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,2),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(citrineSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,3),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(emeraldSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,4),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(rubySword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,5),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(sapphireSword,"X","X","A",Character.valueOf('X'),new ItemStack(ResourceEngineeringMain.gem,1,6),Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(turquoiseSword,"X","X","A",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(onyxSword,"X","X","A",Character.valueOf('X'),onyxGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(amethystSword,"X","X","A",Character.valueOf('X'),amethystGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(citrineSword,"X","X","A",Character.valueOf('X'),citrineGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(emeraldSword,"X","X","A",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(rubySword,"X","X","A",Character.valueOf('X'),rubyGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(sapphireSword,"X","X","A",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		
+		//Pickaxe Recipes
+		ItemStack turquoisePickaxe = new ItemStack(ResourceEngineeringMain.turquoisePickaxe,1,0);
+		turquoisePickaxe.addEnchantment(Enchantment.fortune,1);
+		ItemStack onyxPickaxe = new ItemStack(ResourceEngineeringMain.onyxPickaxe,1,0);
+		ItemStack amethystPickaxe = new ItemStack(ResourceEngineeringMain.amethystPickaxe,1,0);
+		ItemStack citrinePickaxe = new ItemStack(ResourceEngineeringMain.citrinePickaxe,1,0);
+		ItemStack emeraldPickaxe = new ItemStack(ResourceEngineeringMain.emeraldPickaxe,1,0);
+		ItemStack rubyPickaxe = new ItemStack(ResourceEngineeringMain.rubyPickaxe,1,0);
+		ItemStack sapphirePickaxe = new ItemStack(ResourceEngineeringMain.sapphirePickaxe,1,0);		
+		
+		GameRegistry.addRecipe(turquoisePickaxe,"XXX"," A "," A ",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(onyxPickaxe,"XXX"," A "," A ",Character.valueOf('X'),onyxGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(amethystPickaxe,"XXX"," A "," A ",Character.valueOf('X'),amethystGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(citrinePickaxe,"XXX"," A "," A ",Character.valueOf('X'),citrineGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(emeraldPickaxe,"XXX"," A "," A ",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(rubyPickaxe,"XXX"," A "," A ",Character.valueOf('X'),rubyGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(sapphirePickaxe,"XXX"," A "," A ",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
 	}
 }

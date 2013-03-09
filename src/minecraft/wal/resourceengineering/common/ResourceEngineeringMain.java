@@ -35,6 +35,7 @@ import resourceengineering.common.core.items.ItemGem;
 
 //Tool Imports
 import resourceengineering.common.core.items.tools.ItemToolSword;
+import resourceengineering.common.core.items.tools.ItemToolPickaxe;
 
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
@@ -58,7 +59,12 @@ public class ResourceEngineeringMain
 	public static Item goldenPotato;
 	public static Item gem;
 	
-	//Tools
+	/*
+	 * ======================================================
+	 * ------------------------TOOLS-------------------------
+	 * ======================================================
+	 */
+	//Swords
 	public static Item turquoiseSword;
 	public static Item onyxSword;
 	public static Item amethystSword;
@@ -66,6 +72,14 @@ public class ResourceEngineeringMain
 	public static Item emeraldSword;
 	public static Item rubySword;
 	public static Item sapphireSword;
+	//Pickaxes
+	public static Item turquoisePickaxe;
+	public static Item onyxPickaxe;
+	public static Item amethystPickaxe;
+	public static Item citrinePickaxe;
+	public static Item emeraldPickaxe;
+	public static Item rubyPickaxe;
+	public static Item sapphirePickaxe;
 	
 	//Blocks
 	public static Block oreBlock;
@@ -74,13 +88,13 @@ public class ResourceEngineeringMain
 	public static CreativeTabs reTab = new ResourceEngineeringTab(CreativeTabs.getNextID(),"wal_ResouceEngineeringTab");
 	
 	//Gem Materials
-	public static EnumToolMaterial turquoiseMaterial = EnumHelper.addToolMaterial("Turquoise",1,64,50.0F,1,30);
-	public static EnumToolMaterial onyxMaterial = EnumHelper.addToolMaterial("Onyx",1,128,75.0F,2,22);
-	public static EnumToolMaterial amethystMaterial = EnumHelper.addToolMaterial("Amethyst",2,256,100.0F,3,15);
-	public static EnumToolMaterial citrineMaterial = EnumHelper.addToolMaterial("Citrine", 2, 512, 125.0F, 4, 12);
-	public static EnumToolMaterial emeraldMaterial = EnumHelper.addToolMaterial("Emerald", 3, 1024, 150.0F, 5, 8);
-	public static EnumToolMaterial rubyMaterial = EnumHelper.addToolMaterial("Ruby", 3, 2048, 200.0F, 6, 5);
-	public static EnumToolMaterial sapphireMaterial = EnumHelper.addToolMaterial("Sapphire", 3, 4096, 250.0F, 7, 1);
+	public static EnumToolMaterial turquoiseMaterial = EnumHelper.addToolMaterial("Turquoise",1,64,2.0F,1,30);
+	public static EnumToolMaterial onyxMaterial = EnumHelper.addToolMaterial("Onyx",1,128,3.0F,2,22);
+	public static EnumToolMaterial amethystMaterial = EnumHelper.addToolMaterial("Amethyst",2,256,6.0F,3,15);
+	public static EnumToolMaterial citrineMaterial = EnumHelper.addToolMaterial("Citrine", 2, 512, 10.0F, 4, 12);
+	public static EnumToolMaterial emeraldMaterial = EnumHelper.addToolMaterial("Emerald", 3, 1024, 12.0F, 5, 8);
+	public static EnumToolMaterial rubyMaterial = EnumHelper.addToolMaterial("Ruby", 3, 2048, 16.0F, 6, 5);
+	public static EnumToolMaterial sapphireMaterial = EnumHelper.addToolMaterial("Sapphire", 3, 4096, 20.0F, 7, 1);
 	
 	
 	@PreInit()
@@ -93,6 +107,7 @@ public class ResourceEngineeringMain
 		nugget = new ItemNugget(cc.itemNuggetID);
 		goldenPotato = new ItemGoldenPotato(cc.itemGoldenPotatoID,5,6,false);
 		gem = new ItemGem(cc.itemGemID);
+		//Swords
 		turquoiseSword = new ItemToolSword(cc.itemToolSwordTurquoiseID,turquoiseMaterial,83,"wal_itemToolSwordTurquoise");
 		onyxSword = new ItemToolSword(cc.itemToolSwordOnyxID,onyxMaterial,84,"wal_itemToolSwordOnyx");
 		amethystSword = new ItemToolSword(cc.itemToolSwordAmethystID,amethystMaterial,85,"wal_itemToolSwordAmethyst");
@@ -100,6 +115,15 @@ public class ResourceEngineeringMain
 		emeraldSword = new ItemToolSword(cc.itemToolSwordEmeraldID,emeraldMaterial,87,"wal_itemToolSwordEmerald");
 		rubySword = new ItemToolSword(cc.itemToolSwordRubyID,rubyMaterial,88,"wal_itemToolSwordRuby");
 		sapphireSword = new ItemToolSword(cc.itemToolSwordSapphireID,sapphireMaterial,89,"wal_itemToolSwordSapphire");
+		
+		//Pickaxes
+		turquoisePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeTurquoiseID,turquoiseMaterial,115,"wal_itemToolPickaxeTurquoise");
+		onyxPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeOnyxID,onyxMaterial,116,"wal_itemToolPickaxeOnyx");
+		amethystPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeAmethystID,amethystMaterial,117,"wal_itemToolPickaxeAmethyst");
+		citrinePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeCitrineID,citrineMaterial,118,"wal_itemToolPickaxeAmethyst");
+		emeraldPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeEmeraldID,emeraldMaterial,119,"wal_itemToolPickaxeEmerald");
+		rubyPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeRubyID,rubyMaterial,120,"wal_itemToolPickaxeRuby");
+		sapphirePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeSapphireID,sapphireMaterial,121,"wal_itemToolPickaxeSapphire");
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);
