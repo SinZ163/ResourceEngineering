@@ -34,13 +34,7 @@ import resourceengineering.common.core.items.ItemGoldenPotato;
 import resourceengineering.common.core.items.ItemGem;
 
 //Tool Imports
-import resourceengineering.common.core.items.tools.ItemToolSwordTurquoise;
-import resourceengineering.common.core.items.tools.ItemToolSwordOnyx;
-import resourceengineering.common.core.items.tools.ItemToolSwordAmethyst;
-import resourceengineering.common.core.items.tools.ItemToolSwordCitrine;
-import resourceengineering.common.core.items.tools.ItemToolSwordEmerald;
-import resourceengineering.common.core.items.tools.ItemToolSwordRuby;
-import resourceengineering.common.core.items.tools.ItemToolSwordSapphire;
+import resourceengineering.common.core.items.tools.ItemToolSword;
 
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
@@ -99,13 +93,13 @@ public class ResourceEngineeringMain
 		nugget = new ItemNugget(cc.itemNuggetID);
 		goldenPotato = new ItemGoldenPotato(cc.itemGoldenPotatoID,5,6,false);
 		gem = new ItemGem(cc.itemGemID);
-		turquoiseSword = new ItemToolSwordTurquoise(cc.itemToolSwordTurquoiseID,turquoiseMaterial,83,"wal_itemToolSwordTurquoise");
-		onyxSword = new ItemToolSwordOnyx(cc.itemToolSwordOnyxID,onyxMaterial,84,"wal_itemToolSwordOnyx");
-		amethystSword = new ItemToolSwordAmethyst(cc.itemToolSwordAmethystID,amethystMaterial,85,"wal_itemToolSwordAmethyst");
-		citrineSword = new ItemToolSwordCitrine(cc.itemToolSwordCitrineID,citrineMaterial,86,"wal_itemToolSwordCitrine");
-		emeraldSword = new ItemToolSwordEmerald(cc.itemToolSwordEmeraldID,emeraldMaterial,87,"wal_itemToolSwordEmerald");
-		rubySword = new ItemToolSwordRuby(cc.itemToolSwordRubyID,rubyMaterial,88,"wal_itemToolSwordRuby");
-		sapphireSword = new ItemToolSwordSapphire(cc.itemToolSwordSapphireID,sapphireMaterial,89,"wal_itemToolSwordSapphire");
+		turquoiseSword = new ItemToolSword(cc.itemToolSwordTurquoiseID,turquoiseMaterial,83,"wal_itemToolSwordTurquoise");
+		onyxSword = new ItemToolSword(cc.itemToolSwordOnyxID,onyxMaterial,84,"wal_itemToolSwordOnyx");
+		amethystSword = new ItemToolSword(cc.itemToolSwordAmethystID,amethystMaterial,85,"wal_itemToolSwordAmethyst");
+		citrineSword = new ItemToolSword(cc.itemToolSwordCitrineID,citrineMaterial,86,"wal_itemToolSwordCitrine");
+		emeraldSword = new ItemToolSword(cc.itemToolSwordEmeraldID,emeraldMaterial,87,"wal_itemToolSwordEmerald");
+		rubySword = new ItemToolSword(cc.itemToolSwordRubyID,rubyMaterial,88,"wal_itemToolSwordRuby");
+		sapphireSword = new ItemToolSword(cc.itemToolSwordSapphireID,sapphireMaterial,89,"wal_itemToolSwordSapphire");
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);
