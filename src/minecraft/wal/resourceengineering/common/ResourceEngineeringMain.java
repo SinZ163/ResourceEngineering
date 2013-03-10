@@ -36,6 +36,7 @@ import resourceengineering.common.core.items.ItemGem;
 //Tool Imports
 import resourceengineering.common.core.items.tools.ItemToolSword;
 import resourceengineering.common.core.items.tools.ItemToolPickaxe;
+import resourceengineering.common.core.items.tools.ItemToolShovel;
 
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
@@ -80,6 +81,14 @@ public class ResourceEngineeringMain
 	public static Item emeraldPickaxe;
 	public static Item rubyPickaxe;
 	public static Item sapphirePickaxe;
+	//Shovels
+	public static Item turquoiseShovel;
+	public static Item onyxShovel;
+	public static Item amethystShovel;
+	public static Item citrineShovel;
+	public static Item emeraldShovel;
+	public static Item rubyShovel;
+	public static Item sapphireShovel;
 	
 	//Blocks
 	public static Block oreBlock;
@@ -124,6 +133,15 @@ public class ResourceEngineeringMain
 		emeraldPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeEmeraldID,emeraldMaterial,119,"wal_itemToolPickaxeEmerald");
 		rubyPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeRubyID,rubyMaterial,120,"wal_itemToolPickaxeRuby");
 		sapphirePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeSapphireID,sapphireMaterial,121,"wal_itemToolPickaxeSapphire");
+		
+		//Shovels
+		turquoiseShovel = new ItemToolShovel(cc.itemToolShovelTurquoiseID,turquoiseMaterial,99,"wal_itemToolShovelTurquoise");
+		onyxShovel = new ItemToolShovel(cc.itemToolShovelOnyxID,onyxMaterial,100,"wal_itemToolShovelOnyx");
+		amethystShovel = new ItemToolShovel(cc.itemToolShovelAmethystID,amethystMaterial,101,"wal_itemToolShovelAmethyst");
+		citrineShovel = new ItemToolShovel(cc.itemToolShovelCitrineID,citrineMaterial,102,"wal_itemToolShovelCitrine");
+		emeraldShovel = new ItemToolShovel(cc.itemToolShovelEmeraldID,emeraldMaterial,103,"wal_itemToolShovelEmerald");
+		rubyShovel = new ItemToolShovel(cc.itemToolShovelRubyID,rubyMaterial,104,"wal_itemToolShovelRuby");
+		sapphireShovel = new ItemToolShovel(cc.itemToolShovelSapphireID,sapphireMaterial,105,"wal_itemToolShovelSapphire");
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);

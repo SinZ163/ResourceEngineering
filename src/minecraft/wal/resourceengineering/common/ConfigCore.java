@@ -29,6 +29,14 @@ public class ConfigCore
 	public static int itemToolPickaxeRubyID;
 	public static int itemToolPickaxeSapphireID;
 	
+	public static int itemToolShovelTurquoiseID;
+	public static int itemToolShovelOnyxID;
+	public static int itemToolShovelAmethystID;
+	public static int itemToolShovelCitrineID;
+	public static int itemToolShovelEmeraldID;
+	public static int itemToolShovelRubyID;
+	public static int itemToolShovelSapphireID;
+	
 	//Blocks
 	public static int oreBlockID;
 	public static int gemBlockID;
@@ -60,6 +68,14 @@ public class ConfigCore
 		itemToolPickaxeEmeraldID = config.getItem("EmeraldPickaxe", 21015).getInt();
 		itemToolPickaxeRubyID = config.getItem("RubyPickaxe", 21016).getInt();
 		itemToolPickaxeSapphireID = config.getItem("SapphirePickaxe",21017).getInt();
+		
+		itemToolShovelTurquoiseID = config.getItem("TurquoiseShovel", 21018).getInt();
+		itemToolShovelOnyxID = config.getItem("OnyxShovel",21019).getInt();
+		itemToolShovelAmethystID = config.getItem("AmethystShovel",21020).getInt();
+		itemToolShovelCitrineID = config.getItem("CitrineShovel",21021).getInt();
+		itemToolShovelEmeraldID = config.getItem("EmeraldShovel",21022).getInt();
+		itemToolShovelRubyID = config.getItem("RubyShovel",21023).getInt();
+		itemToolShovelSapphireID = config.getItem("SapphireShovel",21024).getInt();
 		
 		oreBlockID = config.getBlock("Ore",250).getInt();
 		gemBlockID = config.getBlock("GemBlock",251).getInt();

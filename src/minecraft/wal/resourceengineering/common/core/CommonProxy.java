@@ -109,6 +109,15 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldPickaxe,1,0),"Emerald Pickaxe");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyPickaxe,1,0),"Ruby Pickaxe");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphirePickaxe,1,0),"Sapphire Pickaxe");
+		
+		//Shovels
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoiseShovel,1,0),"Turquoise Shovel");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.onyxShovel,1,0),"Onyx Shovel");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.amethystShovel,1,0),"Amethyst Shovel");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.citrineShovel,1,0),"Citrine Shovel");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldShovel,1,0),"Emerald Shovel");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyShovel,1,0),"Ruby Shovel");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphireShovel,1,0),"Sapphire Shovel");
 	}
 	public void addRecipes()
 	{
@@ -192,7 +201,7 @@ public class CommonProxy implements IGuiHandler
 		ItemStack citrinePickaxe = new ItemStack(ResourceEngineeringMain.citrinePickaxe,1,0);
 		ItemStack emeraldPickaxe = new ItemStack(ResourceEngineeringMain.emeraldPickaxe,1,0);
 		ItemStack rubyPickaxe = new ItemStack(ResourceEngineeringMain.rubyPickaxe,1,0);
-		ItemStack sapphirePickaxe = new ItemStack(ResourceEngineeringMain.sapphirePickaxe,1,0);		
+		ItemStack sapphirePickaxe = new ItemStack(ResourceEngineeringMain.sapphirePickaxe,1,0);	
 		
 		GameRegistry.addRecipe(turquoisePickaxe,"XXX"," A "," A ",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
 		GameRegistry.addRecipe(onyxPickaxe,"XXX"," A "," A ",Character.valueOf('X'),onyxGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
@@ -201,5 +210,22 @@ public class CommonProxy implements IGuiHandler
 		GameRegistry.addRecipe(emeraldPickaxe,"XXX"," A "," A ",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
 		GameRegistry.addRecipe(rubyPickaxe,"XXX"," A "," A ",Character.valueOf('X'),rubyGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
 		GameRegistry.addRecipe(sapphirePickaxe,"XXX"," A "," A ",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		
+		//Shovel Recipes
+		ItemStack turquoiseShovel = new ItemStack(ResourceEngineeringMain.turquoiseShovel,1,0);
+		ItemStack onyxShovel = new ItemStack(ResourceEngineeringMain.onyxShovel,1,0);
+		ItemStack amethystShovel = new ItemStack(ResourceEngineeringMain.amethystShovel,1,0);
+		ItemStack citrineShovel = new ItemStack(ResourceEngineeringMain.citrineShovel,1,0);
+		ItemStack emeraldShovel = new ItemStack(ResourceEngineeringMain.emeraldShovel,1,0);
+		ItemStack rubyShovel = new ItemStack(ResourceEngineeringMain.rubyShovel,1,0);
+		ItemStack sapphireShovel = new ItemStack(ResourceEngineeringMain.sapphireShovel,1,0);
+		
+		GameRegistry.addRecipe(turquoiseShovel,"X","A","A",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(onyxShovel,"X","A","A",Character.valueOf('X'),onyxGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(amethystShovel,"X","A","A",Character.valueOf('X'),amethystGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(citrineShovel,"X","A","A",Character.valueOf('X'),citrineGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(emeraldShovel,"X","A","A",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(rubyShovel,"X","A","A",Character.valueOf('X'),rubyGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(sapphireShovel,"X","A","A",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
 	}
 }
