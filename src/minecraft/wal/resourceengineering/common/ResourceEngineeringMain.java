@@ -37,6 +37,8 @@ import resourceengineering.common.core.items.ItemGem;
 import resourceengineering.common.core.items.tools.ItemToolSword;
 import resourceengineering.common.core.items.tools.ItemToolPickaxe;
 import resourceengineering.common.core.items.tools.ItemToolShovel;
+import resourceengineering.common.core.items.tools.ItemToolAxe;
+import resourceengineering.common.core.items.tools.ItemToolHoe;
 
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
@@ -89,6 +91,22 @@ public class ResourceEngineeringMain
 	public static Item emeraldShovel;
 	public static Item rubyShovel;
 	public static Item sapphireShovel;
+	//Axes
+	public static Item turquoiseAxe;
+	public static Item onyxAxe;
+	public static Item amethystAxe;
+	public static Item citrineAxe;
+	public static Item emeraldAxe;
+	public static Item rubyAxe;
+	public static Item sapphireAxe;
+	//Hoe
+	public static Item turquoiseHoe;
+	public static Item onyxHoe;
+	public static Item amethystHoe;
+	public static Item citrineHoe;
+	public static Item emeraldHoe;
+	public static Item rubyHoe;
+	public static Item sapphireHoe;
 	
 	//Blocks
 	public static Block oreBlock;
@@ -142,6 +160,24 @@ public class ResourceEngineeringMain
 		emeraldShovel = new ItemToolShovel(cc.itemToolShovelEmeraldID,emeraldMaterial,103,"wal_itemToolShovelEmerald");
 		rubyShovel = new ItemToolShovel(cc.itemToolShovelRubyID,rubyMaterial,104,"wal_itemToolShovelRuby");
 		sapphireShovel = new ItemToolShovel(cc.itemToolShovelSapphireID,sapphireMaterial,105,"wal_itemToolShovelSapphire");
+		
+		//Axes
+		turquoiseAxe = new ItemToolAxe(cc.itemToolAxeTurquoiseID,turquoiseMaterial,131,"wal_itemToolAxeTurquoise");
+		onyxAxe = new ItemToolAxe(cc.itemToolAxeOnyxID,onyxMaterial,132,"wal_itemToolAxeOnyx");
+		amethystAxe = new ItemToolAxe(cc.itemToolAxeAmethystID,amethystMaterial,133,"wal_itemToolAxeAmethyst");
+		citrineAxe = new ItemToolAxe(cc.itemToolAxeCitrineID,citrineMaterial,134,"wal_itemToolAxeCitrine");
+		emeraldAxe = new ItemToolAxe(cc.itemToolAxeEmeraldID,emeraldMaterial,135,"wal_itemToolAxeEmerald");
+		rubyAxe = new ItemToolAxe(cc.itemToolAxeRubyID,rubyMaterial,136,"wal_itemToolAxeRuby");
+		sapphireAxe = new ItemToolAxe(cc.itemToolAxeSapphireID,sapphireMaterial,137,"wal_itemToolAxeSapphire");
+		
+		//Hoe
+		turquoiseHoe = new ItemToolHoe(cc.itemToolHoeTurquoiseID,turquoiseMaterial,147,"wal_itemToolHoeTurquoise");
+		onyxHoe = new ItemToolHoe(cc.itemToolHoeOnyxID,onyxMaterial,148,"wal_itemToolHoeOnyx");
+		amethystHoe = new ItemToolHoe(cc.itemToolHoeAmethystID,amethystMaterial,149,"wal_itemToolHoeAmethyst");
+		citrineHoe = new ItemToolHoe(cc.itemToolHoeCitrineID,citrineMaterial,150,"wal_itemToolHoeCitrine");
+		emeraldHoe = new ItemToolHoe(cc.itemToolHoeEmeraldID,emeraldMaterial,151,"wal_itemToolHoeEmerald");
+		rubyHoe = new ItemToolHoe(cc.itemToolHoeRubyID,rubyMaterial,152,"wal_itemToolHoeRuby");
+		sapphireHoe = new ItemToolHoe(cc.itemToolHoeSapphireID,sapphireMaterial,153,"wal_itemToolHoeSapphire");
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);

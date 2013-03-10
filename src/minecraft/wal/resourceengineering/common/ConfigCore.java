@@ -37,6 +37,22 @@ public class ConfigCore
 	public static int itemToolShovelRubyID;
 	public static int itemToolShovelSapphireID;
 	
+	public static int itemToolAxeTurquoiseID;
+	public static int itemToolAxeOnyxID;
+	public static int itemToolAxeAmethystID;
+	public static int itemToolAxeCitrineID;
+	public static int itemToolAxeEmeraldID;
+	public static int itemToolAxeRubyID;
+	public static int itemToolAxeSapphireID;
+	
+	public static int itemToolHoeTurquoiseID;
+	public static int itemToolHoeOnyxID;
+	public static int itemToolHoeAmethystID;
+	public static int itemToolHoeCitrineID;
+	public static int itemToolHoeEmeraldID;
+	public static int itemToolHoeRubyID;
+	public static int itemToolHoeSapphireID;
+	
 	//Blocks
 	public static int oreBlockID;
 	public static int gemBlockID;
@@ -76,6 +92,22 @@ public class ConfigCore
 		itemToolShovelEmeraldID = config.getItem("EmeraldShovel",21022).getInt();
 		itemToolShovelRubyID = config.getItem("RubyShovel",21023).getInt();
 		itemToolShovelSapphireID = config.getItem("SapphireShovel",21024).getInt();
+		
+		itemToolAxeTurquoiseID = config.getItem("TurquoiseAxe", 21025).getInt();
+		itemToolAxeOnyxID = config.getItem("OnyxAxe",21026).getInt();
+		itemToolAxeAmethystID = config.getItem("AmethystAxe",21027).getInt();
+		itemToolAxeCitrineID = config.getItem("CitrineAxe",21028).getInt();
+		itemToolAxeEmeraldID = config.getItem("EmeraldAxe",21029).getInt();
+		itemToolAxeRubyID = config.getItem("RubyAxe",21030).getInt();
+		itemToolAxeSapphireID = config.getItem("SapphireAxe",21031).getInt();
+		
+		itemToolHoeTurquoiseID = config.getItem("TurquoiseHoe", 21032).getInt();
+		itemToolHoeOnyxID = config.getItem("OnyxHoe", 21033).getInt();
+		itemToolHoeAmethystID = config.getItem("AmethystHoe", 21034).getInt();
+		itemToolHoeCitrineID = config.getItem("CitrienHoe",21035).getInt();
+		itemToolHoeEmeraldID = config.getItem("EmeraldHoe", 21036).getInt();
+		itemToolHoeRubyID = config.getItem("RubyHoe", 21037).getInt();
+		itemToolHoeSapphireID = config.getItem("SapphireHoe",21038).getInt();
 		
 		oreBlockID = config.getBlock("Ore",250).getInt();
 		gemBlockID = config.getBlock("GemBlock",251).getInt();

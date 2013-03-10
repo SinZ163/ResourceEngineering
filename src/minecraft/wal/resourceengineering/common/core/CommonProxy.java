@@ -118,6 +118,25 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldShovel,1,0),"Emerald Shovel");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyShovel,1,0),"Ruby Shovel");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphireShovel,1,0),"Sapphire Shovel");
+		
+		//Axes
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoiseAxe,1,0),"Turquoise Axe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.onyxAxe,1,0),"Onyx Axe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.amethystAxe,1,0),"Amethyst Axe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.citrineAxe,1,0),"Citrine Axe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldAxe,1,0),"Emerald Axe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyAxe,1,0),"Ruby Axe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphireAxe,1,0),"Sapphire Axe");
+		
+		//Hoes
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoiseHoe,1,0),"Turquoise Hoe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.onyxHoe,1,0),"Onyx Hoe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.amethystHoe,1,0),"Amethyst Hoe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.citrineHoe,1,0),"Citrine Hoe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldHoe,1,0), "Emerald Hoe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyHoe,1,0),"Ruby Hoe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphireHoe,1,0),"Sapphire");
+		
 	}
 	public void addRecipes()
 	{
@@ -129,6 +148,9 @@ public class CommonProxy implements IGuiHandler
 		ItemStack emeraldGem = new ItemStack(ResourceEngineeringMain.gem,1,4);
 		ItemStack rubyGem = new ItemStack(ResourceEngineeringMain.gem,1,5);
 		ItemStack sapphireGem = new ItemStack(ResourceEngineeringMain.gem,1,6);
+		
+		//Misc Item Stack variables
+		ItemStack stick = new ItemStack(Item.stick,1,0);
 		
 		
 		
@@ -185,13 +207,13 @@ public class CommonProxy implements IGuiHandler
 		rubySword.addEnchantment(Enchantment.smite, 6);
 		ItemStack sapphireSword = new ItemStack(ResourceEngineeringMain.sapphireSword,1,0);
 		sapphireSword.addEnchantment(Enchantment.smite, 7);
-		GameRegistry.addRecipe(turquoiseSword,"X","X","A",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(onyxSword,"X","X","A",Character.valueOf('X'),onyxGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(amethystSword,"X","X","A",Character.valueOf('X'),amethystGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(citrineSword,"X","X","A",Character.valueOf('X'),citrineGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(emeraldSword,"X","X","A",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(rubySword,"X","X","A",Character.valueOf('X'),rubyGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(sapphireSword,"X","X","A",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(turquoiseSword,"X","X","A",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(onyxSword,"X","X","A",Character.valueOf('X'),onyxGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(amethystSword,"X","X","A",Character.valueOf('X'),amethystGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(citrineSword,"X","X","A",Character.valueOf('X'),citrineGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(emeraldSword,"X","X","A",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(rubySword,"X","X","A",Character.valueOf('X'),rubyGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(sapphireSword,"X","X","A",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),stick);
 		
 		//Pickaxe Recipes
 		ItemStack turquoisePickaxe = new ItemStack(ResourceEngineeringMain.turquoisePickaxe,1,0);
@@ -203,13 +225,13 @@ public class CommonProxy implements IGuiHandler
 		ItemStack rubyPickaxe = new ItemStack(ResourceEngineeringMain.rubyPickaxe,1,0);
 		ItemStack sapphirePickaxe = new ItemStack(ResourceEngineeringMain.sapphirePickaxe,1,0);	
 		
-		GameRegistry.addRecipe(turquoisePickaxe,"XXX"," A "," A ",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(onyxPickaxe,"XXX"," A "," A ",Character.valueOf('X'),onyxGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(amethystPickaxe,"XXX"," A "," A ",Character.valueOf('X'),amethystGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(citrinePickaxe,"XXX"," A "," A ",Character.valueOf('X'),citrineGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(emeraldPickaxe,"XXX"," A "," A ",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(rubyPickaxe,"XXX"," A "," A ",Character.valueOf('X'),rubyGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(sapphirePickaxe,"XXX"," A "," A ",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(turquoisePickaxe,"XXX"," A "," A ",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(onyxPickaxe,"XXX"," A "," A ",Character.valueOf('X'),onyxGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(amethystPickaxe,"XXX"," A "," A ",Character.valueOf('X'),amethystGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(citrinePickaxe,"XXX"," A "," A ",Character.valueOf('X'),citrineGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(emeraldPickaxe,"XXX"," A "," A ",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(rubyPickaxe,"XXX"," A "," A ",Character.valueOf('X'),rubyGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(sapphirePickaxe,"XXX"," A "," A ",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),stick);
 		
 		//Shovel Recipes
 		ItemStack turquoiseShovel = new ItemStack(ResourceEngineeringMain.turquoiseShovel,1,0);
@@ -220,12 +242,60 @@ public class CommonProxy implements IGuiHandler
 		ItemStack rubyShovel = new ItemStack(ResourceEngineeringMain.rubyShovel,1,0);
 		ItemStack sapphireShovel = new ItemStack(ResourceEngineeringMain.sapphireShovel,1,0);
 		
-		GameRegistry.addRecipe(turquoiseShovel,"X","A","A",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(onyxShovel,"X","A","A",Character.valueOf('X'),onyxGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(amethystShovel,"X","A","A",Character.valueOf('X'),amethystGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(citrineShovel,"X","A","A",Character.valueOf('X'),citrineGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(emeraldShovel,"X","A","A",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(rubyShovel,"X","A","A",Character.valueOf('X'),rubyGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
-		GameRegistry.addRecipe(sapphireShovel,"X","A","A",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),new ItemStack(Item.stick,1,0));
+		GameRegistry.addRecipe(turquoiseShovel,"X","A","A",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(onyxShovel,"X","A","A",Character.valueOf('X'),onyxGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(amethystShovel,"X","A","A",Character.valueOf('X'),amethystGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(citrineShovel,"X","A","A",Character.valueOf('X'),citrineGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(emeraldShovel,"X","A","A",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(rubyShovel,"X","A","A",Character.valueOf('X'),rubyGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(sapphireShovel,"X","A","A",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),stick);
+		
+		//Axe Recipes
+		ItemStack turquoiseAxe = new ItemStack(ResourceEngineeringMain.turquoiseAxe,1,0);
+		ItemStack onyxAxe = new ItemStack(ResourceEngineeringMain.onyxAxe,1,0);
+		ItemStack amethystAxe = new ItemStack(ResourceEngineeringMain.amethystAxe,1,0);
+		ItemStack citrineAxe = new ItemStack(ResourceEngineeringMain.citrineAxe,1,0);
+		ItemStack emeraldAxe = new ItemStack(ResourceEngineeringMain.emeraldAxe,1,0);
+		ItemStack rubyAxe = new ItemStack(ResourceEngineeringMain.rubyAxe,1,0);
+		ItemStack sapphireAxe = new ItemStack(ResourceEngineeringMain.sapphireAxe,1,0);
+		
+		GameRegistry.addRecipe(turquoiseAxe,"XX","XA"," A",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(turquoiseAxe,"XX","AX","A ",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(onyxAxe,"XX","XA"," A",Character.valueOf('X'),onyxGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(onyxAxe,"XX","AX","A ",Character.valueOf('X'),onyxGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(amethystAxe,"XX","XA"," A",Character.valueOf('X'),amethystGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(amethystAxe,"XX","AX","A ",Character.valueOf('X'),amethystGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(citrineAxe,"XX","XA"," A",Character.valueOf('X'),citrineGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(citrineAxe,"XX","AX","A ",Character.valueOf('X'),citrineGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(emeraldAxe,"XX","XA"," A",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(emeraldAxe,"XX","AX","A ",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(rubyAxe,"XX","XA"," A",Character.valueOf('X'),rubyGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(rubyAxe,"XX","AX","A ",Character.valueOf('X'),rubyGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(sapphireAxe,"XX","XA"," A",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(sapphireAxe,"XX","AX","A ",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),stick);
+		
+		//Hoe Recipes
+		ItemStack turquoiseHoe = new ItemStack(ResourceEngineeringMain.turquoiseHoe,1,0);
+		ItemStack onyxHoe = new ItemStack(ResourceEngineeringMain.onyxHoe,1,0);
+		ItemStack amethystHoe = new ItemStack(ResourceEngineeringMain.amethystHoe,1,0);
+		ItemStack citrineHoe = new ItemStack(ResourceEngineeringMain.citrineHoe,1,0);
+		ItemStack emeraldHoe = new ItemStack(ResourceEngineeringMain.emeraldHoe,1,0);
+		ItemStack rubyHoe = new ItemStack(ResourceEngineeringMain.rubyHoe,1,0);
+		ItemStack sapphireHoe = new ItemStack(ResourceEngineeringMain.sapphireHoe,1,0);
+		
+		GameRegistry.addRecipe(turquoiseHoe,"XX","A ","A ",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(turquoiseHoe,"XX"," A"," A",Character.valueOf('X'),turquoiseGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(onyxHoe,"XX","A ","A",Character.valueOf('X'),onyxGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(onyxHoe,"XX"," A"," A",Character.valueOf('X'),onyxGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(amethystHoe,"XX","A ","A ",Character.valueOf('X'),amethystGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(amethystHoe,"XX"," A"," A",Character.valueOf('X'),amethystGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(citrineHoe,"XX","A ","A ",Character.valueOf('X'),citrineGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(citrineHoe,"XX"," A"," A",Character.valueOf('X'),citrineGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(emeraldHoe,"XX","A ","A ",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(emeraldHoe,"XX"," A"," A",Character.valueOf('X'),emeraldGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(rubyHoe,"XX","A ","A ",Character.valueOf('X'),rubyGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(rubyHoe,"XX"," A"," A",Character.valueOf('X'),rubyGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(sapphireHoe,"XX","A ","A ",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),stick);
+		GameRegistry.addRecipe(sapphireHoe,"XX"," A"," A",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),stick);
 	}
 }
