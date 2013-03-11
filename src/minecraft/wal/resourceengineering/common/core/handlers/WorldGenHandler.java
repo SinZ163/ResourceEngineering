@@ -19,94 +19,37 @@ public class WorldGenHandler implements IWorldGenerator
 	}
 	
 	public void generateSurface(Random random, int x, int z,World w)
-	{
-		int countPerChunk=20;
-		int oreMaxY=40;
-		int oreCount=7;
-		int maxVeinSize = 4;
-		
+	{		
+		int oreBlockID = ResourceEngineeringMain.oreBlock.blockID;
 		//Turquoise Ore Gen
-		int turquoisePerChunk = 80;
-		int turquoiseMaxY = 128;
-		int turquoiseVeinSize = 8;
-		for(int ii=0;ii<turquoisePerChunk;ii++)
-		{
-			int posX = x+random.nextInt(16);
-			int posY = random.nextInt(turquoiseMaxY);
-			int posZ = z+random.nextInt(16);
-			new WorldGenMinable(ResourceEngineeringMain.oreBlock.blockID,0,random.nextInt(turquoiseVeinSize+1)).generate(w, random, posX, posY, posZ);
-		}
-		
+		generateOre(oreBlockID,0,60,128,8,random,x,z,w);
+				
 		//Onyx Ore Gen
-		int onyxPerChunk = 60;
-		int onyxMaxY = 80;
-		int onyxVeinSize = 8;
-		for(int ii=0;ii<onyxPerChunk;ii++)
-		{
-			int posX = x+random.nextInt(16);
-			int posY = random.nextInt(onyxMaxY);
-			int posZ = z+random.nextInt(16);
-			new WorldGenMinable(ResourceEngineeringMain.oreBlock.blockID,1,random.nextInt(onyxVeinSize+1)).generate(w, random, posX, posY, posZ);
-		}
+		generateOre(oreBlockID,1,50,80,8,random,x,z,w);
 		
 		//Amethyst Ore Gen
-		int amethystPerChunk = 40;
-		int amethystMaxY = 60;
-		int amethystVeinSize = 8;
-		for(int ii=0;ii<amethystPerChunk;ii++)
-		{
-			int posX = x+random.nextInt(16);
-			int posY = random.nextInt(amethystMaxY);
-			int posZ = z+random.nextInt(16);
-			new WorldGenMinable(ResourceEngineeringMain.oreBlock.blockID,2,random.nextInt(amethystVeinSize+1)).generate(w, random, posX, posY, posZ);
-		}
+		generateOre(oreBlockID,2,40,60,8,random,x,z,w);
 		
 		//Citrine Ore Gen
-		int citrinePerChunk = 30;
-		int citrineMaxY = 50;
-		int citrineVeinSize = 8;
-		for(int ii=0;ii<citrinePerChunk;ii++)
-		{
-			int posX = x+random.nextInt(16);
-			int posY = random.nextInt(citrineMaxY);
-			int posZ = z+random.nextInt(16);
-			new WorldGenMinable(ResourceEngineeringMain.oreBlock.blockID,3,random.nextInt(citrineVeinSize+1)).generate(w, random, posX, posY, posZ);
-		}
+		generateOre(oreBlockID,3,30,50,8,random,x,z,w);
 		
 		//Emerald Ore Gen
-		int emeraldPerChunk = 20;
-		int emeraldMaxY = 40;
-		int emeraldVeinSize = 8;
-		for(int ii=0;ii<emeraldPerChunk;ii++)
-		{
-			int posX = x+random.nextInt(16);
-			int posY = random.nextInt(emeraldMaxY);
-			int posZ = z+random.nextInt(16);
-			new WorldGenMinable(ResourceEngineeringMain.oreBlock.blockID,4,random.nextInt(emeraldVeinSize+1)).generate(w, random, posX, posY, posZ);
-		}
+		generateOre(oreBlockID,4,20,40,8,random,x,z,w);
 		
 		//Ruby Ore Gen
-		int rubyPerChunk = 10;
-		int rubyMaxY = 30;
-		int rubyVeinSize = 8;
-		for(int ii=0;ii<rubyPerChunk;ii++)
-		{
-			int posX = x+random.nextInt(16);
-			int posY = random.nextInt(rubyMaxY);
-			int posZ = z+random.nextInt(16);
-			new WorldGenMinable(ResourceEngineeringMain.oreBlock.blockID,5,random.nextInt(rubyVeinSize+1)).generate(w, random, posX, posY, posZ);
-		}
-		
+		generateOre(oreBlockID,5,10,30,8,random,x,z,w);
+				
 		//Sapphire Ore Gen
-		int sapphirePerChunk = 5;
-		int sapphireMaxY = 16;
-		int sapphireVeinSize = 4;
-		for(int ii=0;ii<sapphirePerChunk;ii++)
+		generateOre(oreBlockID,6,5,16,4,random,x,z,w);
+	}
+	private void generateOre(int oreID,int meta,int veinsPerChunk,int maxSpawnY,int maxVeinSize,Random random,int x,int z,World world)
+	{
+		for(int i=0;i<veinsPerChunk;i++)
 		{
 			int posX = x+random.nextInt(16);
-			int posY = random.nextInt(sapphireMaxY);
+			int posY = random.nextInt(maxSpawnY);
 			int posZ = z+random.nextInt(16);
-			new WorldGenMinable(ResourceEngineeringMain.oreBlock.blockID,6,random.nextInt(sapphireVeinSize+1)).generate(w, random, posX, posY, posZ);
+			new WorldGenMinable(oreID,meta,random.nextInt(maxVeinSize+1)).generate(world,random,posX,posY,posZ);
 		}
 	}
 }
