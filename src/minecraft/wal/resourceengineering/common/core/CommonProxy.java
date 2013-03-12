@@ -149,6 +149,12 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoiseLeggings,1,0),"Turquoise Leggings");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoiseBoots,1,0),"Turquoise Boots");
 		
+		//Onyx Armor
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.onyxHelmet,1,0),"Onyx Helmet");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.onyxPlate,1,0),"Onyx Plate");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.onyxLeggings,1,0), "Onyx Leggings");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.onyxBoots,1,0),"Onyx Boots");
+		
 	}
 	public void addRecipes()
 	{

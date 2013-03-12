@@ -59,6 +59,36 @@ public class ConfigCore
 	public static int itemArmorLeggingsTurquoiseID;
 	public static int itemArmorBootsTurquoiseID;
 	
+	public static int itemArmorHelmetOnyxID;
+	public static int itemArmorPlateOnyxID;
+	public static int itemArmorLeggingsOnyxID;
+	public static int itemArmorBootsOnyxID;
+	
+	public static int itemArmorHelmetAmethystID;
+	public static int itemArmorPlateAmethystID;
+	public static int itemArmorLeggingsAmethystID;
+	public static int itemArmorBootsAmethystID;
+	
+	public static int itemArmorHelmetCitrineID;
+	public static int itemArmorPlateCitrineID;
+	public static int itemArmorLeggingsCitrineID;
+	public static int itemArmorBootsCitrineID;
+	
+	public static int itemArmorHelmetEmeraldID;
+	public static int itemArmorPlateEmeraldID;
+	public static int itemArmorLeggingsEmeraldID;
+	public static int itemArmorBootsEmeraldID;
+	
+	public static int itemArmorHelmetRubyID;
+	public static int itemArmorPlateRubyID;
+	public static int itemArmorLeggingsRubyID;
+	public static int itemArmorBootsRubyID;
+	
+	public static int itemArmorHelmetSapphireID;
+	public static int itemArmorPlateSapphireID;
+	public static int itemArmorLeggingsSapphireID;
+	public static int itemArmorBootsSapphireID;
+	
 	//Blocks
 	public static int oreBlockID;
 	public static int gemBlockID;
@@ -120,6 +150,36 @@ public class ConfigCore
 		itemArmorPlateTurquoiseID = config.getItem("TurquoisePlate",21040).getInt();
 		itemArmorLeggingsTurquoiseID = config.getItem("TurquoiseLeggings",21041).getInt();
 		itemArmorBootsTurquoiseID = config.getItem("TurquoiseBoots",21042).getInt();
+		
+		itemArmorHelmetOnyxID = config.getItem("OnyxHelmet",21043).getInt();
+		itemArmorPlateOnyxID = config.getItem("OnyxPlate",21044).getInt();
+		itemArmorLeggingsOnyxID = config.getItem("OnyxLeggings",21045).getInt();
+		itemArmorBootsOnyxID = config.getItem("OnyxBoots",21046).getInt();
+		
+		itemArmorHelmetAmethystID = config.getItem("AmethystHelmet",21047).getInt();
+		itemArmorPlateAmethystID = config.getItem("AmethystPlate",21048).getInt();
+		itemArmorLeggingsAmethystID = config.getItem("AmethystLeggings",21049).getInt();
+		itemArmorBootsAmethystID = config.getItem("AmethystBoots",21050).getInt();
+		
+		itemArmorHelmetCitrineID = config.getItem("CitrineHelmet",21051).getInt();
+		itemArmorPlateCitrineID = config.getItem("CitrinePlate",21052).getInt();
+		itemArmorLeggingsCitrineID = config.getItem("CitrineLeggings",21053).getInt();
+		itemArmorBootsCitrineID = config.getItem("CitrineBoots",21054).getInt();
+		
+		itemArmorHelmetEmeraldID = config.getItem("EmeraldHelmet",21055).getInt();
+		itemArmorPlateEmeraldID = config.getItem("EmeraldPlate",21056).getInt();
+		itemArmorLeggingsEmeraldID = config.getItem("EmeraldLeggings",21057).getInt();
+		itemArmorBootsEmeraldID = config.getItem("EmeraldBoots",21058).getInt();
+		
+		itemArmorHelmetRubyID = config.getItem("RubyHelmet",21059).getInt();
+		itemArmorPlateRubyID = config.getItem("RubyPlate",21060).getInt();
+		itemArmorLeggingsRubyID = config.getItem("RubyLeggings",21061).getInt();
+		itemArmorBootsRubyID = config.getItem("RubyBoots",21062).getInt();
+		
+		itemArmorHelmetSapphireID = config.getItem("SapphireHelmet",21063).getInt();
+		itemArmorPlateSapphireID = config.getItem("SapphirePlate",21064).getInt();
+		itemArmorLeggingsSapphireID = config.getItem("SapphireLeggings",21065).getInt();
+		itemArmorBootsSapphireID = config.getItem("SapphireBoots",21066).getInt();
 		
 		oreBlockID = config.getBlock("Ore",250).getInt();
 		gemBlockID = config.getBlock("GemBlock",251).getInt();

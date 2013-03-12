@@ -123,6 +123,43 @@ public class ResourceEngineeringMain
 	public static Item turquoiseLeggings;
 	public static Item turquoiseBoots;
 	
+	//Onyx Armor
+	public static Item onyxHelmet;
+	public static Item onyxPlate;
+	public static Item onyxLeggings;
+	public static Item onyxBoots;
+	
+	//Amethyst Armor
+	public static Item amethystHelmet;
+	public static Item amethystPlate;
+	public static Item amethystLeggings;
+	public static Item amethystBoots;
+	
+	//Citrine Armor
+	public static Item citrineHelmet;
+	public static Item citrinePlate;
+	public static Item citrineLeggings;
+	public static Item citrineBoots;
+	
+	//Emerald Armor
+	public static Item emeraldHelmet;
+	public static Item emeraldPlate;
+	public static Item emeraldLeggings;
+	public static Item emeraldBoots;
+	
+	//Ruby Armor
+	public static Item rubyHelmet;
+	public static Item rubyPlate;
+	public static Item rubyLeggings;
+	public static Item rubyBoots;
+	
+	//Sapphire Armor
+	public static Item sapphireHelmet;
+	public static Item sapphirePlate;
+	public static Item sapphireLeggings;
+	public static Item sapphireBoots;
+	
+	
 	/*
 	 * ======================================================
 	 * -----------------------BLOCKS-------------------------
@@ -149,8 +186,20 @@ public class ResourceEngineeringMain
 	public static EnumToolMaterial sapphireMaterial = EnumHelper.addToolMaterial("Sapphire", 3, 4096, 20.0F, 7, 1);
 	
 	//Armor Materials
-	public static EnumArmorMaterial turquoiseArmorMaterial = EnumHelper.addArmorMaterial("TURQUOISE_ARMOR", 20, new int[] {3, 5, 3, 6}, 30);
+	public static EnumArmorMaterial turquoiseArmorMaterial = EnumHelper.addArmorMaterial("TURQUOISE_ARMOR", 5, new int[] {1, 3, 2, 1}, 30);
+	public static EnumArmorMaterial onyxArmorMaterial = EnumHelper.addArmorMaterial("ONYX_ARMOR", 7, new int[] {2,  3, 2, 2},22);
+	public static EnumArmorMaterial amethystArmorMaterial = EnumHelper.addArmorMaterial("AMETHYST_ARMOR",10,new int[] {3, 4, 3, 2},15);
+	public static EnumArmorMaterial citrineArmorMaterial = EnumHelper.addArmorMaterial("CITRINE_ARMOR",14,new int[] {3, 5, 3, 3},12);
+	public static EnumArmorMaterial emeraldArmorMaterial = EnumHelper.addArmorMaterial("EMERALD_ARMOR",19,new int[] {4, 6, 4, 4},8);
+	public static EnumArmorMaterial rubyArmorMaterial = EnumHelper.addArmorMaterial("RUBY_ARMOR",26,new int[] {5, 7, 5, 4},5);
+	public static EnumArmorMaterial sapphireArmorMaterial = EnumHelper.addArmorMaterial("SAPPHIRE_ARMOR",40,new int[] {6, 8, 6, 5},1);
 	
+	/*CLOTH(5, new int[]{1, 3, 2, 1}, 15),
+    CHAIN(15, new int[]{2, 5, 4, 1}, 12),
+    IRON(15, new int[]{2, 6, 5, 2}, 9),
+    GOLD(7, new int[]{2, 5, 3, 1}, 25),
+    DIAMOND(33, new int[]{3, 8, 6, 3}, 10);
+    */
 	
 	@PreInit()
 	public void PreInitialization(FMLPreInitializationEvent e)
@@ -213,6 +262,11 @@ public class ResourceEngineeringMain
 		turquoisePlate = new GemArmor(cc.itemArmorPlateTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),1,"wal_itemArmorTurquiosePlate",35);
 		turquoiseLeggings = new GemArmor(cc.itemArmorLeggingsTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),2,"wal_itemArmorTurquoiseLeggings",51);
 		turquoiseBoots = new GemArmor(cc.itemArmorBootsTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),3,"wal_itemArmorTurquoiseBoots",67);
+		
+		onyxHelmet = new GemArmor(cc.itemArmorHelmetOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),0,"wal_itemArmorOnyxHelmet",20);
+		onyxPlate = new GemArmor(cc.itemArmorPlateOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),1,"wal_itemArmorOnyxPlate",36);
+		onyxLeggings = new GemArmor(cc.itemArmorLeggingsOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),2,"wal_itemArmorOnyxLeggings",52);
+		onyxBoots = new GemArmor(cc.itemArmorBootsOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),3,"wal_itemArmorOnyxBoots",68);
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);

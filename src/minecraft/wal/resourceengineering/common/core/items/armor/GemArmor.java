@@ -10,9 +10,9 @@ import resourceengineering.common.ResourceEngineeringMain;
 
 public class GemArmor extends ItemArmor implements IArmorTextureProvider
 {
-	public GemArmor(int par1,EnumArmorMaterial armorMaterial,int par3,int par4,String name,int iconIndex)
+	public GemArmor(int itemID,EnumArmorMaterial armorMaterial,int renderIndex,int armorType,String name,int iconIndex)
 	{
-		super(par1,armorMaterial,par3,par4);
+		super(itemID,armorMaterial,renderIndex,armorType);
 		setCreativeTab(ResourceEngineeringMain.reTab);
 		setItemName(name);
 		setTextureFile("/walgfx/Items.png");
@@ -29,6 +29,14 @@ public class GemArmor extends ItemArmor implements IArmorTextureProvider
 		else if(itemstack.itemID == ResourceEngineeringMain.turquoiseLeggings.itemID)
 		{
 			return "/walgfx/armor/turquoise_2.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.onyxHelmet.itemID || itemstack.itemID == ResourceEngineeringMain.onyxPlate.itemID || itemstack.itemID == ResourceEngineeringMain.onyxBoots.itemID)
+		{
+			return "/walgfx/armor/onyx_1.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.onyxLeggings.itemID)
+		{
+			return "/walgfx/armor/onyx_2.png";
 		}
 		return "/walgfx/Items.png";
 	}
