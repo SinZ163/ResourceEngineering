@@ -38,6 +38,14 @@ public class GemArmor extends ItemArmor implements IArmorTextureProvider
 		{
 			return "/walgfx/armor/onyx_2.png";
 		}
+		else if(itemstack.itemID == ResourceEngineeringMain.amethystHelmet.itemID || itemstack.itemID == ResourceEngineeringMain.amethystPlate.itemID || itemstack.itemID == ResourceEngineeringMain.amethystBoots.itemID)
+		{
+			return "/walgfx/armor/amethyst_1.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.amethystLeggings.itemID)
+		{
+			return "/walgfx/armor/amethyst_2.png";
+		}
 		return "/walgfx/Items.png";
 	}
 }

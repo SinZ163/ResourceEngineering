@@ -268,6 +268,11 @@ public class ResourceEngineeringMain
 		onyxLeggings = new GemArmor(cc.itemArmorLeggingsOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),2,"wal_itemArmorOnyxLeggings",52);
 		onyxBoots = new GemArmor(cc.itemArmorBootsOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),3,"wal_itemArmorOnyxBoots",68);
 		
+		amethystHelmet = new GemArmor(cc.itemArmorHelmetAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),0,"wal_itemArmorAmethystHelmet",21);
+		amethystPlate = new GemArmor(cc.itemArmorPlateAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),1,"wal_itemArmorAmethystPlate",37);
+		amethystLeggings = new GemArmor(cc.itemArmorLeggingsAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),2,"wal_itemArmorAmethystLeggings",53);
+		amethystBoots = new GemArmor(cc.itemArmorBootsAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),3,"wal_itemArmorAmethystBoots",69);
+		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);
 	}
