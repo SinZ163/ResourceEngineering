@@ -161,6 +161,30 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.amethystLeggings,1,0),"Amethyst Leggings");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.amethystBoots,1,0),"Amethyst Boots");
 		
+		//Citrine Armor
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.citrineHelmet,1,0),"Citrine Helmet");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.citrinePlate,1,0),"Citrine Plate");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.citrineLeggings,1,0),"Citrine Leggings");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.citrineBoots,1,0),"Citrine Boots");
+		
+		//Emerald Armor
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldHelmet,1,0),"Emerald Helmet");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldPlate,1,0),"Emerald Plate");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldLeggings,1,0),"Emerald Leggings");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldBoots,1,0),"Emerald Boots");
+		
+		//Ruby Armor
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyHelmet,1,0),"Ruby Helmet");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyPlate,1,0),"Ruby Plate");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyLeggings,1,0),"Ruby Leggings");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyBoots,1,0),"Ruby Boots");
+		
+		//Sapphire Armor
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphireHelmet,1,0),"Sapphire Helmet");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphirePlate,1,0),"Sapphire Plate");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphireLeggings,1,0),"Sapphire Leggings");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphireBoots,1,0),"Sapphire Boots");
+		
 	}
 	public void addRecipes()
 	{

@@ -46,6 +46,38 @@ public class GemArmor extends ItemArmor implements IArmorTextureProvider
 		{
 			return "/walgfx/armor/amethyst_2.png";
 		}
+		else if(itemstack.itemID == ResourceEngineeringMain.citrineHelmet.itemID || itemstack.itemID == ResourceEngineeringMain.citrinePlate.itemID || itemstack.itemID == ResourceEngineeringMain.citrineBoots.itemID)
+		{
+			return "/walgfx/armor/citrine_1.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.citrineLeggings.itemID)
+		{
+			return "/walgfx/armor/citrine_2.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.emeraldHelmet.itemID || itemstack.itemID == ResourceEngineeringMain.emeraldPlate.itemID || itemstack.itemID == ResourceEngineeringMain.emeraldBoots.itemID)
+		{
+			return "/walgfx/armor/emerald_1.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.emeraldLeggings.itemID)
+		{
+			return "/walgfx/armor/emerald_2.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.rubyHelmet.itemID || itemstack.itemID == ResourceEngineeringMain.rubyPlate.itemID || itemstack.itemID == ResourceEngineeringMain.rubyBoots.itemID)
+		{
+			return "/walgfx/armor/ruby_1.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.rubyLeggings.itemID)
+		{
+			return "/walgfx/armor/ruby_2.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.sapphireHelmet.itemID || itemstack.itemID == ResourceEngineeringMain.sapphirePlate.itemID || itemstack.itemID == ResourceEngineeringMain.sapphireBoots.itemID)
+		{
+			return "/walgfx/armor/sapphire_1.png";
+		}
+		else if(itemstack.itemID == ResourceEngineeringMain.sapphireLeggings.itemID)
+		{
+			return "/walgfx/armor/sapphire_2.png";
+		}
 		return "/walgfx/Items.png";
 	}
 }

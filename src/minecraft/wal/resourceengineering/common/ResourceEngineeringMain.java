@@ -273,6 +273,26 @@ public class ResourceEngineeringMain
 		amethystLeggings = new GemArmor(cc.itemArmorLeggingsAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),2,"wal_itemArmorAmethystLeggings",53);
 		amethystBoots = new GemArmor(cc.itemArmorBootsAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),3,"wal_itemArmorAmethystBoots",69);
 		
+		citrineHelmet = new GemArmor(cc.itemArmorHelmetCitrineID,citrineArmorMaterial,proxy.addArmor("CitrineArmor"),0,"wal_itemArmorCitrineHelmet",22);
+		citrinePlate =  new GemArmor(cc.itemArmorPlateCitrineID,citrineArmorMaterial,proxy.addArmor("CitrineArmor"),1,"wal_itemArmorCitrinePlate",38);
+		citrineLeggings = new GemArmor(cc.itemArmorLeggingsCitrineID,citrineArmorMaterial,proxy.addArmor("CitrineArmor"),2,"wal_itemArmorCitrineLeggings",54);
+		citrineBoots = new GemArmor(cc.itemArmorBootsCitrineID,citrineArmorMaterial,proxy.addArmor("CitrineArmor"),3,"wal_itemArmorCitrineBoots",70);
+		
+		emeraldHelmet = new GemArmor(cc.itemArmorHelmetEmeraldID,emeraldArmorMaterial,proxy.addArmor("EmeraldArmor"),0,"wal_itemArmorEmeraldHelmet",23);
+		emeraldPlate = new GemArmor(cc.itemArmorPlateEmeraldID,emeraldArmorMaterial,proxy.addArmor("EmeraldArmor"),1,"wal_itemArmorEmeraldPlate",39);
+		emeraldLeggings = new GemArmor(cc.itemArmorLeggingsEmeraldID,emeraldArmorMaterial,proxy.addArmor("EmeraldArmor"),2,"wal_itemArmorEmeraldLeggings",55);
+		emeraldBoots = new GemArmor(cc.itemArmorBootsEmeraldID,emeraldArmorMaterial,proxy.addArmor("EmeraldArmor"),3,"wal_itemArmorEmeraldBoots",71);
+		
+		rubyHelmet = new GemArmor(cc.itemArmorHelmetRubyID,rubyArmorMaterial,proxy.addArmor("RubyArmor"),0,"wal_itemArmorRubyHelmet",24);
+		rubyPlate =  new GemArmor(cc.itemArmorPlateRubyID,rubyArmorMaterial,proxy.addArmor("RubyArmor"),1,"wal_itemArmorRubyPlate",40);
+		rubyLeggings = new GemArmor(cc.itemArmorLeggingsRubyID,rubyArmorMaterial,proxy.addArmor("RubyArmor"),2,"wal_itemArmorRubyLeggings",56);
+		rubyBoots = new GemArmor(cc.itemArmorBootsRubyID,rubyArmorMaterial,proxy.addArmor("RubyArmor"),3,"wal_itemArmorRubyBoots",72);
+		
+		sapphireHelmet = new GemArmor(cc.itemArmorHelmetSapphireID,sapphireArmorMaterial,proxy.addArmor("SapphireArmor"),0,"wal_itemArmorSapphireHelmet",25);
+		sapphirePlate = new GemArmor(cc.itemArmorPlateSapphireID,sapphireArmorMaterial,proxy.addArmor("SapphireArmor"),1,"wal_itemArmorSapphirePlate",41);
+		sapphireLeggings = new GemArmor(cc.itemArmorLeggingsSapphireID,sapphireArmorMaterial,proxy.addArmor("SapphireArmor"),2,"wal_itemArmorSapphireLeggings",57);
+		sapphireBoots = new GemArmor(cc.itemArmorBootsSapphireID,sapphireArmorMaterial,proxy.addArmor("SapphireArmor"),3,"wal_itemArmorSapphiredBoots",73);
+		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);
 	}
