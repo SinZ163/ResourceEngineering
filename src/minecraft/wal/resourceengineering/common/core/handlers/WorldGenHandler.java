@@ -40,7 +40,7 @@ public class WorldGenHandler implements IWorldGenerator
 		generateOre(oreBlockID,5,10,30,8,random,x,z,w);
 				
 		//Sapphire Ore Gen
-		generateOre(oreBlockID,6,5,16,4,random,x,z,w);
+		generateOre(oreBlockID,6,8,16,4,random,x,z,w);
 	}
 	private void generateOre(int oreID,int meta,int veinsPerChunk,int maxSpawnY,int maxVeinSize,Random random,int x,int z,World world)
 	{

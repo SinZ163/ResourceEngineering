@@ -33,6 +33,11 @@ public class CommonProxy implements IGuiHandler
 		
 		return null;
 	}
+	public int addArmor(String armor)
+	{
+		return 0;
+	}
+	
 	public void registerTiles()
 	{
 		
@@ -136,6 +141,13 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.emeraldHoe,1,0), "Emerald Hoe");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.rubyHoe,1,0),"Ruby Hoe");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.sapphireHoe,1,0),"Sapphire");
+		
+		//Armor
+		//Turquoise Armor
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoiseHelmet,1,0),"Turquoise Helmet");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoisePlate,1,0),"Turquoise Plate");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoiseLeggings,1,0),"Turquoise Leggings");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.turquoiseBoots,1,0),"Turquoise Boots");
 		
 	}
 	public void addRecipes()

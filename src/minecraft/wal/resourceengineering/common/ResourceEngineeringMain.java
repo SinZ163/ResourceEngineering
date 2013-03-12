@@ -2,6 +2,7 @@ package resourceengineering.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.EnumHelper;
@@ -39,6 +40,9 @@ import resourceengineering.common.core.items.tools.ItemToolPickaxe;
 import resourceengineering.common.core.items.tools.ItemToolShovel;
 import resourceengineering.common.core.items.tools.ItemToolAxe;
 import resourceengineering.common.core.items.tools.ItemToolHoe;
+
+//Armor Import
+import resourceengineering.common.core.items.armor.GemArmor;
 
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
@@ -108,12 +112,33 @@ public class ResourceEngineeringMain
 	public static Item rubyHoe;
 	public static Item sapphireHoe;
 	
-	//Blocks
+	/*
+	 * ======================================================
+	 * ------------------------ARMOR-------------------------
+	 * ======================================================
+	 */
+	//Turquoise Armor
+	public static Item turquoiseHelmet;
+	public static Item turquoisePlate;
+	public static Item turquoiseLeggings;
+	public static Item turquoiseBoots;
+	
+	/*
+	 * ======================================================
+	 * -----------------------BLOCKS-------------------------
+	 * ======================================================
+	 */
 	public static Block oreBlock;
 	public static Block gemBlock;
 
 	public static CreativeTabs reTab = new ResourceEngineeringTab(CreativeTabs.getNextID(),"wal_ResouceEngineeringTab");
 	
+	
+	/*
+	 * ======================================================
+	 * ----------------------MATERIALS-----------------------
+	 * ======================================================
+	 */
 	//Gem Materials
 	public static EnumToolMaterial turquoiseMaterial = EnumHelper.addToolMaterial("Turquoise",1,64,2.0F,1,30);
 	public static EnumToolMaterial onyxMaterial = EnumHelper.addToolMaterial("Onyx",1,128,3.0F,2,22);
@@ -122,6 +147,9 @@ public class ResourceEngineeringMain
 	public static EnumToolMaterial emeraldMaterial = EnumHelper.addToolMaterial("Emerald", 3, 1024, 12.0F, 5, 8);
 	public static EnumToolMaterial rubyMaterial = EnumHelper.addToolMaterial("Ruby", 3, 2048, 16.0F, 6, 5);
 	public static EnumToolMaterial sapphireMaterial = EnumHelper.addToolMaterial("Sapphire", 3, 4096, 20.0F, 7, 1);
+	
+	//Armor Materials
+	public static EnumArmorMaterial turquoiseArmorMaterial = EnumHelper.addArmorMaterial("TURQUOISE_ARMOR", 20, new int[] {3, 5, 3, 6}, 30);
 	
 	
 	@PreInit()
@@ -178,6 +206,13 @@ public class ResourceEngineeringMain
 		emeraldHoe = new ItemToolHoe(cc.itemToolHoeEmeraldID,emeraldMaterial,151,"wal_itemToolHoeEmerald");
 		rubyHoe = new ItemToolHoe(cc.itemToolHoeRubyID,rubyMaterial,152,"wal_itemToolHoeRuby");
 		sapphireHoe = new ItemToolHoe(cc.itemToolHoeSapphireID,sapphireMaterial,153,"wal_itemToolHoeSapphire");
+		
+		
+		//Armor
+		turquoiseHelmet = new GemArmor(cc.itemArmorHelmetTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),0,"wal_itemArmorTurquoiseHelmet",19);
+		turquoisePlate = new GemArmor(cc.itemArmorPlateTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),1,"wal_itemArmorTurquiosePlate",35);
+		turquoiseLeggings = new GemArmor(cc.itemArmorLeggingsTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),2,"wal_itemArmorTurquoiseLeggings",51);
+		turquoiseBoots = new GemArmor(cc.itemArmorBootsTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),3,"wal_itemArmorTurquoiseBoots",67);
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);

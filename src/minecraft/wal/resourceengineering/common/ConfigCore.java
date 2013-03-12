@@ -53,6 +53,12 @@ public class ConfigCore
 	public static int itemToolHoeRubyID;
 	public static int itemToolHoeSapphireID;
 	
+	//Armor
+	public static int itemArmorHelmetTurquoiseID;
+	public static int itemArmorPlateTurquoiseID;
+	public static int itemArmorLeggingsTurquoiseID;
+	public static int itemArmorBootsTurquoiseID;
+	
 	//Blocks
 	public static int oreBlockID;
 	public static int gemBlockID;
@@ -108,6 +114,12 @@ public class ConfigCore
 		itemToolHoeEmeraldID = config.getItem("EmeraldHoe", 21036).getInt();
 		itemToolHoeRubyID = config.getItem("RubyHoe", 21037).getInt();
 		itemToolHoeSapphireID = config.getItem("SapphireHoe",21038).getInt();
+		
+		
+		itemArmorHelmetTurquoiseID = config.getItem("TurquoiseHelmet",21039).getInt();
+		itemArmorPlateTurquoiseID = config.getItem("TurquoisePlate",21040).getInt();
+		itemArmorLeggingsTurquoiseID = config.getItem("TurquoiseLeggings",21041).getInt();
+		itemArmorBootsTurquoiseID = config.getItem("TurquoiseBoots",21042).getInt();
 		
 		oreBlockID = config.getBlock("Ore",250).getInt();
 		gemBlockID = config.getBlock("GemBlock",251).getInt();
