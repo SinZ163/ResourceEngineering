@@ -345,5 +345,69 @@ public class CommonProxy implements IGuiHandler
 		GameRegistry.addRecipe(rubyHoe,"XX"," A"," A",Character.valueOf('X'),rubyGem,Character.valueOf('A'),stick);
 		GameRegistry.addRecipe(sapphireHoe,"XX","A ","A ",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),stick);
 		GameRegistry.addRecipe(sapphireHoe,"XX"," A"," A",Character.valueOf('X'),sapphireGem,Character.valueOf('A'),stick);
+		
+		//Armor Recipes
+		//Helmet
+		ItemStack turquoiseHelmet = new ItemStack(ResourceEngineeringMain.turquoiseHelmet,1,0);
+		ItemStack onyxHelmet = new ItemStack(ResourceEngineeringMain.onyxHelmet,1,0);
+		ItemStack amethystHelmet = new ItemStack(ResourceEngineeringMain.amethystHelmet,1,0);
+		ItemStack citrineHelmet = new ItemStack(ResourceEngineeringMain.citrineHelmet,1,0);
+		ItemStack emeraldHelmet = new ItemStack(ResourceEngineeringMain.emeraldHelmet,1,0);
+		ItemStack rubyHelmet = new ItemStack(ResourceEngineeringMain.rubyHelmet,1,0);
+		ItemStack sapphireHelmet = new ItemStack(ResourceEngineeringMain.sapphireHelmet,1,0);
+		GameRegistry.addRecipe(turquoiseHelmet,"XXX","X X",Character.valueOf('X'),turquoiseGem);
+		GameRegistry.addRecipe(onyxHelmet,"XXX","X X",Character.valueOf('X'),onyxGem);
+		GameRegistry.addRecipe(amethystHelmet,"XXX","X X",Character.valueOf('X'),amethystGem);
+		GameRegistry.addRecipe(citrineHelmet,"XXX","X X",Character.valueOf('X'),citrineGem);
+		GameRegistry.addRecipe(emeraldHelmet,"XXX","X X",Character.valueOf('X'),emeraldGem);
+		GameRegistry.addRecipe(rubyHelmet,"XXX","X X",Character.valueOf('X'),rubyGem);
+		GameRegistry.addRecipe(sapphireHelmet,"XXX","X X",Character.valueOf('X'),sapphireGem);
+		
+		//Chest Plate
+		ItemStack turquoisePlate = new ItemStack(ResourceEngineeringMain.turquoisePlate,1,0);
+		ItemStack onyxPlate = new ItemStack(ResourceEngineeringMain.onyxPlate,1,0);
+		ItemStack amethystPlate = new ItemStack(ResourceEngineeringMain.amethystPlate,1,0);
+		ItemStack citrinePlate = new ItemStack(ResourceEngineeringMain.citrinePlate,1,0);
+		ItemStack emeraldPlate = new ItemStack(ResourceEngineeringMain.emeraldPlate,1,0);
+		ItemStack rubyPlate = new ItemStack(ResourceEngineeringMain.rubyPlate,1,0);
+		ItemStack sapphirePlate = new ItemStack(ResourceEngineeringMain.sapphirePlate,1,0);
+		GameRegistry.addRecipe(turquoisePlate,"X X","XXX","XXX",Character.valueOf('X'),turquoiseGem);
+		GameRegistry.addRecipe(onyxPlate,"X X","XXX","XXX",Character.valueOf('X'),onyxGem);
+		GameRegistry.addRecipe(amethystPlate,"X X","XXX","XXX",Character.valueOf('X'),amethystGem);
+		GameRegistry.addRecipe(citrinePlate,"X X","XXX","XXX",Character.valueOf('X'),citrineGem);
+		GameRegistry.addRecipe(emeraldPlate,"X X","XXX","XXX",Character.valueOf('X'),emeraldGem);
+		GameRegistry.addRecipe(rubyPlate,"X X","XXX","XXX",Character.valueOf('X'),rubyGem);
+		GameRegistry.addRecipe(sapphirePlate,"X X","XXX","XXX",Character.valueOf('X'),sapphireGem);
+		
+		//Leggings
+		ItemStack turquoiseLeggings = new ItemStack(ResourceEngineeringMain.turquoiseLeggings,1,0);
+		ItemStack onyxLeggings = new ItemStack(ResourceEngineeringMain.onyxLeggings,1,0);
+		ItemStack amethystLeggings = new ItemStack(ResourceEngineeringMain.amethystLeggings,1,0);
+		ItemStack citrineLeggings = new ItemStack(ResourceEngineeringMain.citrineLeggings,1,0);
+		ItemStack emeraldLeggings = new ItemStack(ResourceEngineeringMain.emeraldLeggings,1,0);
+		ItemStack rubyLeggings = new ItemStack(ResourceEngineeringMain.rubyLeggings,1,0);
+		ItemStack sapphireLeggings = new ItemStack(ResourceEngineeringMain.sapphireLeggings,1,0);
+		GameRegistry.addRecipe(turquoiseLeggings,"XXX","X X","X X",Character.valueOf('X'),turquoiseGem);
+		GameRegistry.addRecipe(onyxLeggings,"XXX","X X","X X",Character.valueOf('X'),onyxGem);
+		GameRegistry.addRecipe(amethystLeggings,"XXX","X X","X X",Character.valueOf('X'),amethystGem);
+		GameRegistry.addRecipe(citrineLeggings,"XXX","X X","X X",Character.valueOf('X'),citrineGem);
+		GameRegistry.addRecipe(emeraldLeggings,"XXX","X X","X X",Character.valueOf('X'),emeraldGem);
+		GameRegistry.addRecipe(rubyLeggings,"XXX","X X","X X",Character.valueOf('X'),rubyGem);
+		GameRegistry.addRecipe(sapphireLeggings,"XXX","X X","X X",Character.valueOf('X'),sapphireGem);
+		
+		ItemStack turquoiseBoots = new ItemStack(ResourceEngineeringMain.turquoiseBoots,1,0);
+		ItemStack onyxBoots = new ItemStack(ResourceEngineeringMain.onyxBoots,1,0);
+		ItemStack amethystBoots = new ItemStack(ResourceEngineeringMain.amethystBoots,1,0);
+		ItemStack citrineBoots = new ItemStack(ResourceEngineeringMain.citrineBoots,1,0);
+		ItemStack emeraldBoots = new ItemStack(ResourceEngineeringMain.emeraldBoots,1,0);
+		ItemStack rubyBoots = new ItemStack(ResourceEngineeringMain.rubyBoots,1,0);
+		ItemStack sapphireBoots = new ItemStack(ResourceEngineeringMain.sapphireBoots,1,0);
+		GameRegistry.addRecipe(turquoiseBoots,"X X","X X",Character.valueOf('X'),turquoiseGem);
+		GameRegistry.addRecipe(onyxBoots,"X X","X X",Character.valueOf('X'),onyxGem);
+		GameRegistry.addRecipe(amethystBoots,"X X","X X",Character.valueOf('X'),amethystGem);
+		GameRegistry.addRecipe(citrineBoots,"X X","X X",Character.valueOf('X'),citrineGem);
+		GameRegistry.addRecipe(emeraldBoots,"X X","X X",Character.valueOf('X'),emeraldGem);
+		GameRegistry.addRecipe(rubyBoots,"X X","X X",Character.valueOf('X'),rubyGem);
+		GameRegistry.addRecipe(sapphireBoots,"X X","X X",Character.valueOf('X'),sapphireGem);
 	}
 }
