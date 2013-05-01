@@ -33,6 +33,13 @@ public class ItemGem extends Item
 		case 4: return 7;//Emerald Gem
 		case 5: return 8;//Ruby Gem
 		case 6: return 9;//Sapphire Gem
+		case 7: return 163;//Refined Turquoise
+		case 8: return 164;//Refined Onyx
+		case 9: return 165;//Refined Amethyst
+		case 10: return 166;//Refined Citrine
+		case 11: return 167;//Refined Emerald
+		case 12: return 168;//Refined Ruby
+		case 13: return 169;//Refined Sapphire
 		}
 		return 0;
 	}
@@ -47,6 +54,13 @@ public class ItemGem extends Item
 		case 4: return "wal_ItemEmerald";
 		case 5: return "wal_ItemRuby";
 		case 6: return "wal_ItemSapphire";
+		case 7: return "wal_ItemRefinedTurquoise";
+		case 8: return "wal_ItemRefinedOnyx";
+		case 9: return "wal_ItemRefinedAmethyst";
+		case 10: return "wal_ItemRefinedCitrine";
+		case 11: return "wal_ItemRefinedEmerald";
+		case 12: return "wal_ItemRefinedRuby";
+		case 13: return "wal_ItemRefinedSapphire";
 		}
 		return "itemUnknown";
 	}
@@ -54,7 +68,7 @@ public class ItemGem extends Item
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int itemID, CreativeTabs tab, List itemList)
 	{//TODO: Add the rest of the gems here
-		for(int i=0;i<7;i++)
+		for(int i=0;i<14;i++)
 		{
 			itemList.add(new ItemStack(itemID,1,i));
 		}

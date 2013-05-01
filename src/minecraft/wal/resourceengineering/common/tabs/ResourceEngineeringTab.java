@@ -13,7 +13,7 @@ public class ResourceEngineeringTab extends CreativeTabs
 	@SideOnly(Side.CLIENT)
 	public int getTabIconItemIndex()
 	{
-		return ResourceEngineeringMain.flake.itemID;
+		return ResourceEngineeringMain.blockPressureVessel.blockID;
 	}
 	public String getTranslatedTabLabel()
 	{

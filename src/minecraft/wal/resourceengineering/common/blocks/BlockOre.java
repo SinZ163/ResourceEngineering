@@ -43,6 +43,10 @@ public class BlockOre extends Block
 	{
 		return i;
 	}
+	public int idDropped(int meta,Random  random,int zero)
+	{
+		return ResourceEngineeringMain.gem.itemID;
+	}
 	public void getSubBlocks(int i, CreativeTabs tab, List l)
 	{//TODO: Add the rest of the ores here
 		l.add(new ItemStack(i,1,0));

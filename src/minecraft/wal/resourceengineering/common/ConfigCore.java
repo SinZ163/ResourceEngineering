@@ -1,5 +1,7 @@
 package resourceengineering.common;
 
+import java.util.Vector;
+
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -7,10 +9,16 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class ConfigCore 
 {
 	//Items
-	public static int itemFlakeID;
+	public static int itemFlakeIronID;
+	public static int itemFlakeGoldID;
+	public static int itemFlakeDiamondID;
 	public static int itemGoldenPotatoID;
 	public static int itemNuggetID;
 	public static int itemGemID;
+	public static int itemScreenID;
+	
+	public static int thorsHammerID;
+	public static int dirtLayerID;
 	
 	//Tools
 	public static int itemToolSwordTurquoiseID;
@@ -28,6 +36,8 @@ public class ConfigCore
 	public static int itemToolPickaxeEmeraldID;
 	public static int itemToolPickaxeRubyID;
 	public static int itemToolPickaxeSapphireID;
+	public static int itemToolPickaxeSuperID;
+	public static int itemToolHammerID;
 	
 	public static int itemToolShovelTurquoiseID;
 	public static int itemToolShovelOnyxID;
@@ -36,6 +46,7 @@ public class ConfigCore
 	public static int itemToolShovelEmeraldID;
 	public static int itemToolShovelRubyID;
 	public static int itemToolShovelSapphireID;
+	public static int itemToolShovelSuperID;
 	
 	public static int itemToolAxeTurquoiseID;
 	public static int itemToolAxeOnyxID;
@@ -92,16 +103,23 @@ public class ConfigCore
 	//Blocks
 	public static int oreBlockID;
 	public static int gemBlockID;
+	public static int pressureVesselID;
+	public static int sifterID;
+	public static int tumblerID;
 	
 	//Armor
 	
 	//Other
+	public static int[] oreWhiteList;
+	public static int itemStickID;
 	
 	public static void loadConfig(FMLPreInitializationEvent e)
 	{
 		Configuration config = new Configuration(e.getSuggestedConfigurationFile());
 		config.load();
-		itemFlakeID = config.getItem("MetalFlake", 21000).getInt();
+		itemFlakeIronID = config.getItem("IronFlake", 21000).getInt();
+		itemFlakeGoldID = config.getItem("GoldFlake",20999).getInt();
+		itemFlakeDiamondID = config.getItem("DiamondChip",20998).getInt();
 		itemGoldenPotatoID = config.getItem("GoldenPotato", 21001).getInt();
 		itemNuggetID = config.getItem("MetalNugget", 21002).getInt();
 		itemGemID = config.getItem("Gem",21003).getInt();
@@ -120,6 +138,8 @@ public class ConfigCore
 		itemToolPickaxeEmeraldID = config.getItem("EmeraldPickaxe", 21015).getInt();
 		itemToolPickaxeRubyID = config.getItem("RubyPickaxe", 21016).getInt();
 		itemToolPickaxeSapphireID = config.getItem("SapphirePickaxe",21017).getInt();
+		itemToolPickaxeSuperID = config.getItem("SuperPickaxe",21067).getInt();
+		itemToolHammerID = config.getItem("Hammer",21069).getInt();
 		
 		itemToolShovelTurquoiseID = config.getItem("TurquoiseShovel", 21018).getInt();
 		itemToolShovelOnyxID = config.getItem("OnyxShovel",21019).getInt();
@@ -128,6 +148,7 @@ public class ConfigCore
 		itemToolShovelEmeraldID = config.getItem("EmeraldShovel",21022).getInt();
 		itemToolShovelRubyID = config.getItem("RubyShovel",21023).getInt();
 		itemToolShovelSapphireID = config.getItem("SapphireShovel",21024).getInt();
+		itemToolShovelSuperID = config.getItem("SuperShovel",21068).getInt();
 		
 		itemToolAxeTurquoiseID = config.getItem("TurquoiseAxe", 21025).getInt();
 		itemToolAxeOnyxID = config.getItem("OnyxAxe",21026).getInt();
@@ -181,9 +202,26 @@ public class ConfigCore
 		itemArmorLeggingsSapphireID = config.getItem("SapphireLeggings",21065).getInt();
 		itemArmorBootsSapphireID = config.getItem("SapphireBoots",21066).getInt();
 		
+		itemStickID = config.getItem("Stick",21070).getInt();
+		itemScreenID = config.getItem("Screen",21071).getInt();
+		thorsHammerID = config.getItem("ThorsHammer",21072).getInt();
+		dirtLayerID = config.getItem("DirtLayer",21073).getInt();
+		
 		oreBlockID = config.getBlock("Ore",250).getInt();
 		gemBlockID = config.getBlock("GemBlock",251).getInt();
-		
+		pressureVesselID = config.getBlock("PressureVessel",252).getInt();
+		sifterID = config.getBlock("Sifter",253).getInt();
+		tumblerID = config.getBlock("Tumbler",254).getInt();
+		Property oreList = config.get("Other","OreWhiteList","14 15 16 48 49 56 89 129 153 200 213 220 244 245 246 247 248 249 668 2001");
+		String[] splitList = oreList.value.split(" ");
+		Vector<Integer> oreVector = new Vector();
+		for(int i=0;i<splitList.length;i++)
+		{
+			oreVector.add(Integer.parseInt(splitList[i]));
+		}
+		int count = 0;
+		oreWhiteList = new int[oreVector.size()];
+		for(int i: oreVector) oreWhiteList[count++] = i;
 		config.save();
 	}
 	

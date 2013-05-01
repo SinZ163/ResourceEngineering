@@ -1,11 +1,17 @@
 package resourceengineering.common;
 
+import java.util.Locale;
+import java.util.Vector;
+import java.util.logging.Level;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.EnumHelper;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.PreInit;
@@ -22,6 +28,7 @@ import cpw.mods.fml.common.SidedProxy;
 import resourceengineering.client.core.ClientProxy;
 import resourceengineering.common.core.CommonProxy;
 import resourceengineering.client.core.handlers.ClientPacketHandler;
+import resourceengineering.common.core.handlers.GuiHandler;
 import resourceengineering.common.core.handlers.ServerPacketHandler;
 import resourceengineering.common.core.handlers.WorldGenHandler;
 
@@ -33,7 +40,14 @@ import resourceengineering.common.core.items.ItemFlake;
 import resourceengineering.common.core.items.ItemNugget;
 import resourceengineering.common.core.items.ItemGoldenPotato;
 import resourceengineering.common.core.items.ItemGem;
+import resourceengineering.common.core.items.ItemScreen;
+import resourceengineering.common.core.items.ItemStick;
 
+import resourceengineering.common.core.items.tools.ItemToolPickaxeSuper;
+import resourceengineering.common.core.items.tools.ItemToolShovelSuper;
+import resourceengineering.common.core.items.tools.ItemToolHammer;
+import resourceengineering.common.core.items.tools.ItemToolChunkHammer;
+import resourceengineering.common.core.items.tools.ItemToolDirtLayer;
 //Tool Imports
 import resourceengineering.common.core.items.tools.ItemToolSword;
 import resourceengineering.common.core.items.tools.ItemToolPickaxe;
@@ -44,14 +58,17 @@ import resourceengineering.common.core.items.tools.ItemToolHoe;
 //Armor Import
 import resourceengineering.common.core.items.armor.GemArmor;
 
+import resourceengineering.common.blocks.BlockGemTumbler;
 //Block Imports
 import resourceengineering.common.blocks.BlockOre;
 import resourceengineering.common.blocks.BlockGem;
+import resourceengineering.common.blocks.BlockPressureVessel;
+import resourceengineering.common.blocks.BlockSifter;
 
 @NetworkMod(clientSideRequired=true,serverSideRequired=false,
 clientPacketHandlerSpec=@SidedPacketHandler(channels={"WAL_RE"},packetHandler=ClientPacketHandler.class),
-serverPacketHandlerSpec=@SidedPacketHandler(channels = {}, packetHandler = ServerPacketHandler.class))
-@Mod(modid="walResourceEngineering",name="Resource Engineering",version="0.0.21")
+serverPacketHandlerSpec=@SidedPacketHandler(channels = {"WAL_RE"}, packetHandler = ServerPacketHandler.class))
+@Mod(modid="mod_walResourceEngineering",name="Resource Engineering",version="0.0.107")
 public class ResourceEngineeringMain
 {
 	@Instance("Wal_ResourceEngineering")
@@ -60,12 +77,16 @@ public class ResourceEngineeringMain
 	@SidedProxy(clientSide = "resourceengineering.client.core.ClientProxy",serverSide = "resourceengineering.common.core.CommonProxy")
 	public static CommonProxy proxy;
 	
+	public static Vector oreList;
+	public static int[] oreWhiteList;
+	
 	//Items
-	public static Item flake;
+	public static Item flakeIron;
+	public static Item flakeGold;
+	public static Item diamondChip;
 	public static Item nugget;
 	public static Item goldenPotato;
 	public static Item gem;
-	
 	/*
 	 * ======================================================
 	 * ------------------------TOOLS-------------------------
@@ -87,6 +108,8 @@ public class ResourceEngineeringMain
 	public static Item emeraldPickaxe;
 	public static Item rubyPickaxe;
 	public static Item sapphirePickaxe;
+	public static Item superPickaxe;
+	public static Item hammer;
 	//Shovels
 	public static Item turquoiseShovel;
 	public static Item onyxShovel;
@@ -95,6 +118,7 @@ public class ResourceEngineeringMain
 	public static Item emeraldShovel;
 	public static Item rubyShovel;
 	public static Item sapphireShovel;
+	public static Item superShovel;
 	//Axes
 	public static Item turquoiseAxe;
 	public static Item onyxAxe;
@@ -111,6 +135,8 @@ public class ResourceEngineeringMain
 	public static Item emeraldHoe;
 	public static Item rubyHoe;
 	public static Item sapphireHoe;
+	//Other Tools
+	public static Item dirtLayer;
 	
 	/*
 	 * ======================================================
@@ -170,6 +196,14 @@ public class ResourceEngineeringMain
 
 	public static CreativeTabs reTab = new ResourceEngineeringTab(CreativeTabs.getNextID(),"wal_ResouceEngineeringTab");
 	
+	/*
+	 * ======================================================
+	 * ---------------------CRAFTSTUFF-----------------------
+	 * ======================================================
+	 */
+	public static Item stick;
+	public static Item screen;
+	
 	
 	/*
 	 * ======================================================
@@ -184,6 +218,7 @@ public class ResourceEngineeringMain
 	public static EnumToolMaterial emeraldMaterial = EnumHelper.addToolMaterial("Emerald", 3, 1024, 12.0F, 5, 8);
 	public static EnumToolMaterial rubyMaterial = EnumHelper.addToolMaterial("Ruby", 3, 2048, 16.0F, 6, 5);
 	public static EnumToolMaterial sapphireMaterial = EnumHelper.addToolMaterial("Sapphire", 3, 4096, 20.0F, 7, 1);
+	public static EnumToolMaterial superMaterial = EnumHelper.addToolMaterial("Super",3,2048,17.0F,1,0);
 	
 	//Armor Materials
 	public static EnumArmorMaterial turquoiseArmorMaterial = EnumHelper.addArmorMaterial("TURQUOISE_ARMOR", 5, new int[] {1, 3, 2, 1}, 30);
@@ -201,16 +236,31 @@ public class ResourceEngineeringMain
     DIAMOND(33, new int[]{3, 8, 6, 3}, 10);
     */
 	
+	/*
+	 * ======================================================
+	 * ----------------------MACHINES------------------------
+	 * ======================================================
+	 */
+	public static Block blockPressureVessel;
+	public static Block sifter;
+	public static Block tumbler;
+	public static Item ThorsHammer;
+	
+	private GuiHandler guiHandler = new GuiHandler();
+	
 	@PreInit()
 	public void PreInitialization(FMLPreInitializationEvent e)
 	{
 		ConfigCore cc = new ConfigCore();
 		ConfigCore.loadConfig(e);
 		
-		flake = new ItemFlake(cc.itemFlakeID);
+		flakeIron = new ItemFlake(cc.itemFlakeIronID,"wal_ItemIronFlake",0);
+		flakeGold = new ItemFlake(cc.itemFlakeGoldID,"wal_ItemGoldFlake",16);
+		diamondChip = new ItemFlake(cc.itemFlakeDiamondID,"wal_ItemDiamondChip",32);
 		nugget = new ItemNugget(cc.itemNuggetID);
 		goldenPotato = new ItemGoldenPotato(cc.itemGoldenPotatoID,5,6,false);
 		gem = new ItemGem(cc.itemGemID);
+		screen = new ItemScreen(cc.itemScreenID,"itemScreen");
 		//Swords
 		turquoiseSword = new ItemToolSword(cc.itemToolSwordTurquoiseID,turquoiseMaterial,83,"wal_itemToolSwordTurquoise");
 		onyxSword = new ItemToolSword(cc.itemToolSwordOnyxID,onyxMaterial,84,"wal_itemToolSwordOnyx");
@@ -224,10 +274,13 @@ public class ResourceEngineeringMain
 		turquoisePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeTurquoiseID,turquoiseMaterial,115,"wal_itemToolPickaxeTurquoise");
 		onyxPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeOnyxID,onyxMaterial,116,"wal_itemToolPickaxeOnyx");
 		amethystPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeAmethystID,amethystMaterial,117,"wal_itemToolPickaxeAmethyst");
-		citrinePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeCitrineID,citrineMaterial,118,"wal_itemToolPickaxeAmethyst");
+		citrinePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeCitrineID,citrineMaterial,118,"wal_itemToolPickaxeCitrine");
 		emeraldPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeEmeraldID,emeraldMaterial,119,"wal_itemToolPickaxeEmerald");
 		rubyPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeRubyID,rubyMaterial,120,"wal_itemToolPickaxeRuby");
 		sapphirePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeSapphireID,sapphireMaterial,121,"wal_itemToolPickaxeSapphire");
+		
+		hammer = new ItemToolHammer(cc.itemToolHammerID,superMaterial,138,"wal_itemToolHammer");
+		superPickaxe =  new ItemToolPickaxeSuper(cc.itemToolPickaxeSuperID,superMaterial,122,"wal_itemToolPickaxeSuper");
 		
 		//Shovels
 		turquoiseShovel = new ItemToolShovel(cc.itemToolShovelTurquoiseID,turquoiseMaterial,99,"wal_itemToolShovelTurquoise");
@@ -237,6 +290,8 @@ public class ResourceEngineeringMain
 		emeraldShovel = new ItemToolShovel(cc.itemToolShovelEmeraldID,emeraldMaterial,103,"wal_itemToolShovelEmerald");
 		rubyShovel = new ItemToolShovel(cc.itemToolShovelRubyID,rubyMaterial,104,"wal_itemToolShovelRuby");
 		sapphireShovel = new ItemToolShovel(cc.itemToolShovelSapphireID,sapphireMaterial,105,"wal_itemToolShovelSapphire");
+		
+		superShovel = new ItemToolShovelSuper(cc.itemToolShovelSuperID,superMaterial,106,"wal_itemToolShovelSuper");
 		
 		//Axes
 		turquoiseAxe = new ItemToolAxe(cc.itemToolAxeTurquoiseID,turquoiseMaterial,131,"wal_itemToolAxeTurquoise");
@@ -295,17 +350,44 @@ public class ResourceEngineeringMain
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);
+		
+		blockPressureVessel = new BlockPressureVessel(cc.pressureVesselID);
+		sifter = new BlockSifter(cc.sifterID);
+		tumbler = new BlockGemTumbler(cc.tumblerID);
+		
+		stick = new ItemStick(cc.itemStickID);
+		ThorsHammer = new ItemToolChunkHammer(cc.thorsHammerID,superMaterial,154,"wal_itemThorHammer");
+		dirtLayer = new ItemToolDirtLayer(cc.dirtLayerID,superMaterial,154,"wal_itemDirtLayer");
+		
+		oreWhiteList = cc.oreWhiteList;
 	}
 	@Init
 	public void Initialization(FMLInitializationEvent event)
 	{
-		NetworkRegistry.instance().registerGuiHandler(this,proxy);
+		NetworkRegistry.instance().registerGuiHandler(this,guiHandler);
+		instance = this;
 		GameRegistry.registerWorldGenerator(new WorldGenHandler());
+		proxy.registerTileEntities();
 		proxy.registerOre();
 		proxy.registerBlocks();
 		proxy.registerRenderInformation();
 		proxy.addNames();
 		proxy.addRecipes();
 	}
-		
+	public static void scanModOres()
+	{
+		oreList = new Vector();
+		for(int i=0;i<oreWhiteList.length;i++)
+		{
+			if(Block.blocksList[oreWhiteList[i]]!=null)
+			{
+				FMLLog.log(Level.INFO, "Found whitelisted ore block ID: %s", oreWhiteList[i]);
+				oreList.add(Block.blocksList[oreWhiteList[i]]);
+			}
+			else
+			{
+				FMLLog.log(Level.INFO, "Whitelisted ore not found ID: %s",oreWhiteList[i]);
+			}
+		}
+	}	
 }

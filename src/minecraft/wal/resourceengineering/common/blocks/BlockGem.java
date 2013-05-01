@@ -22,7 +22,7 @@ public class BlockGem extends Block
 		super(id,Material.rock);
 		setTextureFile("/walgfx/Blocks.png");
 		setBlockName("wal_BlockGem");
-		setHardness(2.0F);
+		setHardness(3.0F);
 		setResistance(10.0F);
 		//setLightValue(10.0F);
 		setCreativeTab(ResourceEngineeringMain.reTab);
@@ -39,6 +39,7 @@ public class BlockGem extends Block
 		case 4: return 20;//Emerald Gem Block
 		case 5: return 21;//Ruby Gem Block
 		case 6: return 22;//Sapphire Gem Block
+		case 7: return 23;//Mixed Gem Block
 		default: return 0;
 		}
 	}
@@ -50,7 +51,7 @@ public class BlockGem extends Block
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
 	{
-		for(int i=0;i<7;i++)
+		for(int i=0;i<8;i++)
 		{
 			par3List.add(new ItemStack(par1, 1, i));
 		}
