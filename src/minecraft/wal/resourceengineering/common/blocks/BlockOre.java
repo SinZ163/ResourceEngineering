@@ -35,6 +35,9 @@ public class BlockOre extends Block
 		case 4: return 4;//Emerald Ore
 		case 5: return 5;//Ruby Ore
 		case 6: return 6;//Sapphire Ore
+		case 7: return 7;//Loaded Dirt
+		case 8: return 8;//Loaded Sand
+		case 9: return 9;//Loaded Gravel
 		default: return 0;
 		}
 	}
@@ -45,7 +48,14 @@ public class BlockOre extends Block
 	}
 	public int idDropped(int meta,Random  random,int zero)
 	{
-		return ResourceEngineeringMain.gem.itemID;
+		if(meta<7)
+		{
+			return ResourceEngineeringMain.gem.itemID;
+		}
+		else
+		{
+			return ResourceEngineeringMain.oreBlock.blockID;
+		}
 	}
 	public void getSubBlocks(int i, CreativeTabs tab, List l)
 	{//TODO: Add the rest of the ores here
@@ -56,17 +66,27 @@ public class BlockOre extends Block
 		l.add(new ItemStack(i,1,4));
 		l.add(new ItemStack(i,1,5));
 		l.add(new ItemStack(i,1,6));
+		l.add(new ItemStack(i,1,7));
+		l.add(new ItemStack(i,1,8));
+		l.add(new ItemStack(i,1,9));
 	}
 	public ArrayList<ItemStack> getBlockDropped(World w,int x, int y, int z, int meta, int fortune)
 	{
 		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(ResourceEngineeringMain.gem,2,meta));
-		for(int i=0;i<2+fortune;i++)
+		if(meta<7)
 		{
-			if(w.rand.nextInt(101)>49)
+			list.add(new ItemStack(ResourceEngineeringMain.gem,2,meta));
+			for(int i=0;i<2+fortune;i++)
 			{
-				list.add(new ItemStack(ResourceEngineeringMain.gem,1,meta));
+				if(w.rand.nextInt(101)>49)
+				{
+					list.add(new ItemStack(ResourceEngineeringMain.gem,1,meta));
+				}
 			}
+		}
+		else
+		{
+			list.add(new ItemStack(ResourceEngineeringMain.oreBlock,1,meta));
 		}
 		return list;
 	}

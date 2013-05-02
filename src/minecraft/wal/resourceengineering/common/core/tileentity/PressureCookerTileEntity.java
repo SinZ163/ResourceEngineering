@@ -25,6 +25,7 @@ public class PressureCookerTileEntity extends TileEntity implements ISidedInvent
 	public int itemBurnTime;
 	public int cookTime;
 	private boolean isActive;
+	private static int blazeRod=1800;
 
 	// Then create a super constructor and give the inventory the amount of
 	// ItemStacks you want (Slots),
@@ -205,7 +206,7 @@ public class PressureCookerTileEntity extends TileEntity implements ISidedInvent
 		int i = par1ItemStack.getItem().itemID;
 
 		if (i == Item.blazeRod.itemID) {
-			return 100;
+			return blazeRod;
 		} else {
 			return 0;
 		}
@@ -277,7 +278,7 @@ public class PressureCookerTileEntity extends TileEntity implements ISidedInvent
 	{
 	         if (itemBurnTime == 0)
 	         {
-	        	 itemBurnTime = 200;
+	        	 itemBurnTime = blazeRod;
 	         }
 
 	         return (burnTime * par1) / itemBurnTime;

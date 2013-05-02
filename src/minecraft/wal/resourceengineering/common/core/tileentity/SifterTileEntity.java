@@ -121,9 +121,26 @@ public class SifterTileEntity extends TileEntity implements ISidedInventory
 	
 	public boolean isStackValidForSlot(int i, ItemStack itemstack)
 	{
-		if(i==0 && (itemstack.itemID == Block.dirt.blockID || itemstack.itemID == Block.gravel.blockID || itemstack.itemID == Block.sand.blockID))
+		
+		if(i==0)
 		{
-			return true;
+			if(itemstack.itemID == Block.gravel.blockID)
+			{
+				return true;
+			}
+			if(itemstack.itemID == Block.sand.blockID)
+			{
+				return true;
+			}
+			if(itemstack.itemID == Block.dirt.blockID)
+			{
+				return true;
+			}
+			if(itemstack.itemID==ResourceEngineeringMain.oreBlock.blockID && itemstack.getItemDamage()>6)
+			{
+				return true;
+			}
+			return false;
 		}
 		else
 		{
@@ -180,10 +197,23 @@ public class SifterTileEntity extends TileEntity implements ISidedInventory
 		ItemStack itemstack = getStackInSlot(0);
 		if(itemstack!=null)
 		{
-			if(itemstack.itemID == Block.dirt.blockID || itemstack.itemID == Block.gravel.blockID || itemstack.itemID == Block.sand.blockID)
+			if(itemstack.itemID == Block.gravel.blockID)
 			{
 				return true;
 			}
+			if(itemstack.itemID == Block.sand.blockID)
+			{
+				return true;
+			}
+			if(itemstack.itemID == Block.dirt.blockID)
+			{
+				return true;
+			}
+			if(itemstack.itemID==ResourceEngineeringMain.oreBlock.blockID && itemstack.getItemDamage()>6)
+			{
+				return true;
+			}
+			return false;
 		}
 		return false;
 	}
@@ -352,6 +382,114 @@ public class SifterTileEntity extends TileEntity implements ISidedInventory
 				}
 				//Diamond
 				if(getChance()<5)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.diamond, 1),false);
+				}
+				//Flint
+				if(getChance()<2000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.flint,1), false);
+				}
+				//Dirt or sand
+				if(getChance()%2==1)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Block.dirt,1),false);
+				}
+				else
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Block.sand,1), false);
+				}
+			}
+			//Loaded Dirt
+			else if(getStackInSlot(0).itemID==ResourceEngineeringMain.oreBlock.blockID && getStackInSlot(0).getItemDamage()==7)
+			{
+				//Iron Flake
+				if(getChance()<5000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.flakeIron, 1),false);
+				}
+				//Gold Flake
+				if(getChance()<3000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.flakeGold,1), false);
+				}
+				//Diamond Chip
+				if(getChance()<900)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.diamondChip,1), false);
+				}
+				//Iron Nugget
+				if(getChance()<1000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.nugget,1,0), false);
+				}
+				//Gold Nugget
+				if(getChance()<900)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.goldNugget,1), false);
+				}
+				//Sifted Dirt(sand for now)
+				findMatchingSlotAndAddItem(new ItemStack(Block.sand,1), false);
+			}
+			//Loaded Sand
+			else if(getStackInSlot(0).itemID==ResourceEngineeringMain.oreBlock.blockID && getStackInSlot(0).getItemDamage()==8)
+			{
+				//Iron Flake
+				if(getChance()<4000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.flakeIron, 1),false);
+				}
+				//Gold Flake
+				if(getChance()<8000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.flakeGold,1), false);
+				}
+				//Diamond Chip
+				if(getChance()<800)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.diamondChip,1), false);
+				}
+				//Iron Nugget
+				if(getChance()<1000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.nugget,1,0), false);
+				}
+				//Gold Nugget
+				if(getChance()<2000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.goldNugget,1), false);
+				}
+			}
+			//Loaded Gravel
+			else if(getStackInSlot(0).itemID==ResourceEngineeringMain.oreBlock.blockID && getStackInSlot(0).getItemDamage()==9)
+			{
+				//Iron Flake
+				if(getChance()<5000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.flakeIron, 1),false);
+				}
+				//Gold Flake
+				if(getChance()<4500)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.flakeGold,1), false);
+				}
+				//Diamond Chip
+				if(getChance()<1000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.diamondChip,1), false);
+				}
+				//Iron Nugget
+				if(getChance()<800)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(ResourceEngineeringMain.nugget,1,0), false);
+				}
+				//Gold Nugget
+				if(getChance()<500)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.goldNugget,1), false);
+				}
+				//Diamond
+				if(getChance()<300)
 				{
 					findMatchingSlotAndAddItem(new ItemStack(Item.diamond, 1),false);
 				}

@@ -111,6 +111,9 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,4),"Emerald Ore");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,5),"Ruby Ore");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,6),"Sapphire Ore");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,7),"Loaded Dirt");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,8),"Loaded Sand");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.oreBlock,1,9),"Loaded Gravel");
 		
 		//Gem Blocks:
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.gemBlock,1,0), "Turquoise Block");

@@ -29,7 +29,7 @@ public class ItemBlockOre extends ItemBlock
 	public String getItemNameIS(ItemStack is)
 	{
 		//TODO: Add ore names as ores are implemented
-		String[] types = {"Turquoise","Onyx","Amethyst","Citrine","Emerald","Ruby","Sapphire"};
+		String[] types = {"Turquoise","Onyx","Amethyst","Citrine","Emerald","Ruby","Sapphire","LoadedDirt","LoadedSand","LoadedGravel"};
 		return "wal_ore"+types[is.getItemDamage()];
 	}
 }
