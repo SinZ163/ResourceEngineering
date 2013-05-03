@@ -62,7 +62,7 @@ public class ItemToolDirtLayer extends ItemTool
 	{
 		if (!world.isRemote && world.getGameRules().getGameRuleBooleanValue("doTileDrops"))
 	    {
-			ArrayList list = Block.blocksList[world.getBlockId(i,y,j)].getBlockDropped(world,i,y,j,world.getBlockMetadata(i,y+1,j),0);
+			ArrayList list = Block.blocksList[world.getBlockId(i,y,j)].getBlockDropped(world,i,y,j,world.getBlockMetadata(i,y,j),0);
 	    	if(list!=null)
 	    	{
 	    		for(int a=0;a<list.size();a++)
@@ -76,7 +76,7 @@ public class ItemToolDirtLayer extends ItemTool
 	    	}
 	    	else
 	    	{
-	    		ItemStack dropStack = new ItemStack(Block.blocksList[world.getBlockId(i,y+1,j)].idDropped(world.getBlockMetadata(i,y+1,j), world.rand, 0),1,world.getBlockMetadata(i,y+1,j));
+	    		ItemStack dropStack = new ItemStack(Block.blocksList[world.getBlockId(i,y,j)].idDropped(world.getBlockMetadata(i,y,j), world.rand, 0),1,world.getBlockMetadata(i,y,j));
 	    		EntityItem itemDrop = new EntityItem(world, (double)(x), (double)(y), (double)(z), dropStack);
 	            itemDrop.delayBeforeCanPickup = 0;
 	            world.spawnEntityInWorld(itemDrop);
@@ -90,8 +90,13 @@ public class ItemToolDirtLayer extends ItemTool
 		int xStart,xEnd,yStart,yEnd,zStart,zEnd;
 		switch(blockFace)
 		{
-		case 0:
+		case 0://Bottom of Block
+			yIn-=1;
 		case 1://Top of Block
+			if(isBlockReplaceable(world.getBlockId(x,yIn,z)))
+			{
+				yIn-=1;
+			}
 			xStart = x-2;
 			xEnd = x+2;
 			yStart = yIn;
@@ -99,32 +104,36 @@ public class ItemToolDirtLayer extends ItemTool
 			zStart = z-2;
 			zEnd = z+2;
 			break;
-		case 2:
+		case 2://Z Sides
 		case 3:
-		case 4:
+			xStart=x-2;
+			xEnd = x+2;
+			yStart=yIn-2;
+			yEnd=yIn+2;
+			zStart=z;
+			zEnd = z;
+			break;
+		case 4://X Sides
 		case 5:
 		default:
-			xStart = x-2;
-			xEnd = x+2;
-			yStart = yIn;
-			yEnd = yIn;
+			xStart = x;
+			xEnd = x;
+			yStart = yIn-2;
+			yEnd = yIn+2;
 			zStart = z-2;
 			zEnd = z+2;
 			break;
 		}
-		if(isBlockReplaceable(world.getBlockId(x,yIn,z)))
-		{
-			yIn-=1;
-		}
+		
 		if(player.inventory.hasItem(3))
 		{
-			for(int i=(x-2);i<=(x+2);i++)
+			for(int i=xStart;i<=xEnd;i++)
 			{
-				for(int j=(z-2);j<=(z+2);j++)
+				for(int j=zStart;j<=zEnd;j++)
 				{
 					for(int y=yStart;y<=yEnd;y++)
 					{
-						if(world.isAirBlock(i, y+1, j))
+						if(world.isAirBlock(i, y, j))
 						{
 							if(player.inventory.consumeInventoryItem(3))
 							{
