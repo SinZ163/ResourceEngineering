@@ -46,7 +46,7 @@ public class WorldGenHandler implements IWorldGenerator
 		generateResource(oreBlockID,7,50,128,64,random,x,z,w,0);
 		
 		//Loaded Gravel gen
-		generateResource(oreBlockID,9,40,128,128,random,x,z,w,0);
+		generateResource(oreBlockID,9,40,128,64,random,x,z,w,0);
 		
 		switch(w.provider.getBiomeGenForCoords(x, z).biomeID)
 		{
