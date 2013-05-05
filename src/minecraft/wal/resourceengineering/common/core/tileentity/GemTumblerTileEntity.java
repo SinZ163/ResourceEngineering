@@ -225,7 +225,7 @@ public class GemTumblerTileEntity extends TileEntity implements ISidedInventory 
 	{
 		boolean var1 = this.burnTime > 0;
 		boolean var2 = false;
-		if (this.burnTime > 0)
+		if (this.burnTime > 0 && this.canSmelt())
 		{
 			--this.burnTime;
 		}
