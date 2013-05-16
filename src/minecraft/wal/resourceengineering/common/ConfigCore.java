@@ -19,6 +19,7 @@ public class ConfigCore
 	
 	public static int thorsHammerID;
 	public static int dirtLayerID;
+	public static int itemToolInfiniteHammerID;
 	
 	//Tools
 	public static int itemToolSwordTurquoiseID;
@@ -206,6 +207,7 @@ public class ConfigCore
 		itemScreenID = config.getItem("Screen",21071).getInt();
 		thorsHammerID = config.getItem("ThorsHammer",21072).getInt();
 		dirtLayerID = config.getItem("DirtLayer",21073).getInt();
+		itemToolInfiniteHammerID = config.getItem("Hammer2", 21074).getInt();
 		
 		oreBlockID = config.getBlock("Ore",250).getInt();
 		gemBlockID = config.getBlock("GemBlock",251).getInt();

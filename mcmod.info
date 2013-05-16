@@ -3,7 +3,7 @@
   "modid": "mod_walResourceEngineering",
   "name": "Resource Engineering",
   "description": "Extracting resources from new places!",
-  "version": "0.0.115",
+  "version": "0.0.117",
   "credits": "Created by kg6jay. Textures by PaiRSquared, LazDude2012 and kg6jay. Tested by PaiRSquared and the guys on Techcraft!",
   "logoFile": "/walgfx/logo.png",
   "mcversion": "1.4.7",

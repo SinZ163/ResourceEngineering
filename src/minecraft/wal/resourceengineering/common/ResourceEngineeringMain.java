@@ -68,7 +68,7 @@ import resourceengineering.common.blocks.BlockSifter;
 @NetworkMod(clientSideRequired=true,serverSideRequired=false,
 clientPacketHandlerSpec=@SidedPacketHandler(channels={"WAL_RE"},packetHandler=ClientPacketHandler.class),
 serverPacketHandlerSpec=@SidedPacketHandler(channels = {"WAL_RE"}, packetHandler = ServerPacketHandler.class))
-@Mod(modid="mod_walResourceEngineering",name="Resource Engineering",version="0.0.115")
+@Mod(modid="mod_walResourceEngineering",name="Resource Engineering",version="0.0.117")
 public class ResourceEngineeringMain
 {
 	@Instance("Wal_ResourceEngineering")
@@ -219,6 +219,7 @@ public class ResourceEngineeringMain
 	public static EnumToolMaterial rubyMaterial = EnumHelper.addToolMaterial("Ruby", 3, 2048, 16.0F, 6, 5);
 	public static EnumToolMaterial sapphireMaterial = EnumHelper.addToolMaterial("Sapphire", 3, 4096, 20.0F, 7, 1);
 	public static EnumToolMaterial superMaterial = EnumHelper.addToolMaterial("Super",3,2048,17.0F,1,0);
+	public static EnumToolMaterial infiniteMaterial = EnumHelper.addToolMaterial("Infinite", 4, 2000000000, 50.0F, 1, 0);
 	
 	//Armor Materials
 	public static EnumArmorMaterial turquoiseArmorMaterial = EnumHelper.addArmorMaterial("TURQUOISE_ARMOR", 5, new int[] {1, 3, 2, 1}, 30);
@@ -245,6 +246,7 @@ public class ResourceEngineeringMain
 	public static Block sifter;
 	public static Block tumbler;
 	public static Item ThorsHammer;
+	public static Item InfiniteHammer;
 	
 	private GuiHandler guiHandler = new GuiHandler();
 	
@@ -280,6 +282,7 @@ public class ResourceEngineeringMain
 		sapphirePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeSapphireID,sapphireMaterial,121,"wal_itemToolPickaxeSapphire");
 		
 		hammer = new ItemToolHammer(cc.itemToolHammerID,superMaterial,138,"wal_itemToolHammer");
+		InfiniteHammer = new ItemToolHammer(cc.itemToolInfiniteHammerID,infiniteMaterial,138,"wal_itemToolInfiniteHammer");
 		superPickaxe =  new ItemToolPickaxeSuper(cc.itemToolPickaxeSuperID,superMaterial,122,"wal_itemToolPickaxeSuper");
 		
 		//Shovels

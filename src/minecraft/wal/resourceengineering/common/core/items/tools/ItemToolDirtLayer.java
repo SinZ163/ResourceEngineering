@@ -87,41 +87,64 @@ public class ItemToolDirtLayer extends ItemTool
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int yIn, int z, int blockFace, float par8, float par9, float par10)
     {
 		FMLLog.log(Level.INFO,"BlockFace: %s",blockFace);
+		int offset = 2;//offset of 2 makes a 5x5 square
 		int xStart,xEnd,yStart,yEnd,zStart,zEnd;
+		boolean isSneaking = player.isSneaking();
+		boolean isReplaceable = isBlockReplaceable(world.getBlockId(x,yIn,z));
+		FMLLog.log(Level.INFO, "Sneaking: %s\nReplaceable: %s", isSneaking,isReplaceable);
 		switch(blockFace)
 		{
 		case 0://Bottom of Block
-			yIn-=1;
-		case 1://Top of Block
-			if(isBlockReplaceable(world.getBlockId(x,yIn,z)))
+			if(!isReplaceable && !isSneaking)
 			{
-				yIn-=1;
+				yIn-=2;
 			}
-			xStart = x-2;
-			xEnd = x+2;
+		case 1://Top of Block
+			if(!isReplaceable && !isSneaking)
+			{
+				yIn+=1;
+			}
+			xStart = x-offset;
+			xEnd = x+offset;
 			yStart = yIn;
 			yEnd = yIn;
-			zStart = z-2;
-			zEnd = z+2;
+			zStart = z-offset;
+			zEnd = z+offset;
 			break;
 		case 2://Z Sides
+			if(!isReplaceable && !isSneaking)
+			{
+				z-=2;
+			}
 		case 3:
-			xStart=x-2;
-			xEnd = x+2;
-			yStart=yIn-2;
-			yEnd=yIn+2;
+			if(!isReplaceable && !isSneaking)
+			{
+				z+=1;
+			}
+			xStart=x-offset;
+			xEnd = x+offset;
+			yStart=yIn-offset;
+			yEnd=yIn+offset;
 			zStart=z;
 			zEnd = z;
 			break;
 		case 4://X Sides
+			if(!isReplaceable && !isSneaking)
+			{
+				x-=2;
+			}
 		case 5:
+			if(!isReplaceable && !isSneaking)
+			{
+				x+=1;
+			}
 		default:
 			xStart = x;
 			xEnd = x;
-			yStart = yIn-2;
-			yEnd = yIn+2;
-			zStart = z-2;
-			zEnd = z+2;
+			yStart = yIn-offset;
+			yEnd = yIn+offset;
+			zStart = z-offset;
+			zEnd = z+offset;
 			break;
 		}
 		
