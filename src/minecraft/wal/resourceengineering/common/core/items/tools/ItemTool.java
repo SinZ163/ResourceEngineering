@@ -27,7 +27,7 @@ public class ItemTool extends Item
 		maxStackSize = 1;
 		setMaxDamage(m.getMaxUses());
 		efficiencyOnProperMaterial = m.getEfficiencyOnProperMaterial();
-		damageVsEntity = Damage + m.getDamageVsEntity();
+		damageVsEntity = Damage + (int)m.getDamageVsEntity();
 		setCreativeTab(ResourceEngineeringMain.reTab);
 	}
 	public float getStrVsBlock(ItemStack itemStack,Block block)

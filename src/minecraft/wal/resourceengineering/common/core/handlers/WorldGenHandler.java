@@ -23,6 +23,7 @@ public class WorldGenHandler implements IWorldGenerator
 		int oreBlockID = ResourceEngineeringMain.oreBlock.blockID;
 		//Turquoise Ore Gen
 		generateOre(oreBlockID,0,60,128,8,random,x,z,w);
+		
 				
 		//Onyx Ore Gen
 		generateOre(oreBlockID,1,50,80,8,random,x,z,w);
@@ -93,7 +94,7 @@ public class WorldGenHandler implements IWorldGenerator
 			int posX=x+random.nextInt(16);
 			int posY=random.nextInt(maxSpawnY-minSpawnY)+minSpawnY;
 			int posZ=z+random.nextInt(16);
-			new WorldGenMinable(oreID,meta,random.nextInt(maxVeinSize-10)+10).generate(world,random,posX,posY,posZ);
+			new WorldGenMinable(oreID, meta, random.nextInt(maxVeinSize-10)+10, 1).generate(world,random,posX,posY,posZ);
 		}
 	}
 	private void generateOre(int oreID,int meta,int veinsPerChunk,int maxSpawnY,int maxVeinSize,Random random,int x,int z,World world)
@@ -103,7 +104,7 @@ public class WorldGenHandler implements IWorldGenerator
 			int posX = x+random.nextInt(16);
 			int posY = random.nextInt(maxSpawnY);
 			int posZ = z+random.nextInt(16);
-			new WorldGenMinable(oreID,meta,random.nextInt(maxVeinSize+1)).generate(world,random,posX,posY,posZ);
+			new WorldGenMinable(oreID, meta, random.nextInt(maxVeinSize+1), 1).generate(world,random,posX,posY,posZ);
 		}
 	}
 }

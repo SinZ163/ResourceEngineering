@@ -4,27 +4,46 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSnow;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import resourceengineering.common.ResourceEngineeringMain;
 
 public class ItemToolShovelSuper extends ItemTool
 {
+	private Icon icon;
+	private String n;
 	public static final Block[] blocksEffectiveAgainst = new Block[] {Block.grass, Block.dirt, Block.sand, Block.gravel, Block.snow, Block.blockSnow, Block.blockClay, Block.tilledField, Block.slowSand, Block.mycelium};
 	public ItemToolShovelSuper(int ID, EnumToolMaterial m, int tex, String name)
 	{
 	         super(ID, 1, m, blocksEffectiveAgainst);
-	         setTextureFile("/walgfx/Items.png");
+	         setUnlocalizedName(name);
+	         n=name;
 	         this.setCreativeTab(ResourceEngineeringMain.reTab);
-	         setIconIndex(tex);
-	         setItemName(name);
 	}
+	public void registerIcons(IconRegister iconRegister)
+	{
+		makeIcons(iconRegister);
+	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icon = iconRegister.registerIcon("resourceengineering:"+n);
+	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Icon getIconFromDamage(int i)
+    {
+        return icon;
+    }
 	public boolean canHarvestBlock(Block par1Block)
 	{
 	         return par1Block == Block.snow ? true : par1Block == Block.blockSnow;
@@ -80,7 +99,7 @@ public class ItemToolShovelSuper extends ItemTool
 					            world.spawnEntityInWorld(itemDrop);
 					        }
 				        }
-						world.setBlockWithNotify((x+i),(y+j), (z+k), 0);
+						world.setBlockToAir((x+i),(y+j), (z+k));
 						mineVein((x+i),(y+j),(z+k),id,meta,world,xS,yS,zS,recurCount+1,entityLiving,itemStack);
 					}
 				}

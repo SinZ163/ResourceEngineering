@@ -14,11 +14,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.ISidedInventory;
 
 //Basically this is where your TileEntity comes from
 //Create a class and extend TileEntity and implement IInventory
-public class GemTumblerTileEntity extends TileEntity implements ISidedInventory {
+public class GemTumblerTileEntity extends TileEntity implements IInventory {
 	// Then create a ItemStack array (I.E. ItemStack[])
 	private ItemStack[] inventory;
 
@@ -361,43 +360,79 @@ public class GemTumblerTileEntity extends TileEntity implements ISidedInventory 
 		}
 	}
 
+//	@Override
+//	public int getStartInventorySide(ForgeDirection side) {
+//		switch(side)
+//		{
+//		case DOWN:
+//			return 1;
+//		case EAST:
+//		case NORTH:
+//		case SOUTH:
+//		case WEST:
+//			return 2;
+//		case UP:
+//			return 0;
+//		case UNKNOWN:
+//		default:
+//			return 0;
+//		}
+//	}
+//
+//	@Override
+//	public int getSizeInventorySide(ForgeDirection side)
+//	{
+//		switch(side)
+//		{
+//		case DOWN:
+//			return 1;
+//		case EAST:
+//		case NORTH:
+//		case SOUTH:
+//		case WEST:
+//			return 1;
+//		case UP:
+//			return 1;
+//		case UNKNOWN:
+//		default:
+//			return 0;
+//		
+//		}
+//	}
+
 	@Override
-	public int getStartInventorySide(ForgeDirection side) {
-		switch(side)
-		{
-		case DOWN:
-			return 1;
-		case EAST:
-		case NORTH:
-		case SOUTH:
-		case WEST:
-			return 2;
-		case UP:
-			return 0;
-		case UNKNOWN:
-		default:
-			return 0;
-		}
+	public boolean isInvNameLocalized() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
-	public int getSizeInventorySide(ForgeDirection side)
+	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
-		switch(side)
+		switch(i)
 		{
-		case DOWN:
-			return 1;
-		case EAST:
-		case NORTH:
-		case SOUTH:
-		case WEST:
-			return 1;
-		case UP:
-			return 1;
-		case UNKNOWN:
+		case 0://Input
+			if(itemstack.itemID == ResourceEngineeringMain.gem.itemID)
+			{
+				if(itemstack.getItemDamage() <7)
+				{
+					return true;
+				}
+			}
+			return false;
+		case 1://Fuel
+			if(itemstack.itemID == Block.gravel.blockID)
+			{
+				return true;
+			}
+			if(itemstack.itemID == Block.sand.blockID)
+			{
+				return true;
+			}
+			return false;
+		case 2://Output
 		default:
-			return 0;
-		
+			return false;
 		}
 	}
 }

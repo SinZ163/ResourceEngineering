@@ -29,6 +29,10 @@ public class SifterSlot extends Slot
 		{
 			return true;
 		}
+		if(itemstack.itemID == Block.slowSand.blockID)
+		{
+			return true;
+		}
 		if(itemstack.itemID==ResourceEngineeringMain.oreBlock.blockID && itemstack.getItemDamage()>6)
 		{
 			return true;

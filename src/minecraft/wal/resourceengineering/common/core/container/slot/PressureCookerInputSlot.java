@@ -1,6 +1,10 @@
 package resourceengineering.common.core.container.slot;
 
+import java.util.logging.Level;
+
+import cpw.mods.fml.common.FMLLog;
 import resourceengineering.common.ResourceEngineeringMain;
+import resourceengineering.common.core.tileentity.PressureCookerTileEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -15,11 +19,7 @@ public class PressureCookerInputSlot extends Slot
 	@Override
 	public boolean isItemValid(ItemStack itemstack)
 	{
-		if(itemstack.itemID == ResourceEngineeringMain.flakeGold.itemID || itemstack.itemID == ResourceEngineeringMain.flakeIron.itemID || itemstack.itemID == ResourceEngineeringMain.diamondChip.itemID)
-		{
-			return true;
-		}
-		return false;
+		return PressureCookerTileEntity.canBeSmelted(itemstack.itemID);
 	}
 
 	@Override

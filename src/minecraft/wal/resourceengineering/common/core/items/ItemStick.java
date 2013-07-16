@@ -5,28 +5,43 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import resourceengineering.common.ResourceEngineeringMain;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import net.minecraft.util.MathHelper;
 
 public class ItemStick extends Item
 {
+	public static final String[] stickNames = new String[] {"stickDiamond","stickSapphire"};
+	private Icon[] icons;
 	public ItemStick(int id)
 	{
 		super(id);
-		setTextureFile("/walgfx/Items.png");
-		setItemName("wal_itemStick");
 		setCreativeTab(ResourceEngineeringMain.reTab);
 		setMaxDamage(0);
 	}
-	@SideOnly(Side.CLIENT)
-	public int getIconFromDamage(int i)
+	public void registerIcons(IconRegister iconRegister)
 	{
-		switch(i)
+		makeIcons(iconRegister);
+	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icons = new Icon[2];
+		icons[0] = iconRegister.registerIcon("resourceengineering:itemStickDiamond");
+		icons[1] = iconRegister.registerIcon("resourceengineering:itemStickSapphire");
+	}
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int i)
+	{
+		if(i>=icons.length)
 		{
-		case 0: return 18;
-		case 1: return 34;
-		default: return 0;
+			return null;
+		}
+		else
+		{
+			return icons[i];
 		}
 	}
 	public String getItemNameIS(ItemStack is)
@@ -46,4 +61,9 @@ public class ItemStick extends Item
 			itemList.add(new ItemStack(itemID,1,i));
 		}
 	}
+	public String getUnlocalizedName(ItemStack item)
+    {
+        
+        return super.getUnlocalizedName() + "." + stickNames[item.getItemDamage()];
+    }
 }

@@ -65,6 +65,19 @@ public class CommonProxy implements IGuiHandler
 	}
 	public void addNames()
 	{
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheTurquoise,1,0),"Turquoise Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheOnyx,1,0),"Onyx Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheAmethyst,1,0),"Amethyst Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheCitrine,1,0),"Citrine Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheEmerald,1,0),"Emerald Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheRuby,1,0),"Ruby Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheSapphire,1,0),"Sapphire Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheWood,1,0),"Wooden Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheStone,1,0),"Cobblestone Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheIron,1,0),"Iron Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheGold,1,0),"Gold Scythe");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.scytheDiamond,1,0),"Diamond Scythe");
+		
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.dirtLayer,1,0),"Dirt Layer");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.ThorsHammer,1,0),"Thors Hammer");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.InfiniteHammer,1,0),"Hammer");
@@ -79,6 +92,7 @@ public class CommonProxy implements IGuiHandler
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.stick,1,0),"Diamond Stick");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.stick,1,1),"Sapphire Stick");
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.screen,1),"Screen");
+		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.machinePanel,1),"Machine Panel");
 		
 		//Metal Flakes
 		LanguageRegistry.addName(new ItemStack(ResourceEngineeringMain.flakeIron,1),"Iron Flake");
@@ -243,19 +257,28 @@ public class CommonProxy implements IGuiHandler
 		ItemStack diamondStick = new ItemStack(ResourceEngineeringMain.stick,1,0);
 		ItemStack sapphireStick = new ItemStack(ResourceEngineeringMain.stick,1,1);
 		
+		//Temp recipe for slime balls
+		GameRegistry.addRecipe(new ItemStack(Item.slimeBall,4),"SSS","SMS","SSS",Character.valueOf('S'),new ItemStack(Item.seeds),Character.valueOf('M'),new ItemStack(Item.bucketMilk));
+				
+		
+		GameRegistry.addRecipe(new ItemStack(Item.poisonousPotato,1),"PF",Character.valueOf('P'),new ItemStack(Item.potato,1),Character.valueOf('F'),new ItemStack(Item.fermentedSpiderEye,1));
+		
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.ThorsHammer,1),"HHH","DSD","SDS",Character.valueOf('H'),new ItemStack(ResourceEngineeringMain.gemBlock,1,7),Character.valueOf('D'),diamondStick,Character.valueOf('S'),sapphireStick);
 		
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.screen,1),"SIS","ISI","SIS",Character.valueOf('S'),stick,Character.valueOf('I'),new ItemStack(Item.ingotIron));
-		
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.machinePanel,3),"III","SSS","III",Character.valueOf('I'),new ItemStack(Item.ingotIron,1),Character.valueOf('S'),new ItemStack(Block.stoneSingleSlab,1));
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.dirtLayer,1),"G","S","S",Character.valueOf('G'),new ItemStack(ResourceEngineeringMain.gemBlock,1,7),Character.valueOf('S'),diamondStick);
 		
 		//Machines
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.tumbler,1),"PWP","WSW","PWP",
 				Character.valueOf('P'),new ItemStack(Block.pistonBase,1),
 				Character.valueOf('S'),new ItemStack(ResourceEngineeringMain.sifter,1),
-				Character.valueOf('W'),new ItemStack(Block.cloth,1,-1));
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.blockPressureVessel,1),"XXX","PFP","XXX",Character.valueOf('X'),new ItemStack(Block.obsidian),Character.valueOf('P'),new ItemStack(Block.pistonBase),Character.valueOf('F'),new ItemStack(Block.stoneOvenIdle));
-		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.sifter,1),"ISI","ISI","ISI",Character.valueOf('I'),new ItemStack(Block.blockSteel),Character.valueOf('S'),new ItemStack(ResourceEngineeringMain.screen,1));
+				Character.valueOf('W'),Block.cloth);
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.blockPressureVessel,1),"XXX","PFP","XXX",Character.valueOf('X'),new ItemStack(Block.obsidian),Character.valueOf('P'),new ItemStack(Block.pistonBase),Character.valueOf('F'),new ItemStack(Block.furnaceIdle));
+		
+		
+		
+		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.sifter,1),"ISI","ISI","ICI",Character.valueOf('I'),new ItemStack(ResourceEngineeringMain.machinePanel,1),Character.valueOf('S'),new ItemStack(ResourceEngineeringMain.screen,1),Character.valueOf('C'),new ItemStack(Block.chest,1));
 		
 		//Sticks
 		GameRegistry.addRecipe(new ItemStack(ResourceEngineeringMain.stick,2,0),"A","A","A",Character.valueOf('A'),diamondChip);
@@ -288,7 +311,7 @@ public class CommonProxy implements IGuiHandler
 				Character.valueOf('D'),new ItemStack(Block.blockDiamond,1),
 				Character.valueOf('R'),new ItemStack(ResourceEngineeringMain.gemBlock,1,5),
 				Character.valueOf('T'),new ItemStack(ResourceEngineeringMain.gemBlock,1,0),
-				Character.valueOf('I'),new ItemStack(Block.blockSteel,1),
+				Character.valueOf('I'),new ItemStack(Block.blockIron,1),
 				Character.valueOf('S'),new ItemStack(ResourceEngineeringMain.gemBlock,1,6));
 		
 		//Gem from Block Recipes
@@ -302,7 +325,7 @@ public class CommonProxy implements IGuiHandler
 		
 		//Smelting gem ore
 		int xpPerSmelt=5;
-		
+		FurnaceRecipes.smelting().addSmelting(Item.rottenFlesh.itemID, new ItemStack(Item.leather,1), 5.0F);
 		FurnaceRecipes.smelting().addSmelting(ResourceEngineeringMain.oreBlock.blockID,0,new ItemStack(ResourceEngineeringMain.gem,5,0),xpPerSmelt);
 		FurnaceRecipes.smelting().addSmelting(ResourceEngineeringMain.oreBlock.blockID,1,new ItemStack(ResourceEngineeringMain.gem,5,1),xpPerSmelt);
 		FurnaceRecipes.smelting().addSmelting(ResourceEngineeringMain.oreBlock.blockID,2,new ItemStack(ResourceEngineeringMain.gem,5,2),xpPerSmelt);
@@ -485,5 +508,35 @@ public class CommonProxy implements IGuiHandler
 		GameRegistry.addRecipe(emeraldBoots,"X X","X X",Character.valueOf('X'),emeraldGem);
 		GameRegistry.addRecipe(rubyBoots,"X X","X X",Character.valueOf('X'),rubyGem);
 		GameRegistry.addRecipe(sapphireBoots,"X X","X X",Character.valueOf('X'),sapphireGem);
+		
+		//SCYTHES
+		ItemStack turquoiseScythe = new ItemStack(ResourceEngineeringMain.scytheTurquoise,1,0);
+		ItemStack onyxScythe = new ItemStack(ResourceEngineeringMain.scytheOnyx,1,0);
+		ItemStack amethystScythe = new ItemStack(ResourceEngineeringMain.scytheAmethyst,1,0);
+		ItemStack citrineScythe = new ItemStack(ResourceEngineeringMain.scytheCitrine,1,0);
+		ItemStack emeraldScythe = new ItemStack(ResourceEngineeringMain.scytheEmerald,1,0);
+		ItemStack rubyScythe = new ItemStack(ResourceEngineeringMain.scytheRuby,1,0);
+		ItemStack sapphireScythe = new ItemStack(ResourceEngineeringMain.scytheSapphire,1,0);
+		ItemStack woodScythe = new ItemStack(ResourceEngineeringMain.scytheWood,1,0);
+		ItemStack stoneScythe = new ItemStack(ResourceEngineeringMain.scytheStone,1,0);
+		ItemStack ironScythe = new ItemStack(ResourceEngineeringMain.scytheIron,1,0);
+		ItemStack goldScythe = new ItemStack(ResourceEngineeringMain.scytheGold,1,0);
+		ItemStack diamondScythe = new ItemStack(ResourceEngineeringMain.scytheDiamond,1,0);
+		GameRegistry.addRecipe(turquoiseScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),rawTurquoise);
+		GameRegistry.addRecipe(onyxScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),rawOnyx);
+		GameRegistry.addRecipe(turquoiseScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),turquoiseGem);
+		GameRegistry.addRecipe(onyxScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),onyxGem);
+		GameRegistry.addRecipe(amethystScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),amethystGem);
+		GameRegistry.addRecipe(citrineScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),citrineGem);
+		GameRegistry.addRecipe(emeraldScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),emeraldGem);
+		GameRegistry.addRecipe(rubyScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),rubyGem);
+		GameRegistry.addRecipe(sapphireScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),sapphireGem);
+		GameRegistry.addRecipe(woodScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),new ItemStack(Block.planks));
+		GameRegistry.addRecipe(stoneScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),new ItemStack(Block.cobblestone));
+		GameRegistry.addRecipe(ironScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),new ItemStack(Item.ingotIron));
+		GameRegistry.addRecipe(goldScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),new ItemStack(Item.ingotGold));
+		GameRegistry.addRecipe(diamondScythe," XX","X S"," S ",Character.valueOf('S'),stick,Character.valueOf('X'),new ItemStack(Item.diamond));
+		
+		
 	}
 }

@@ -2,45 +2,58 @@ package resourceengineering.common.blocks;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import resourceengineering.common.ResourceEngineeringMain;
 import resourceengineering.common.core.tileentity.PressureCookerTileEntity;
 
 public class BlockPressureVessel extends BlockContainer
 {
-	public BlockPressureVessel(int blockId) {
-		// Create the super constructer and give it the parms that it needs, I.E
-		// if you want a texture
-		// Give it a super(blockId, textureSpot, Material);
+	private Icon icons[];
+	public BlockPressureVessel(int blockId)
+	{
 		super(blockId, Material.iron);
-		setTextureFile("/walgfx/Blocks.png");
-		// This part is optional and is required at some point, if you don't put
-		// it here you will have to put it after you
-		// Declare the block I.E public static final Block tutorialBlock = new
-		// BlockTutorial(255).setBlockName("blockTutorial");
-		setBlockName("blockPressureVessel");
 		setCreativeTab(ResourceEngineeringMain.reTab);
 		setHardness(1.0F);
 		
 	}
-	public int getBlockTextureFromSideAndMetadata(int i,int j)
-	{//j is meta, i is side
-		switch(i)
+	@Override
+	public void registerIcons(IconRegister iconRegister)
+	{
+		makeIcons(iconRegister);
+	    //     this.field_94336_cN = iconRegister.func_94245_a("resourceengineering:blockGem");
+	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icons = new Icon[6];
+		icons[0] = iconRegister.registerIcon("resourceengineering:blockPressureCookerSide");//bottom
+		icons[1] = iconRegister.registerIcon("resourceengineering:blockPressureCookerTop");//top
+		icons[2] = iconRegister.registerIcon("resourceengineering:blockPressureCookerSideOpen");//north
+		icons[3] = iconRegister.registerIcon("resourceengineering:blockPressureCookerSide");//south
+		icons[4] = iconRegister.registerIcon("resourceengineering:blockPressureCookerSide");//west
+		icons[5] = iconRegister.registerIcon("resourceengineering:blockPressureCookerSide");//east
+	}
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int i,int j)
+	{
+		if(i>=icons.length)
 		{
-		case 0: return 33;//bottom
-		case 1: return 35;//top
-		case 2: return 34;//north
-		case 3: return 33;//south
-		case 4: return 33;//west
-		case 5: return 33;//east
-		default: return 240;
+			return null;
+		}
+		else
+		{
+			return icons[i];
 		}
 	}
 	@Override

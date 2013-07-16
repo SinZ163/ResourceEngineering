@@ -4,43 +4,60 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import resourceengineering.common.ResourceEngineeringMain;
 
 public class BlockOre extends Block
 {
+	public static final String[] oreNames = new String[] {"turquoise","onyx","amethyst","citrine","emerald","ruby","sapphire","loadeddirt","loadedsand","loadedgravel"};
+	private Icon icons[];
 	public BlockOre(int id)
 	{
 		super(id,Material.rock);
-		setTextureFile("/walgfx/Blocks.png");
-		setBlockName("wal_BlockOre");
 		setHardness(2.0F);
 		setResistance(5.0F);
 		setCreativeTab(ResourceEngineeringMain.reTab);
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int i,int j)
+	@Override
+	public void registerIcons(IconRegister iconRegister)
 	{
-		switch(j)
-		{//TODO: Add the rest of the ores here
-		case 0: return 0;//Turqoise Ore
-		case 1: return 1;//Onyx Ore
-		case 2: return 2;//Amethyst Ore
-		case 3: return 3;//Citrine Ore
-		case 4: return 4;//Emerald Ore
-		case 5: return 5;//Ruby Ore
-		case 6: return 6;//Sapphire Ore
-		case 7: return 7;//Loaded Dirt
-		case 8: return 8;//Loaded Sand
-		case 9: return 9;//Loaded Gravel
-		default: return 0;
-		}
+		makeIcons(iconRegister);
 	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icons = new Icon[10];
+		icons[0] = iconRegister.registerIcon("resourceengineering:blockOreTurquoise");
+		icons[1] = iconRegister.registerIcon("resourceengineering:blockOreOnyx");
+		icons[2] = iconRegister.registerIcon("resourceengineering:blockOreAmethyst");
+		icons[3] = iconRegister.registerIcon("resourceengineering:blockOreCitrine");
+		icons[4] = iconRegister.registerIcon("resourceengineering:blockOreEmerald");
+		icons[5] = iconRegister.registerIcon("resourceengineering:blockOreRuby");
+		icons[6] = iconRegister.registerIcon("resourceengineering:blockOreSapphire");
+		icons[7] = iconRegister.registerIcon("resourceengineering:blockLoadedDirt");
+		icons[8] = iconRegister.registerIcon("resourceengineering:blockLoadedSand");
+		icons[9] = iconRegister.registerIcon("resourceengineering:blockLoadedGravel");
+	}
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int i, int j)
+    {
+        if(j>=icons.length)
+        {
+        	return null;
+        }
+        else
+        	return icons[j];
+    }
 	
 	public int damageDropped(int i)
 	{
@@ -94,4 +111,8 @@ public class BlockOre extends Block
 	{
 		return true;
 	}
+	public String getUnlocalizedName(ItemStack item)
+    {
+        return super.getUnlocalizedName() + "." + oreNames[item.getItemDamage()];
+    }
 }

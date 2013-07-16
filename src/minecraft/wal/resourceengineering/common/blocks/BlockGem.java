@@ -9,40 +9,54 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import resourceengineering.common.ResourceEngineeringMain;
 
 public class BlockGem extends Block
 {
+	private Icon icons[];
 	public BlockGem(int id)
 	{
 		super(id,Material.rock);
-		setTextureFile("/walgfx/Blocks.png");
-		setBlockName("wal_BlockGem");
-		setHardness(3.0F);
+		setUnlocalizedName("wal_BlockGem");
+		setHardness(2.0F);
 		setResistance(10.0F);
-		//setLightValue(10.0F);
 		setCreativeTab(ResourceEngineeringMain.reTab);
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int i,int j)
+	@Override
+	public void registerIcons(IconRegister iconRegister)
 	{
-		switch(j)
-		{
-		case 0: return 16;//Turquoise Gem Block
-		case 1: return 17;//Onyx Gem Block
-		case 2: return 18;//Amethyst Gem Block
-		case 3: return 19;//Citrine Gem Block
-		case 4: return 20;//Emerald Gem Block
-		case 5: return 21;//Ruby Gem Block
-		case 6: return 22;//Sapphire Gem Block
-		case 7: return 23;//Mixed Gem Block
-		default: return 0;
-		}
+		makeIcons(iconRegister);
+	    //     this.field_94336_cN = iconRegister.func_94245_a("resourceengineering:blockGem");
 	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icons = new Icon[8];
+		icons[0] = iconRegister.registerIcon("resourceengineering:blockGemTurquoise");
+		icons[1] = iconRegister.registerIcon("resourceengineering:blockGemOnyx");
+		icons[2] = iconRegister.registerIcon("resourceengineering:blockGemAmethyst");
+		icons[3] = iconRegister.registerIcon("resourceengineering:blockGemCitrine");
+		icons[4] = iconRegister.registerIcon("resourceengineering:blockGemEmerald");
+		icons[5] = iconRegister.registerIcon("resourceengineering:blockGemRuby");
+		icons[6] = iconRegister.registerIcon("resourceengineering:blockGemSapphire");
+		icons[7] = iconRegister.registerIcon("resourceengineering:blockGemMixed");
+	}
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int i, int j)
+    {
+        if(j>=icons.length)
+        {
+        	return null;
+        }
+        else
+        	return icons[j];
+    }
 	public int damageDropped(int i)
 	{
 		return i;

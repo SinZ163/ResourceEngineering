@@ -4,6 +4,7 @@ import resourceengineering.common.ResourceEngineeringMain;
 import cpw.mods.fml.relauncher.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -12,10 +13,13 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class ItemToolSword extends Item
 {
+	private Icon icon;
+	private String n;
 	private int weaponDamage;
 	private final EnumToolMaterial toolMaterial;
 	public ItemToolSword(int ID,EnumToolMaterial material, int tex, String name)
@@ -25,14 +29,27 @@ public class ItemToolSword extends Item
 		maxStackSize = 1;
 		setMaxDamage(material.getMaxUses());
 		setCreativeTab(ResourceEngineeringMain.reTab);
-		weaponDamage=4 + toolMaterial.getDamageVsEntity();
-		setTextureFile("/walgfx/Items.png");
-		setIconIndex(tex);
-		setItemName(name);
+		weaponDamage=4 + (int)toolMaterial.getDamageVsEntity();
+		setUnlocalizedName(name);
+        n=name;
 	}
+	public void registerIcons(IconRegister iconRegister)
+	{
+		makeIcons(iconRegister);
+	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icon = iconRegister.registerIcon("resourceengineering:"+n);
+	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Icon getIconFromDamage(int i)
+    {
+        return icon;
+    }
 	public int func_82803_g()
 	{
-		return this.toolMaterial.getDamageVsEntity();
+		return (int)this.toolMaterial.getDamageVsEntity();
 	}
 	public float getStrVsBlock(ItemStack par1ItemStack,Block par2Block)
 	{

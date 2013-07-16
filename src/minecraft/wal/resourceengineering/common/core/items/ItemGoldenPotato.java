@@ -5,10 +5,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 
 import resourceengineering.common.ResourceEngineeringMain;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemFood;
@@ -16,11 +18,12 @@ import net.minecraft.item.ItemStack;
 
 public class ItemGoldenPotato extends ItemFood
 {
+	private Icon icon;
+	private String n;
 	public ItemGoldenPotato(int par1, int par2, float par3, boolean par4)
 	{
 		super(par1, par2, par3, par4);
-		setTextureFile("/walgfx/Items.png");
-		setItemName("wal_ItemGoldenPotato");
+		setUnlocalizedName("itemGoldenPotato");
 		setCreativeTab(ResourceEngineeringMain.reTab);
 		setHasSubtypes(true);
 		setMaxDamage(0);
@@ -30,15 +33,18 @@ public class ItemGoldenPotato extends ItemFood
 	{
 		return true;
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public int getIconFromDamage(int i)
+	public void registerIcons(IconRegister iconRegister)
 	{
-		switch(i)
-		{
-		case 0: return 2;//Golden Potato
-		}
-		return 0;
+		makeIcons(iconRegister);
+	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icon = iconRegister.registerIcon("resourceengineering:itemGoldenPotato");
+	}
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int i)
+	{
+		return icon;
 	}
 	
 	@SideOnly(Side.CLIENT)

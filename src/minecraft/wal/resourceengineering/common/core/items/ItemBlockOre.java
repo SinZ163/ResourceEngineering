@@ -4,13 +4,16 @@ import java.util.List;
 
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 
 import cpw.mods.fml.relauncher.*;
 
 import resourceengineering.common.ResourceEngineeringMain;
+import resourceengineering.common.blocks.BlockOre;
 
 public class ItemBlockOre extends ItemBlock
 {
+	public static final String[] oreNames = new String[] {"turquoise","onyx","amethyst","citrine","emerald","ruby","sapphire","loadeddirt","loadedsand","loadedgravel"};
 	public ItemBlockOre(int par1)
 	{
 		super(par1);
@@ -18,9 +21,9 @@ public class ItemBlockOre extends ItemBlock
 		this.setHasSubtypes(true);
 	}
 	@SideOnly(Side.CLIENT)
-	public int getIconFromDamage(int par1)
+	public Icon getIcon(int par1)
 	{
-		return ResourceEngineeringMain.oreBlock.getBlockTextureFromSideAndMetadata(2,par1);
+		return ResourceEngineeringMain.oreBlock.getIcon(2,par1);
 	}
 	public int getMetadata(int par1)
 	{
@@ -32,4 +35,8 @@ public class ItemBlockOre extends ItemBlock
 		String[] types = {"Turquoise","Onyx","Amethyst","Citrine","Emerald","Ruby","Sapphire","LoadedDirt","LoadedSand","LoadedGravel"};
 		return "wal_ore"+types[is.getItemDamage()];
 	}
+	public String getUnlocalizedName(ItemStack item)
+    {
+        return super.getUnlocalizedName() + "." + oreNames[item.getItemDamage()];
+    }
 }

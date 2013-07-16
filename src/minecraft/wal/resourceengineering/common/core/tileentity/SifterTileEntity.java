@@ -12,9 +12,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.ISidedInventory;
 
-public class SifterTileEntity extends TileEntity implements ISidedInventory
+public class SifterTileEntity extends TileEntity implements IInventory
 {
 	private ItemStack[] inventory;
 	public int processTime;
@@ -136,6 +135,10 @@ public class SifterTileEntity extends TileEntity implements ISidedInventory
 			{
 				return true;
 			}
+			if(itemstack.itemID == Block.slowSand.blockID)
+			{
+				return true;
+			}
 			if(itemstack.itemID==ResourceEngineeringMain.oreBlock.blockID && itemstack.getItemDamage()>6)
 			{
 				return true;
@@ -206,6 +209,10 @@ public class SifterTileEntity extends TileEntity implements ISidedInventory
 				return true;
 			}
 			if(itemstack.itemID == Block.dirt.blockID)
+			{
+				return true;
+			}
+			if(itemstack.itemID == Block.slowSand.blockID)
 			{
 				return true;
 			}
@@ -400,6 +407,55 @@ public class SifterTileEntity extends TileEntity implements ISidedInventory
 					findMatchingSlotAndAddItem(new ItemStack(Block.sand,1), false);
 				}
 			}
+			//Soul Sand
+			else if(getStackInSlot(0).itemID == Block.slowSand.blockID)
+			{
+				//Sand
+				if(getChance()<5000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Block.sand,1), false);
+				}
+				//glowstone dust
+				if(getChance()<500)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.glowstone,1), false);
+				}
+				//Gunpowder
+				if(getChance()<2000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.gunpowder,1), false);
+				}
+				//Blaze Powder
+				if(getChance()<1000)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.blazePowder,1),false);
+				}
+				//ghast tears
+				if(getChance()<200)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.ghastTear,1),false);
+				}
+				//slime ball
+				if(getChance()<200)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.slimeBall,1),false);
+				}
+				//nether quartz
+				if(getChance()<800)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.netherQuartz,1),false);
+				}
+				//magma cream
+				if(getChance()<200)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.magmaCream,1),false);
+				}
+				//blaze rods
+				if(getChance()<50)
+				{
+					findMatchingSlotAndAddItem(new ItemStack(Item.blazeRod,1),false);
+				}
+			}
 			//Loaded Dirt
 			else if(getStackInSlot(0).itemID==ResourceEngineeringMain.oreBlock.blockID && getStackInSlot(0).getItemDamage()==7)
 			{
@@ -560,41 +616,50 @@ public class SifterTileEntity extends TileEntity implements ISidedInventory
 			this.onInventoryChanged();
 		}
 	}
+//	@Override
+//	public int getStartInventorySide(ForgeDirection side) {
+//		switch(side)
+//		{
+//		case DOWN:
+//		case EAST:
+//		case NORTH:
+//		case SOUTH:
+//		case WEST:
+//			return 1;
+//		case UP:
+//			return 0;
+//		case UNKNOWN:
+//		default:
+//			return 0;
+//		}
+//	}
+//
+//	@Override
+//	public int getSizeInventorySide(ForgeDirection side)
+//	{
+//		switch(side)
+//		{
+//		case DOWN:
+//		case EAST:
+//		case NORTH:
+//		case SOUTH:
+//		case WEST:
+//			return 16;
+//		case UP:
+//			return 1;
+//		case UNKNOWN:
+//		default:
+//			return 0;
+//		
+//		}
+//	}
 	@Override
-	public int getStartInventorySide(ForgeDirection side) {
-		switch(side)
-		{
-		case DOWN:
-		case EAST:
-		case NORTH:
-		case SOUTH:
-		case WEST:
-			return 1;
-		case UP:
-			return 0;
-		case UNKNOWN:
-		default:
-			return 0;
-		}
+	public boolean isInvNameLocalized() {
+		// TODO Auto-generated method stub
+		return false;
 	}
-
 	@Override
-	public int getSizeInventorySide(ForgeDirection side)
-	{
-		switch(side)
-		{
-		case DOWN:
-		case EAST:
-		case NORTH:
-		case SOUTH:
-		case WEST:
-			return 16;
-		case UP:
-			return 1;
-		case UNKNOWN:
-		default:
-			return 0;
-		
-		}
+	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
+		return isStackValidForSlot(i,itemstack);
 	}
 }

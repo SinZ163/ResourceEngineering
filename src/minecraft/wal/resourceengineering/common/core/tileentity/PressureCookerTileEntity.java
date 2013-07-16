@@ -1,7 +1,11 @@
 package resourceengineering.common.core.tileentity;
 
+import java.util.logging.Level;
+
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import resourceengineering.common.ResourceEngineeringMain;
 import resourceengineering.common.core.RecipesPressureCooker;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -13,11 +17,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.ISidedInventory;
 
 //Basically this is where your TileEntity comes from
 //Create a class and extend TileEntity and implement IInventory
-public class PressureCookerTileEntity extends TileEntity implements ISidedInventory {
+public class PressureCookerTileEntity extends TileEntity implements IInventory {
 	// Then create a ItemStack array (I.E. ItemStack[])
 	private ItemStack[] inventory;
 
@@ -26,6 +29,7 @@ public class PressureCookerTileEntity extends TileEntity implements ISidedInvent
 	public int cookTime;
 	private boolean isActive;
 	private static int blazeRod=1800;
+	private static int blazePowder = 200;
 
 	// Then create a super constructor and give the inventory the amount of
 	// ItemStacks you want (Slots),
@@ -191,7 +195,7 @@ public class PressureCookerTileEntity extends TileEntity implements ISidedInvent
 	// This returns the inventory's name
 	@Override
 	public String getInvName() {
-		return "TileEntityTutorial";
+		return "PressureCookerInventory";
 	}
 
 	public static boolean isItemFuel(ItemStack par0ItemStack) {
@@ -205,9 +209,16 @@ public class PressureCookerTileEntity extends TileEntity implements ISidedInvent
 
 		int i = par1ItemStack.getItem().itemID;
 
-		if (i == Item.blazeRod.itemID) {
+		if (i == Item.blazeRod.itemID)
+		{
 			return blazeRod;
-		} else {
+		}
+		else if(i==Item.blazePowder.itemID)
+		{
+			return blazePowder;
+		}
+		else
+		{
 			return 0;
 		}
 	}
@@ -283,93 +294,410 @@ public class PressureCookerTileEntity extends TileEntity implements ISidedInvent
 
 	         return (burnTime * par1) / itemBurnTime;
 	}
+	public static boolean canBeSmelted(int id)
+	{
+		if(id == ResourceEngineeringMain.flakeGold.itemID)
+		{
+			return true;
+		}
+		if(id == ResourceEngineeringMain.flakeIron.itemID)
+		{
+			return true;
+		}
+		if(id == ResourceEngineeringMain.diamondChip.itemID)
+		{
+			return true;
+		}
+		switch(id)
+		{
+		case 256://Iron Shovel
+		case 257://Iron Pickaxe
+		case 258://Iron Axe
+		case 267://Iron Sword
+		case 292://Iron Hoe
+		case 306://Iron Helmet
+		case 307://Iron Chestplate
+		case 308://Iron Leggings
+		case 309://Iron Boots
+			return true;
+		case 272://Stone Sword
+		case 273://Stone Shovel
+		case 274://Stone Pickaxe
+		case 275://Stone Axe
+		case 291://Stone Hoe
+			return true;
+		case 276://Diamond Sword
+		case 277://Diamond Shovel
+		case 278://Diamond Pickaxe
+		case 279://Diamond Axe
+		case 293://Diamond Hoe
+		case 310://Diamond Hemlet
+		case 311://Diamond Chestplate
+		case 312://Diamond Leggings
+		case 313://Diamond Boots
+			return true;
+		case 283://Gold Sword
+		case 284://Gold Shovel
+		case 285://Gold Pickaxe
+		case 286://Gold Axe
+		case 294://Gold Hoe
+		case 314://Gold Helmet
+		case 315://Gold Chestplate
+		case 316://Gold Leggings
+		case 317://Gold Boots
+			return true;
+		}
+		return false;
+	}
+	private boolean isResultItem(int currentItem,int id)
+	{
+		if(id == ResourceEngineeringMain.flakeGold.itemID)
+		{
+			return currentItem == Item.goldNugget.itemID;
+		}
+		if(id == ResourceEngineeringMain.flakeIron.itemID)
+		{
+			return currentItem == ResourceEngineeringMain.nugget.itemID;
+		}
+		if(id == ResourceEngineeringMain.diamondChip.itemID)
+		{
+			return currentItem == Item.diamond.itemID;
+		}
+		switch(id)
+		{
+		case 256://Iron Shovel
+		case 257://Iron Pickaxe
+		case 258://Iron Axe
+		case 267://Iron Sword
+		case 292://Iron Hoe
+		case 306://Iron Helmet
+		case 307://Iron Chestplate
+		case 308://Iron Leggings
+		case 309://Iron Boots
+			return currentItem == Item.ingotIron.itemID;
+		case 272://Stone Sword
+		case 273://Stone Shovel
+		case 274://Stone Pickaxe
+		case 275://Stone Axe
+		case 291://Stone Hoe
+			return currentItem == Block.stone.blockID;
+		case 276://Diamond Sword
+		case 277://Diamond Shovel
+		case 278://Diamond Pickaxe
+		case 279://Diamond Axe
+		case 293://Diamond Hoe
+		case 310://Diamond Hemlet
+		case 311://Diamond Chestplate
+		case 312://Diamond Leggings
+		case 313://Diamond Boots
+			return currentItem == Item.diamond.itemID;
+		case 283://Gold Sword
+		case 284://Gold Shovel
+		case 285://Gold Pickaxe
+		case 286://Gold Axe
+		case 294://Gold Hoe
+		case 295://Gold Helmet
+		case 296://Gold Chestplate
+		case 297://Gold Leggings
+		case 298://Gold Boots
+			return currentItem == Item.ingotGold.itemID;
+		}
+		return false;
+	}
 	private boolean canSmelt() {
 		if (inventory[0] == null) {
 			return false;
 		}
-
-		ItemStack itemstack = RecipesPressureCooker.smelting().getSmeltingResult(inventory[0].getItem().itemID);
-		if(inventory[0].stackSize<9)
+		
+		if (!canBeSmelted(inventory[0].getItem().itemID)) {
+			return false;
+		}
+		if(inventory[0].getItem().itemID == ResourceEngineeringMain.flakeGold.itemID ||
+				inventory[0].getItem().itemID == ResourceEngineeringMain.flakeIron.itemID ||
+				inventory[0].getItem().itemID == ResourceEngineeringMain.diamondChip.itemID)
 		{
-			return false;
+			if(inventory[0].stackSize<9)
+			{
+				return false;
+			}
 		}
-		if (itemstack == null) {
-			return false;
-		}
-
 		if (inventory[2] == null) {
 			return true;
 		}
 
-		if (!inventory[2].isItemEqual(itemstack)) {
+		if (!isResultItem(inventory[2].getItem().itemID,inventory[0].getItem().itemID)) {
 			return false;
 		}
-
-		if (inventory[2].stackSize < getInventoryStackLimit()
-				&& inventory[2].stackSize < inventory[2].getMaxStackSize()) {
-			return true;
+		ItemStack res = getResultItem(inventory[0].getItem().itemID,inventory[0].getItemDamage());
+		int stackSize = 1;
+		if(res!=null)
+		{
+			stackSize = res.stackSize;
+		}
+		else{
+			stackSize = 0;
+		}
+		if (inventory[2].stackSize < getInventoryStackLimit())
+		{
+			if(inventory[2].stackSize+stackSize <= inventory[2].getMaxStackSize())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
-		return inventory[2].stackSize < itemstack.getMaxStackSize();
+		return inventory[2].stackSize < 64;
 	}
-
+	private int shovel(int maxDamage,int damage)
+	{
+		if(damage == 0 || damage<maxDamage/2)
+		{
+			return 1;
+		}
+		else return 0;
+	}
+	private int resultCount(int maxDamage, int damage, int bars)
+	{
+		if(damage==0)
+		{
+			return bars;
+		}
+		for(int i=1;i<bars;i++)
+		{
+			if(damage<(maxDamage/bars)*i)
+			{
+				return bars-i;
+			}
+		}
+		return 0;
+	}
+	
+	private ItemStack getResultItem(int id,int damage)
+	{
+		ItemStack res = null;
+		switch(id)
+		{
+		case 256://Iron Shovel
+			res = new ItemStack(Item.ingotIron,shovel(Item.shovelIron.getMaxDamage(),damage));
+			break;
+		case 257://Iron Pickaxe
+			res = new ItemStack(Item.ingotIron,resultCount(Item.pickaxeIron.getMaxDamage(),damage,3));
+			break;
+		case 258://Iron Axe
+			res = new ItemStack(Item.ingotIron,resultCount(Item.axeIron.getMaxDamage(),damage,3));
+			break;
+		case 267://Iron Sword
+			res = new ItemStack(Item.ingotIron,resultCount(Item.swordIron.getMaxDamage(),damage,2));
+			break;
+		case 292://Iron Hoe
+			res = new ItemStack(Item.ingotIron,resultCount(Item.hoeIron.getMaxDamage(),damage,2));
+			break;
+		case 306://Iron Helmet
+			res = new ItemStack(Item.ingotIron,resultCount(Item.helmetIron.getMaxDamage(),damage,5));
+			break;
+		case 307://Iron Chestplate
+			res = new ItemStack(Item.ingotIron,resultCount(Item.plateIron.getMaxDamage(),damage,8));
+			break;
+		case 308://Iron Leggings
+			res = new ItemStack(Item.ingotIron,resultCount(Item.legsIron.getMaxDamage(),damage,7));
+			break;
+		case 309://Iron Boots
+			res = new ItemStack(Item.ingotIron,resultCount(Item.bootsIron.getMaxDamage(),damage,4));
+			break;
+		case 272://Stone Sword
+			res = new ItemStack(Block.stone,resultCount(Item.swordStone.getMaxDamage(),damage,2));
+			break;
+		case 273://Stone Shovel
+			res = new ItemStack(Block.stone,shovel(Item.shovelStone.getMaxDamage(),damage));
+			break;
+		case 274://Stone Pickaxe
+			res = new ItemStack(Block.stone,resultCount(Item.pickaxeStone.getMaxDamage(),damage,3));
+			break;
+		case 275://Stone Axe
+			res = new ItemStack(Block.stone,resultCount(Item.axeStone.getMaxDamage(),damage,3));
+			break;
+		case 291://Stone Hoe
+			res = new ItemStack(Block.stone,resultCount(Item.hoeStone.getMaxDamage(),damage,2));
+			break;
+		case 276://Diamond Sword
+			res = new ItemStack(Item.diamond,resultCount(Item.swordDiamond.getMaxDamage(),damage,2));
+			break;
+		case 277://Diamond Shovel
+			res = new ItemStack(Item.diamond,shovel(Item.shovelDiamond.getMaxDamage(),damage));
+			break;
+		case 278://Diamond Pickaxe
+			res = new ItemStack(Item.diamond,resultCount(Item.pickaxeDiamond.getMaxDamage(),damage,3));
+			break;
+		case 279://Diamond Axe
+			res = new ItemStack(Item.diamond,resultCount(Item.axeDiamond.getMaxDamage(),damage,3));
+			break;
+		case 293://Diamond Hoe
+			res = new ItemStack(Item.diamond,resultCount(Item.hoeDiamond.getMaxDamage(),damage,2));
+			break;
+		case 310://Diamond Helmet
+			res = new ItemStack(Item.diamond,resultCount(Item.helmetDiamond.getMaxDamage(),damage,5));
+			break;
+		case 311://Diamond Chestplate
+			res = new ItemStack(Item.diamond,resultCount(Item.plateDiamond.getMaxDamage(),damage,8));
+			break;
+		case 312://Diamond Leggings
+			res = new ItemStack(Item.diamond,resultCount(Item.legsDiamond.getMaxDamage(),damage,7));
+			break;
+		case 313://Diamond Boots
+			res = new ItemStack(Item.diamond,resultCount(Item.bootsDiamond.getMaxDamage(),damage,4));
+			break;
+		case 283://Gold Sword
+			res = new ItemStack(Item.ingotGold,resultCount(Item.swordGold.getMaxDamage(),damage,2));
+			break;
+		case 284://Gold Shovel
+			res = new ItemStack(Item.ingotGold,shovel(Item.shovelGold.getMaxDamage(),damage));
+			break;
+		case 285://Gold Pickaxe
+			res = new ItemStack(Item.ingotGold,resultCount(Item.pickaxeGold.getMaxDamage(),damage,3));
+			break;
+		case 286://Gold Axe
+			res = new ItemStack(Item.ingotGold,resultCount(Item.axeGold.getMaxDamage(),damage,3));
+			break;
+		case 294://Gold Hoe
+			res = new ItemStack(Item.ingotGold,resultCount(Item.hoeGold.getMaxDamage(),damage,2));
+			break;
+		case 295://Gold Helmet
+			res = new ItemStack(Item.ingotGold,resultCount(Item.helmetGold.getMaxDamage(),damage,5));
+			break;
+		case 296://Gold Chestplate
+			res = new ItemStack(Item.ingotGold,resultCount(Item.plateGold.getMaxDamage(),damage,8));
+			break;
+		case 297://Gold Leggings
+			res = new ItemStack(Item.ingotGold,resultCount(Item.legsGold.getMaxDamage(),damage,7));
+			break;
+		case 298://Gold Boots
+			res = new ItemStack(Item.ingotGold,resultCount(Item.bootsGold.getMaxDamage(),damage,4));
+			break;
+		}
+		return res;
+	}
 	public void smeltItem() {
-		if (this.canSmelt()) {
-			ItemStack var1 = RecipesPressureCooker.smelting().getSmeltingResult(this.inventory[0].getItem().itemID);
+		if (this.canSmelt())
+		{
+			ItemStack var1;// = RecipesPressureCooker.smelting().getSmeltingResult(this.inventory[0].getItem().itemID);
+			if(this.inventory[0].getItem().itemID == ResourceEngineeringMain.flakeGold.itemID)
+			{
+				var1 = new ItemStack(Item.goldNugget,1);
+				if(this.inventory[0].stackSize==9)
+				{
+					this.inventory[0]=null;
+				}
+				else
+				{
+					this.inventory[0].stackSize-=9;
+				}
+				
+			}
+			else if(this.inventory[0].getItem().itemID == ResourceEngineeringMain.flakeIron.itemID)
+			{
+				var1 = new ItemStack(ResourceEngineeringMain.nugget,1);
+				if(this.inventory[0].stackSize==9)
+				{
+					this.inventory[0]=null;
+				}
+				else
+				{
+					this.inventory[0].stackSize-=9;
+				}
+			}
+			else if(this.inventory[0].getItem().itemID == ResourceEngineeringMain.diamondChip.itemID)
+			{
+				var1 = new ItemStack(Item.diamond,1);
+				if(this.inventory[0].stackSize==9)
+				{
+					this.inventory[0]=null;
+				}
+				else
+				{
+					this.inventory[0].stackSize-=9;
+				}
+			}
+			else
+			{
+				var1 = getResultItem(this.inventory[0].getItem().itemID,this.inventory[0].getItemDamage());
+				this.inventory[0] = null;
+				if(var1==null)
+				{
+					return;
+				}
+				
+			}
 			if (this.inventory[2] == null)
 			{
 				this.inventory[2] = var1.copy();
 			} 
 			else if (this.inventory[2].itemID == var1.itemID)
 			{
-				++this.inventory[2].stackSize;
-			}
-			this.inventory[0].stackSize-=9;
-			if (this.inventory[0].stackSize == 0)
-			{
-				Item var2 = this.inventory[0].getItem().getContainerItem();
-				this.inventory[0] = var2 == null ? null : new ItemStack(var2);
+				this.inventory[2].stackSize+=var1.stackSize;
 			}
 		}
 	}
 
+//	@Override
+//	public int getStartInventorySide(ForgeDirection side) {
+//		switch(side)
+//		{
+//		case DOWN:
+//			return 1;
+//		case EAST:
+//		case NORTH:
+//		case SOUTH:
+//		case WEST:
+//			return 2;
+//		case UP:
+//			return 0;
+//		case UNKNOWN:
+//		default:
+//			return 0;
+//		}
+//	}
+//
+//	@Override
+//	public int getSizeInventorySide(ForgeDirection side)
+//	{
+//		switch(side)
+//		{
+//		case DOWN:
+//			return 1;
+//		case EAST:
+//		case NORTH:
+//		case SOUTH:
+//		case WEST:
+//			return 1;
+//		case UP:
+//			return 1;
+//		case UNKNOWN:
+//		default:
+//			return 0;
+//		
+//		}
+//	}
+
 	@Override
-	public int getStartInventorySide(ForgeDirection side) {
-		switch(side)
-		{
-		case DOWN:
-			return 1;
-		case EAST:
-		case NORTH:
-		case SOUTH:
-		case WEST:
-			return 2;
-		case UP:
-			return 0;
-		case UNKNOWN:
-		default:
-			return 0;
-		}
+	public boolean isInvNameLocalized() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
-	public int getSizeInventorySide(ForgeDirection side)
+	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
-		switch(side)
+		switch(i)
 		{
-		case DOWN:
-			return 1;
-		case EAST:
-		case NORTH:
-		case SOUTH:
-		case WEST:
-			return 1;
-		case UP:
-			return 1;
-		case UNKNOWN:
+		case 0:
+			return canBeSmelted(itemstack.itemID);
+		case 1:
+			return isItemFuel(itemstack);
 		default:
-			return 0;
-		
+			return false;
 		}
 	}
 }

@@ -8,34 +8,50 @@ import resourceengineering.common.ResourceEngineeringMain;
 import resourceengineering.common.core.tileentity.SifterTileEntity;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class BlockSifter extends BlockContainer
 {
+	private Icon[] icons;
 	public BlockSifter(int id)
 	{
 		super(id,Material.iron);
-		setCreativeTab(ResourceEngineeringMain.reTab);setTextureFile("/walgfx/Blocks.png");
-		setBlockName("wal_BlockSifter");
-		setHardness(2.0F);
-		setResistance(10.0F);
+		setCreativeTab(ResourceEngineeringMain.reTab);
+		setUnlocalizedName("wal_BlockSifter");
+		setHardness(1.0F);
 	}
-	public int getBlockTextureFromSideAndMetadata(int i,int j)
+	@Override
+	public void registerIcons(IconRegister iconRegister)
 	{
-		switch(i)
+		makeIcons(iconRegister);
+	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icons = new Icon[6];
+		icons[0] = iconRegister.registerIcon("resourceengineering:blockSifterBottom");//bottom
+		icons[1] = iconRegister.registerIcon("resourceengineering:blockSifterTop");//top
+		icons[2] = iconRegister.registerIcon("resourceengineering:blockSifterSide");//north
+		icons[3] = iconRegister.registerIcon("resourceengineering:blockSifterSide");//south
+		icons[4] = iconRegister.registerIcon("resourceengineering:blockSifterSide");//west
+		icons[5] = iconRegister.registerIcon("resourceengineering:blockSifterSide");//east
+	}
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int i,int j)
+	{
+		if(i>=icons.length)
 		{
-		case 0: return 50;
-		case 1: return 48;
-		case 2: return 49;
-		case 3: return 49;
-		case 4: return 49;
-		case 5: return 49;
-		default: return 0;
+			return null;
+		}
+		else
+		{
+			return icons[i];
 		}
 	}
 	@Override

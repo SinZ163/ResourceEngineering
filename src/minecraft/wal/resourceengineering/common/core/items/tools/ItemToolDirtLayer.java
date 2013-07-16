@@ -4,30 +4,48 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import resourceengineering.common.ResourceEngineeringMain;
 
 public class ItemToolDirtLayer extends ItemTool
 {
+	private Icon icon;
+	private String n;
 	private int targetBlockID = 3;
 	public static final Block[] blocksEffectiveAgainst = Block.blocksList;
 	public ItemToolDirtLayer(int ID, EnumToolMaterial m, int tex, String name)
 	{
 		super(ID, 1, m, blocksEffectiveAgainst);
-		setTextureFile("/walgfx/Items.png");
-		setIconIndex(tex);
-		setItemName(name);
+		setUnlocalizedName(name);
+        n=name;
 		this.setCreativeTab(ResourceEngineeringMain.reTab);
 	}
-
+	public void registerIcons(IconRegister iconRegister)
+	{
+		makeIcons(iconRegister);
+	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icon = iconRegister.registerIcon("resourceengineering:"+n);
+	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Icon getIconFromDamage(int i)
+    {
+        return icon;
+    }
 	public boolean canHarvestBlock(Block par1Block)
 	{
 		return false;

@@ -37,6 +37,7 @@ import resourceengineering.common.ConfigCore;
 
 //Item Imports
 import resourceengineering.common.core.items.ItemFlake;
+import resourceengineering.common.core.items.ItemMachinePanel;
 import resourceengineering.common.core.items.ItemNugget;
 import resourceengineering.common.core.items.ItemGoldenPotato;
 import resourceengineering.common.core.items.ItemGem;
@@ -44,6 +45,7 @@ import resourceengineering.common.core.items.ItemScreen;
 import resourceengineering.common.core.items.ItemStick;
 
 import resourceengineering.common.core.items.tools.ItemToolPickaxeSuper;
+import resourceengineering.common.core.items.tools.ItemToolScythe;
 import resourceengineering.common.core.items.tools.ItemToolShovelSuper;
 import resourceengineering.common.core.items.tools.ItemToolHammer;
 import resourceengineering.common.core.items.tools.ItemToolChunkHammer;
@@ -68,17 +70,20 @@ import resourceengineering.common.blocks.BlockSifter;
 @NetworkMod(clientSideRequired=true,serverSideRequired=false,
 clientPacketHandlerSpec=@SidedPacketHandler(channels={"WAL_RE"},packetHandler=ClientPacketHandler.class),
 serverPacketHandlerSpec=@SidedPacketHandler(channels = {"WAL_RE"}, packetHandler = ServerPacketHandler.class))
-@Mod(modid="mod_walResourceEngineering",name="Resource Engineering",version="0.0.117")
+@Mod(modid="resourceengineering",name="Resource Engineering",version="0.5.9")
 public class ResourceEngineeringMain
 {
-	@Instance("Wal_ResourceEngineering")
+	@Instance("resourceengineering")
 	public static ResourceEngineeringMain instance = new ResourceEngineeringMain();
 	
 	@SidedProxy(clientSide = "resourceengineering.client.core.ClientProxy",serverSide = "resourceengineering.common.core.CommonProxy")
 	public static CommonProxy proxy;
 	
 	public static Vector oreList;
+	public static Vector plantList;
+
 	public static int[] oreWhiteList;
+	public static int[] plantWhiteList;
 	
 	//Items
 	public static Item flakeIron;
@@ -87,6 +92,7 @@ public class ResourceEngineeringMain
 	public static Item nugget;
 	public static Item goldenPotato;
 	public static Item gem;
+	public static Item machinePanel;
 	/*
 	 * ======================================================
 	 * ------------------------TOOLS-------------------------
@@ -185,6 +191,20 @@ public class ResourceEngineeringMain
 	public static Item sapphireLeggings;
 	public static Item sapphireBoots;
 	
+	public static Item scytheTurquoise;
+	public static Item scytheOnyx;
+	public static Item scytheAmethyst;
+	public static Item scytheCitrine;
+	public static Item scytheEmerald;
+	public static Item scytheRuby;
+	public static Item scytheSapphire;
+	
+	public static Item scytheWood;
+	public static Item scytheStone;
+	public static Item scytheIron;
+	public static Item scytheGold;
+	public static Item scytheDiamond;
+	
 	
 	/*
 	 * ======================================================
@@ -255,101 +275,114 @@ public class ResourceEngineeringMain
 	{
 		ConfigCore cc = new ConfigCore();
 		ConfigCore.loadConfig(e);
+		scytheTurquoise = new ItemToolScythe(cc.scytheTurquoiseID,turquoiseMaterial,"itemScytheTurquoise");
+		scytheOnyx = new ItemToolScythe(cc.scytheOnyxID,onyxMaterial,"itemScytheOnyx");
+		scytheAmethyst = new ItemToolScythe(cc.scytheAmethystID,amethystMaterial,"itemScytheAmethyst");
+		scytheCitrine = new ItemToolScythe(cc.scytheCitrineID, citrineMaterial,"itemScytheCitrine");
+		scytheEmerald = new ItemToolScythe(cc.scytheEmeraldID,emeraldMaterial,"itemScytheEmerald");
+		scytheRuby = new ItemToolScythe(cc.scytheRubyID,rubyMaterial,"itemScytheRuby");
+		scytheSapphire = new ItemToolScythe(cc.scytheSapphireID,sapphireMaterial,"itemScytheSapphire");
 		
-		flakeIron = new ItemFlake(cc.itemFlakeIronID,"wal_ItemIronFlake",0);
-		flakeGold = new ItemFlake(cc.itemFlakeGoldID,"wal_ItemGoldFlake",16);
-		diamondChip = new ItemFlake(cc.itemFlakeDiamondID,"wal_ItemDiamondChip",32);
+		scytheWood = new ItemToolScythe(cc.scytheWoodID,EnumToolMaterial.WOOD,"itemScytheWood");
+		scytheStone = new ItemToolScythe(cc.scytheStoneID,EnumToolMaterial.STONE,"itemScytheStone");
+		scytheIron = new ItemToolScythe(cc.scytheIronID,EnumToolMaterial.IRON,"itemScytheIron");
+		scytheGold = new ItemToolScythe(cc.scytheGoldID,EnumToolMaterial.GOLD,"itemScytheGold");
+		scytheDiamond = new ItemToolScythe(cc.scytheDiamondID,EnumToolMaterial.EMERALD,"itemScytheDiamond");
+		
+		flakeIron = new ItemFlake(cc.itemFlakeIronID,"itemFlakeIron");
+		flakeGold = new ItemFlake(cc.itemFlakeGoldID,"itemFlakeGold");
+		diamondChip = new ItemFlake(cc.itemFlakeDiamondID,"itemDiamondChip");
 		nugget = new ItemNugget(cc.itemNuggetID);
 		goldenPotato = new ItemGoldenPotato(cc.itemGoldenPotatoID,5,6,false);
 		gem = new ItemGem(cc.itemGemID);
 		screen = new ItemScreen(cc.itemScreenID,"itemScreen");
 		//Swords
-		turquoiseSword = new ItemToolSword(cc.itemToolSwordTurquoiseID,turquoiseMaterial,83,"wal_itemToolSwordTurquoise");
-		onyxSword = new ItemToolSword(cc.itemToolSwordOnyxID,onyxMaterial,84,"wal_itemToolSwordOnyx");
-		amethystSword = new ItemToolSword(cc.itemToolSwordAmethystID,amethystMaterial,85,"wal_itemToolSwordAmethyst");
-		citrineSword = new ItemToolSword(cc.itemToolSwordCitrineID,citrineMaterial,86,"wal_itemToolSwordCitrine");
-		emeraldSword = new ItemToolSword(cc.itemToolSwordEmeraldID,emeraldMaterial,87,"wal_itemToolSwordEmerald");
-		rubySword = new ItemToolSword(cc.itemToolSwordRubyID,rubyMaterial,88,"wal_itemToolSwordRuby");
-		sapphireSword = new ItemToolSword(cc.itemToolSwordSapphireID,sapphireMaterial,89,"wal_itemToolSwordSapphire");
+		turquoiseSword = new ItemToolSword(cc.itemToolSwordTurquoiseID,turquoiseMaterial,83,"itemToolSwordTurquoise");
+		onyxSword = new ItemToolSword(cc.itemToolSwordOnyxID,onyxMaterial,84,"itemToolSwordOnyx");
+		amethystSword = new ItemToolSword(cc.itemToolSwordAmethystID,amethystMaterial,85,"itemToolSwordAmethyst");
+		citrineSword = new ItemToolSword(cc.itemToolSwordCitrineID,citrineMaterial,86,"itemToolSwordCitrine");
+		emeraldSword = new ItemToolSword(cc.itemToolSwordEmeraldID,emeraldMaterial,87,"itemToolSwordEmerald");
+		rubySword = new ItemToolSword(cc.itemToolSwordRubyID,rubyMaterial,88,"itemToolSwordRuby");
+		sapphireSword = new ItemToolSword(cc.itemToolSwordSapphireID,sapphireMaterial,89,"itemToolSwordSapphire");
 		
 		//Pickaxes
-		turquoisePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeTurquoiseID,turquoiseMaterial,115,"wal_itemToolPickaxeTurquoise");
-		onyxPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeOnyxID,onyxMaterial,116,"wal_itemToolPickaxeOnyx");
-		amethystPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeAmethystID,amethystMaterial,117,"wal_itemToolPickaxeAmethyst");
-		citrinePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeCitrineID,citrineMaterial,118,"wal_itemToolPickaxeCitrine");
-		emeraldPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeEmeraldID,emeraldMaterial,119,"wal_itemToolPickaxeEmerald");
-		rubyPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeRubyID,rubyMaterial,120,"wal_itemToolPickaxeRuby");
-		sapphirePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeSapphireID,sapphireMaterial,121,"wal_itemToolPickaxeSapphire");
+		turquoisePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeTurquoiseID,turquoiseMaterial,115,"itemToolPickaxeTurquoise");
+		onyxPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeOnyxID,onyxMaterial,116,"itemToolPickaxeOnyx");
+		amethystPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeAmethystID,amethystMaterial,117,"itemToolPickaxeAmethyst");
+		citrinePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeCitrineID,citrineMaterial,118,"itemToolPickaxeCitrine");
+		emeraldPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeEmeraldID,emeraldMaterial,119,"itemToolPickaxeEmerald");
+		rubyPickaxe = new ItemToolPickaxe(cc.itemToolPickaxeRubyID,rubyMaterial,120,"itemToolPickaxeRuby");
+		sapphirePickaxe = new ItemToolPickaxe(cc.itemToolPickaxeSapphireID,sapphireMaterial,121,"itemToolPickaxeSapphire");
 		
-		hammer = new ItemToolHammer(cc.itemToolHammerID,superMaterial,138,"wal_itemToolHammer");
-		InfiniteHammer = new ItemToolHammer(cc.itemToolInfiniteHammerID,infiniteMaterial,138,"wal_itemToolInfiniteHammer");
-		superPickaxe =  new ItemToolPickaxeSuper(cc.itemToolPickaxeSuperID,superMaterial,122,"wal_itemToolPickaxeSuper");
+		hammer = new ItemToolHammer(cc.itemToolHammerID,superMaterial,138,"itemToolHammer");
+		InfiniteHammer = new ItemToolHammer(cc.itemToolInfiniteHammerID,infiniteMaterial,138,"itemToolInfiniteHammer");
+		superPickaxe =  new ItemToolPickaxeSuper(cc.itemToolPickaxeSuperID,superMaterial,122,"itemToolPickaxeSuper");
 		
 		//Shovels
-		turquoiseShovel = new ItemToolShovel(cc.itemToolShovelTurquoiseID,turquoiseMaterial,99,"wal_itemToolShovelTurquoise");
-		onyxShovel = new ItemToolShovel(cc.itemToolShovelOnyxID,onyxMaterial,100,"wal_itemToolShovelOnyx");
-		amethystShovel = new ItemToolShovel(cc.itemToolShovelAmethystID,amethystMaterial,101,"wal_itemToolShovelAmethyst");
-		citrineShovel = new ItemToolShovel(cc.itemToolShovelCitrineID,citrineMaterial,102,"wal_itemToolShovelCitrine");
-		emeraldShovel = new ItemToolShovel(cc.itemToolShovelEmeraldID,emeraldMaterial,103,"wal_itemToolShovelEmerald");
-		rubyShovel = new ItemToolShovel(cc.itemToolShovelRubyID,rubyMaterial,104,"wal_itemToolShovelRuby");
-		sapphireShovel = new ItemToolShovel(cc.itemToolShovelSapphireID,sapphireMaterial,105,"wal_itemToolShovelSapphire");
+		turquoiseShovel = new ItemToolShovel(cc.itemToolShovelTurquoiseID,turquoiseMaterial,99,"itemToolShovelTurquoise");
+		onyxShovel = new ItemToolShovel(cc.itemToolShovelOnyxID,onyxMaterial,100,"itemToolShovelOnyx");
+		amethystShovel = new ItemToolShovel(cc.itemToolShovelAmethystID,amethystMaterial,101,"itemToolShovelAmethyst");
+		citrineShovel = new ItemToolShovel(cc.itemToolShovelCitrineID,citrineMaterial,102,"itemToolShovelCitrine");
+		emeraldShovel = new ItemToolShovel(cc.itemToolShovelEmeraldID,emeraldMaterial,103,"itemToolShovelEmerald");
+		rubyShovel = new ItemToolShovel(cc.itemToolShovelRubyID,rubyMaterial,104,"itemToolShovelRuby");
+		sapphireShovel = new ItemToolShovel(cc.itemToolShovelSapphireID,sapphireMaterial,105,"itemToolShovelSapphire");
 		
-		superShovel = new ItemToolShovelSuper(cc.itemToolShovelSuperID,superMaterial,106,"wal_itemToolShovelSuper");
+		superShovel = new ItemToolShovelSuper(cc.itemToolShovelSuperID,superMaterial,106,"itemToolShovelSuper");
 		
 		//Axes
-		turquoiseAxe = new ItemToolAxe(cc.itemToolAxeTurquoiseID,turquoiseMaterial,131,"wal_itemToolAxeTurquoise");
-		onyxAxe = new ItemToolAxe(cc.itemToolAxeOnyxID,onyxMaterial,132,"wal_itemToolAxeOnyx");
-		amethystAxe = new ItemToolAxe(cc.itemToolAxeAmethystID,amethystMaterial,133,"wal_itemToolAxeAmethyst");
-		citrineAxe = new ItemToolAxe(cc.itemToolAxeCitrineID,citrineMaterial,134,"wal_itemToolAxeCitrine");
-		emeraldAxe = new ItemToolAxe(cc.itemToolAxeEmeraldID,emeraldMaterial,135,"wal_itemToolAxeEmerald");
-		rubyAxe = new ItemToolAxe(cc.itemToolAxeRubyID,rubyMaterial,136,"wal_itemToolAxeRuby");
-		sapphireAxe = new ItemToolAxe(cc.itemToolAxeSapphireID,sapphireMaterial,137,"wal_itemToolAxeSapphire");
+		turquoiseAxe = new ItemToolAxe(cc.itemToolAxeTurquoiseID,turquoiseMaterial,131,"itemToolAxeTurquoise");
+		onyxAxe = new ItemToolAxe(cc.itemToolAxeOnyxID,onyxMaterial,132,"itemToolAxeOnyx");
+		amethystAxe = new ItemToolAxe(cc.itemToolAxeAmethystID,amethystMaterial,133,"itemToolAxeAmethyst");
+		citrineAxe = new ItemToolAxe(cc.itemToolAxeCitrineID,citrineMaterial,134,"itemToolAxeCitrine");
+		emeraldAxe = new ItemToolAxe(cc.itemToolAxeEmeraldID,emeraldMaterial,135,"itemToolAxeEmerald");
+		rubyAxe = new ItemToolAxe(cc.itemToolAxeRubyID,rubyMaterial,136,"itemToolAxeRuby");
+		sapphireAxe = new ItemToolAxe(cc.itemToolAxeSapphireID,sapphireMaterial,137,"itemToolAxeSapphire");
 		
 		//Hoe
-		turquoiseHoe = new ItemToolHoe(cc.itemToolHoeTurquoiseID,turquoiseMaterial,147,"wal_itemToolHoeTurquoise");
-		onyxHoe = new ItemToolHoe(cc.itemToolHoeOnyxID,onyxMaterial,148,"wal_itemToolHoeOnyx");
-		amethystHoe = new ItemToolHoe(cc.itemToolHoeAmethystID,amethystMaterial,149,"wal_itemToolHoeAmethyst");
-		citrineHoe = new ItemToolHoe(cc.itemToolHoeCitrineID,citrineMaterial,150,"wal_itemToolHoeCitrine");
-		emeraldHoe = new ItemToolHoe(cc.itemToolHoeEmeraldID,emeraldMaterial,151,"wal_itemToolHoeEmerald");
-		rubyHoe = new ItemToolHoe(cc.itemToolHoeRubyID,rubyMaterial,152,"wal_itemToolHoeRuby");
-		sapphireHoe = new ItemToolHoe(cc.itemToolHoeSapphireID,sapphireMaterial,153,"wal_itemToolHoeSapphire");
+		turquoiseHoe = new ItemToolHoe(cc.itemToolHoeTurquoiseID,turquoiseMaterial,147,"itemToolHoeTurquoise");
+		onyxHoe = new ItemToolHoe(cc.itemToolHoeOnyxID,onyxMaterial,148,"itemToolHoeOnyx");
+		amethystHoe = new ItemToolHoe(cc.itemToolHoeAmethystID,amethystMaterial,149,"itemToolHoeAmethyst");
+		citrineHoe = new ItemToolHoe(cc.itemToolHoeCitrineID,citrineMaterial,150,"itemToolHoeCitrine");
+		emeraldHoe = new ItemToolHoe(cc.itemToolHoeEmeraldID,emeraldMaterial,151,"itemToolHoeEmerald");
+		rubyHoe = new ItemToolHoe(cc.itemToolHoeRubyID,rubyMaterial,152,"itemToolHoeRuby");
+		sapphireHoe = new ItemToolHoe(cc.itemToolHoeSapphireID,sapphireMaterial,153,"itemToolHoeSapphire");
 		
 		
 		//Armor
-		turquoiseHelmet = new GemArmor(cc.itemArmorHelmetTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),0,"wal_itemArmorTurquoiseHelmet",19);
-		turquoisePlate = new GemArmor(cc.itemArmorPlateTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),1,"wal_itemArmorTurquiosePlate",35);
-		turquoiseLeggings = new GemArmor(cc.itemArmorLeggingsTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),2,"wal_itemArmorTurquoiseLeggings",51);
-		turquoiseBoots = new GemArmor(cc.itemArmorBootsTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("TurquoiseArmor"),3,"wal_itemArmorTurquoiseBoots",67);
+		turquoiseHelmet = new GemArmor(cc.itemArmorHelmetTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("turquoise"),0,"itemArmorTurquoiseHelmet");
+		turquoisePlate = new GemArmor(cc.itemArmorPlateTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("turquoise"),1,"itemArmorTurquoisePlate");
+		turquoiseLeggings = new GemArmor(cc.itemArmorLeggingsTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("turquoise"),2,"itemArmorTurquoiseLeggings");
+		turquoiseBoots = new GemArmor(cc.itemArmorBootsTurquoiseID,turquoiseArmorMaterial,proxy.addArmor("turquoise"),3,"itemArmorTurquoiseBoots");
 		
-		onyxHelmet = new GemArmor(cc.itemArmorHelmetOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),0,"wal_itemArmorOnyxHelmet",20);
-		onyxPlate = new GemArmor(cc.itemArmorPlateOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),1,"wal_itemArmorOnyxPlate",36);
-		onyxLeggings = new GemArmor(cc.itemArmorLeggingsOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),2,"wal_itemArmorOnyxLeggings",52);
-		onyxBoots = new GemArmor(cc.itemArmorBootsOnyxID,onyxArmorMaterial,proxy.addArmor("OnyxArmor"),3,"wal_itemArmorOnyxBoots",68);
+		onyxHelmet = new GemArmor(cc.itemArmorHelmetOnyxID,onyxArmorMaterial,proxy.addArmor("onyx"),0,"itemArmorOnyxHelmet");
+		onyxPlate = new GemArmor(cc.itemArmorPlateOnyxID,onyxArmorMaterial,proxy.addArmor("onyx"),1,"itemArmorOnyxPlate");
+		onyxLeggings = new GemArmor(cc.itemArmorLeggingsOnyxID,onyxArmorMaterial,proxy.addArmor("onyx"),2,"itemArmorOnyxLeggings");
+		onyxBoots = new GemArmor(cc.itemArmorBootsOnyxID,onyxArmorMaterial,proxy.addArmor("onyx"),3,"itemArmorOnyxBoots");
 		
-		amethystHelmet = new GemArmor(cc.itemArmorHelmetAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),0,"wal_itemArmorAmethystHelmet",21);
-		amethystPlate = new GemArmor(cc.itemArmorPlateAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),1,"wal_itemArmorAmethystPlate",37);
-		amethystLeggings = new GemArmor(cc.itemArmorLeggingsAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),2,"wal_itemArmorAmethystLeggings",53);
-		amethystBoots = new GemArmor(cc.itemArmorBootsAmethystID,amethystArmorMaterial,proxy.addArmor("AmethystArmor"),3,"wal_itemArmorAmethystBoots",69);
+		amethystHelmet = new GemArmor(cc.itemArmorHelmetAmethystID,amethystArmorMaterial,proxy.addArmor("amethyst"),0,"itemArmorAmethystHelmet");
+		amethystPlate = new GemArmor(cc.itemArmorPlateAmethystID,amethystArmorMaterial,proxy.addArmor("amethyst"),1,"itemArmorAmethystPlate");
+		amethystLeggings = new GemArmor(cc.itemArmorLeggingsAmethystID,amethystArmorMaterial,proxy.addArmor("amethyst"),2,"itemArmorAmethystLeggings");
+		amethystBoots = new GemArmor(cc.itemArmorBootsAmethystID,amethystArmorMaterial,proxy.addArmor("amethyst"),3,"itemArmorAmethystBoots");
 		
-		citrineHelmet = new GemArmor(cc.itemArmorHelmetCitrineID,citrineArmorMaterial,proxy.addArmor("CitrineArmor"),0,"wal_itemArmorCitrineHelmet",22);
-		citrinePlate =  new GemArmor(cc.itemArmorPlateCitrineID,citrineArmorMaterial,proxy.addArmor("CitrineArmor"),1,"wal_itemArmorCitrinePlate",38);
-		citrineLeggings = new GemArmor(cc.itemArmorLeggingsCitrineID,citrineArmorMaterial,proxy.addArmor("CitrineArmor"),2,"wal_itemArmorCitrineLeggings",54);
-		citrineBoots = new GemArmor(cc.itemArmorBootsCitrineID,citrineArmorMaterial,proxy.addArmor("CitrineArmor"),3,"wal_itemArmorCitrineBoots",70);
+		citrineHelmet = new GemArmor(cc.itemArmorHelmetCitrineID,citrineArmorMaterial,proxy.addArmor("citrine"),0,"itemArmorCitrineHelmet");
+		citrinePlate =  new GemArmor(cc.itemArmorPlateCitrineID,citrineArmorMaterial,proxy.addArmor("citrine"),1,"itemArmorCitrinePlate");
+		citrineLeggings = new GemArmor(cc.itemArmorLeggingsCitrineID,citrineArmorMaterial,proxy.addArmor("citrine"),2,"itemArmorCitrineLeggings");
+		citrineBoots = new GemArmor(cc.itemArmorBootsCitrineID,citrineArmorMaterial,proxy.addArmor("citrine"),3,"itemArmorCitrineBoots");
 		
-		emeraldHelmet = new GemArmor(cc.itemArmorHelmetEmeraldID,emeraldArmorMaterial,proxy.addArmor("EmeraldArmor"),0,"wal_itemArmorEmeraldHelmet",23);
-		emeraldPlate = new GemArmor(cc.itemArmorPlateEmeraldID,emeraldArmorMaterial,proxy.addArmor("EmeraldArmor"),1,"wal_itemArmorEmeraldPlate",39);
-		emeraldLeggings = new GemArmor(cc.itemArmorLeggingsEmeraldID,emeraldArmorMaterial,proxy.addArmor("EmeraldArmor"),2,"wal_itemArmorEmeraldLeggings",55);
-		emeraldBoots = new GemArmor(cc.itemArmorBootsEmeraldID,emeraldArmorMaterial,proxy.addArmor("EmeraldArmor"),3,"wal_itemArmorEmeraldBoots",71);
+		emeraldHelmet = new GemArmor(cc.itemArmorHelmetEmeraldID,emeraldArmorMaterial,proxy.addArmor("emerald"),0,"itemArmorEmeraldHelmet");
+		emeraldPlate = new GemArmor(cc.itemArmorPlateEmeraldID,emeraldArmorMaterial,proxy.addArmor("emerald"),1,"itemArmorEmeraldPlate");
+		emeraldLeggings = new GemArmor(cc.itemArmorLeggingsEmeraldID,emeraldArmorMaterial,proxy.addArmor("emerald"),2,"itemArmorEmeraldLeggings");
+		emeraldBoots = new GemArmor(cc.itemArmorBootsEmeraldID,emeraldArmorMaterial,proxy.addArmor("emerald"),3,"itemArmorEmeraldBoots");
 		
-		rubyHelmet = new GemArmor(cc.itemArmorHelmetRubyID,rubyArmorMaterial,proxy.addArmor("RubyArmor"),0,"wal_itemArmorRubyHelmet",24);
-		rubyPlate =  new GemArmor(cc.itemArmorPlateRubyID,rubyArmorMaterial,proxy.addArmor("RubyArmor"),1,"wal_itemArmorRubyPlate",40);
-		rubyLeggings = new GemArmor(cc.itemArmorLeggingsRubyID,rubyArmorMaterial,proxy.addArmor("RubyArmor"),2,"wal_itemArmorRubyLeggings",56);
-		rubyBoots = new GemArmor(cc.itemArmorBootsRubyID,rubyArmorMaterial,proxy.addArmor("RubyArmor"),3,"wal_itemArmorRubyBoots",72);
+		rubyHelmet = new GemArmor(cc.itemArmorHelmetRubyID,rubyArmorMaterial,proxy.addArmor("ruby"),0,"itemArmorRubyHelmet");
+		rubyPlate =  new GemArmor(cc.itemArmorPlateRubyID,rubyArmorMaterial,proxy.addArmor("ruby"),1,"itemArmorRubyPlate");
+		rubyLeggings = new GemArmor(cc.itemArmorLeggingsRubyID,rubyArmorMaterial,proxy.addArmor("ruby"),2,"itemArmorRubyLeggings");
+		rubyBoots = new GemArmor(cc.itemArmorBootsRubyID,rubyArmorMaterial,proxy.addArmor("ruby"),3,"itemArmorRubyBoots");
 		
-		sapphireHelmet = new GemArmor(cc.itemArmorHelmetSapphireID,sapphireArmorMaterial,proxy.addArmor("SapphireArmor"),0,"wal_itemArmorSapphireHelmet",25);
-		sapphirePlate = new GemArmor(cc.itemArmorPlateSapphireID,sapphireArmorMaterial,proxy.addArmor("SapphireArmor"),1,"wal_itemArmorSapphirePlate",41);
-		sapphireLeggings = new GemArmor(cc.itemArmorLeggingsSapphireID,sapphireArmorMaterial,proxy.addArmor("SapphireArmor"),2,"wal_itemArmorSapphireLeggings",57);
-		sapphireBoots = new GemArmor(cc.itemArmorBootsSapphireID,sapphireArmorMaterial,proxy.addArmor("SapphireArmor"),3,"wal_itemArmorSapphiredBoots",73);
+		sapphireHelmet = new GemArmor(cc.itemArmorHelmetSapphireID,sapphireArmorMaterial,proxy.addArmor("sapphire"),0,"itemArmorSapphireHelmet");
+		sapphirePlate = new GemArmor(cc.itemArmorPlateSapphireID,sapphireArmorMaterial,proxy.addArmor("sapphire"),1,"itemArmorSapphirePlate");
+		sapphireLeggings = new GemArmor(cc.itemArmorLeggingsSapphireID,sapphireArmorMaterial,proxy.addArmor("sapphire"),2,"itemArmorSapphireLeggings");
+		sapphireBoots = new GemArmor(cc.itemArmorBootsSapphireID,sapphireArmorMaterial,proxy.addArmor("sapphire"),3,"itemArmorSapphireBoots");
 		
 		oreBlock = new BlockOre(cc.oreBlockID);
 		gemBlock = new BlockGem(cc.gemBlockID);
@@ -359,10 +392,12 @@ public class ResourceEngineeringMain
 		tumbler = new BlockGemTumbler(cc.tumblerID);
 		
 		stick = new ItemStick(cc.itemStickID);
-		ThorsHammer = new ItemToolChunkHammer(cc.thorsHammerID,superMaterial,154,"wal_itemThorHammer");
-		dirtLayer = new ItemToolDirtLayer(cc.dirtLayerID,superMaterial,154,"wal_itemDirtLayer");
+		ThorsHammer = new ItemToolChunkHammer(cc.thorsHammerID,superMaterial,154,"itemThorHammer");
+		dirtLayer = new ItemToolDirtLayer(cc.dirtLayerID,superMaterial,154,"itemDirtLayer");
+		machinePanel = new ItemMachinePanel(cc.itemMachinePanelID,"itemMachinePanel");
 		
 		oreWhiteList = cc.oreWhiteList;
+		plantWhiteList = cc.plantWhitelist;
 	}
 	@Init
 	public void Initialization(FMLInitializationEvent event)
@@ -393,4 +428,20 @@ public class ResourceEngineeringMain
 			}
 		}
 	}	
+	public static void scanModPlants()
+	{
+		plantList = new Vector();
+		for(int i=0;i<plantWhiteList.length;i++)
+		{
+			if(Block.blocksList[plantWhiteList[i]]!=null)
+			{
+				FMLLog.log(Level.INFO, "Found whitelisted plant block ID: %s", plantWhiteList[i]);
+				plantList.add(Block.blocksList[plantWhiteList[i]]);
+			}
+			else
+			{
+				FMLLog.log(Level.INFO, "Whitelisted plant not found ID: %s",plantWhiteList[i]);
+			}
+		}
+	}
 }

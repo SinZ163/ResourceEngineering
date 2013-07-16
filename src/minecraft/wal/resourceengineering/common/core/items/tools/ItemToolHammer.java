@@ -4,28 +4,46 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import resourceengineering.common.ResourceEngineeringMain;
 
 public class ItemToolHammer extends ItemTool
 {
+	private Icon icon;
+	private String n;
 	public static final Block[] blocksEffectiveAgainst = Block.blocksList;
 	public ItemToolHammer(int ID, EnumToolMaterial m, int tex, String name)
 	{
 	         super(ID, 1, m, blocksEffectiveAgainst);
-	         setTextureFile("/walgfx/Items.png");
-	         setIconIndex(tex);
-	         setItemName(name);
+	         setUnlocalizedName(name);
+	         n=name;
 	         this.setCreativeTab(ResourceEngineeringMain.reTab);
 	}
-
+	public void registerIcons(IconRegister iconRegister)
+	{
+		makeIcons(iconRegister);
+	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icon = iconRegister.registerIcon("resourceengineering:"+n);
+	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public Icon getIconFromDamage(int i)
+    {
+        return icon;
+    }
 	public boolean canHarvestBlock(Block par1Block)
 	{
 	         return true;
@@ -34,9 +52,11 @@ public class ItemToolHammer extends ItemTool
 	{
 	         return par2Block != null && (par2Block.blockMaterial == Material.iron || par2Block.blockMaterial == Material.anvil || par2Block.blockMaterial == Material.rock) ? this.efficiencyOnProperMaterial : super.getStrVsBlock(par1ItemStack, par2Block);
 	}
+	
 	@Override
 	public boolean onBlockDestroyed(ItemStack itemStack,World world,int id,int x,int y,int z,EntityLiving entityLiving)
 	{
+		
 		if(ResourceEngineeringMain.oreList == null)
 		{
 			ResourceEngineeringMain.scanModOres();
@@ -127,7 +147,7 @@ public class ItemToolHammer extends ItemTool
 					            itemDrop.delayBeforeCanPickup = 0;
 					            world.spawnEntityInWorld(itemDrop);
 					        }
-			            	world.setBlockWithNotify((x+i),(y+j), (z+k), 0);
+			            	world.setBlockToAir((x+i),(y+j), (z+k));
 			            }
 			        }
 				}
@@ -227,7 +247,7 @@ public class ItemToolHammer extends ItemTool
 					            }
 					            
 					        }
-							world.setBlockWithNotify((x+i),(y+j), (z+k), 0);
+							world.setBlockToAir((x+i),(y+j), (z+k));
 							mineOreVein((x+i),(y+j),(z+k),id,meta,world,xS,yS,zS,entityLiving,itemStack,recurCount+1);
 						}
 					}

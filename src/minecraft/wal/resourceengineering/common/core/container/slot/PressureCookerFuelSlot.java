@@ -17,7 +17,7 @@ public class PressureCookerFuelSlot extends Slot
 	@Override
 	public boolean isItemValid(ItemStack itemstack)
 	{
-		if(itemstack.itemID == Item.blazeRod.itemID)
+		if(itemstack.itemID == Item.blazeRod.itemID || itemstack.itemID == Item.blazePowder.itemID)
 		{
 			return true;
 		}

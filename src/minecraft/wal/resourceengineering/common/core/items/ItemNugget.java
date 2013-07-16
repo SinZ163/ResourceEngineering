@@ -2,33 +2,38 @@ package resourceengineering.common.core.items;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 
 import cpw.mods.fml.relauncher.*;
 import resourceengineering.common.ResourceEngineeringMain;
 
 public class ItemNugget extends Item
 {
+	private Icon icons;
 	public ItemNugget(int id)
 	{
 		super(id);
-		setTextureFile("/walgfx/Items.png");
-		setItemName("wal_ItemNugget");
+		setUnlocalizedName("wal_ItemNugget");
 		setCreativeTab(ResourceEngineeringMain.reTab);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public int getIconFromDamage(int i)
+	public void registerIcons(IconRegister iconRegister)
 	{
-		switch(i)
-		{
-		case 0: return 1;//Iron Nugget
-		}
-		return 0;
+		makeIcons(iconRegister);
+	}
+	public void makeIcons(IconRegister iconRegister)
+	{
+		icons = iconRegister.registerIcon("resourceengineering:itemIronNugget");
+	}
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int i)
+	{
+		return icons;
 	}
 	public String getItemNameIS(ItemStack is)
 	{

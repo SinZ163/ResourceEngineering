@@ -4,13 +4,16 @@ import java.util.List;
 
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 
 import cpw.mods.fml.relauncher.*;
 
 import resourceengineering.common.ResourceEngineeringMain;
+import resourceengineering.common.blocks.BlockGem;
 
 public class ItemBlockGem extends ItemBlock
 {
+	public static final String[] gemBlockNames = new String[] {"turquoise","onyx","amethyst","citrine","emerald","ruby","sapphire","mixedgem"};
 	public ItemBlockGem(int id)
 	{
 		super(id);
@@ -18,9 +21,9 @@ public class ItemBlockGem extends ItemBlock
 		this.setHasSubtypes(true);
 	}
 	@SideOnly(Side.CLIENT)
-	public int getIconFromDamage(int par1)
+	public Icon getIcon(int par1)
 	{
-		return ResourceEngineeringMain.gemBlock.getBlockTextureFromSideAndMetadata(2,par1);
+		return ResourceEngineeringMain.gemBlock.getIcon(2,par1);
 	}
 	public int getMetadata(int par1)
 	{
@@ -32,4 +35,8 @@ public class ItemBlockGem extends ItemBlock
 		String[] types = {"Turquoise","Onyx","Amethyst","Citrine","Emerald","Ruby","Sapphire","MixedGem"};
 		return "wal_Block"+types[is.getItemDamage()];
 	}
+	public String getUnlocalizedName(ItemStack item)
+    {
+        return super.getUnlocalizedName() + "." + gemBlockNames[item.getItemDamage()];
+    }
 }

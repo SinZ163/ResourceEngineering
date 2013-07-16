@@ -6,6 +6,7 @@ import resourceengineering.common.core.container.*;
 import resourceengineering.common.core.tileentity.PressureCookerTileEntity;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 //Create a class and extend GuiContainer
@@ -44,9 +45,9 @@ public class PressureCookerGUI extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
-		int picture = mc.renderEngine.getTexture("/walgfx/gui/pressureCookerGUI.png");
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.renderEngine.bindTexture(picture);
+		this.mc.renderEngine.func_110577_a(new ResourceLocation("resourceengineering", "textures/gui/pressureCookerGUI.png"));
+		//this.mc.renderEngine.bindTexture("/mods/resourceengineering/textures/gui/pressureCookerGUI.png");
 		// This is the x value of the picture, it will be used later
 		int x = (width - xSize) / 2;
 		// This is the y value of the picture, it will be used later
