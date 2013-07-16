@@ -70,7 +70,7 @@ import resourceengineering.common.blocks.BlockSifter;
 @NetworkMod(clientSideRequired=true,serverSideRequired=false,
 clientPacketHandlerSpec=@SidedPacketHandler(channels={"WAL_RE"},packetHandler=ClientPacketHandler.class),
 serverPacketHandlerSpec=@SidedPacketHandler(channels = {"WAL_RE"}, packetHandler = ServerPacketHandler.class))
-@Mod(modid="resourceengineering",name="Resource Engineering",version="0.5.9")
+@Mod(modid="resourceengineering",name="Resource Engineering",version="0.6.1")
 public class ResourceEngineeringMain
 {
 	@Instance("resourceengineering")
